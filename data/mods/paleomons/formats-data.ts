@@ -91,6 +91,12 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	ghoulipinch: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
+		isModded: true,
+	},
+
 	ghoulpion: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
