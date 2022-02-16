@@ -67,7 +67,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {nonsky: 1},
 		terrain: 'tarpit',
-		effectType: 'Terrain',
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
@@ -111,6 +110,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-fieldend', 'move: Tar Pit');
 			},
 		},
+
+		onTryHit(field) {
+			if(this.field.isTerrain(''))
+				return false;
+			else {
+				this.field.clearTerrain();
+			}
+		},
+
 		secondary: null,
 		target: "all",
 		type: "Poison",
