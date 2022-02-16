@@ -69,7 +69,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHitField(source) {
 			if (this.field.isTerrain('')) return;
 			else {
-				this.field.clearTerrain();
+				for (const terrain of this.field.terrain) {
+					this.field.clearTerrain();
+				}
 			}
 			this.field.setTerrain('tarpit');
 		},
