@@ -73,6 +73,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 			this.field.setTerrain('tarpit');
 		},
+		condition: {
+			onUpdate() {
+				if (!this.field.isTerrain('tarpit')) {
+					const setTerrain = this.field.getTerrain();
+					this.field.clearTerrain();
+					this.field.setTerrain(setTerrain);
+				}
+			}
+		},
 		secondary: null,
 		target: "all",
 		type: "Poison",
