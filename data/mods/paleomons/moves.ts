@@ -60,14 +60,18 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		name: "Tarpit",
+		name: "Tar Pit",
 		desc: "For 5 turns, the terrain becomes a Tar Pit. During the effect, the power of Poison-type attacks used by grounded Pokemon is multiplied by 1.3 and all Pokemon are under the effects of Powder. Camouflage transforms the user into a Poison type, Nature Power becomes Sludge Bomb, and Secret Power has a 30% chance to cause poison. Fails if the current terrain is Tar Pit.",
 		shortDesc: "5 turns. Grounded: +Poison power, +Powder.",
 		pp: 10,
 		priority: 0,
 		flags: {nonsky: 1},
-		terrain: 'tarpit',
-		condition: {
+
+		onHit(field) {
+			this.field.setTerrain('tarpit');
+		},
+
+		/*condition: {
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
@@ -89,7 +93,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (effect?.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Tar Pit', '[from] ability: ' + effect, '[of] ' + source);
 					this.add('-message', "The battlefield became a tar pit!");
-					this.hint(`Tar Pit increases the power of Poison-type moves by 1.3x and applies Powder to all Pokemon on the field. Doesn't affect grounded Pokemon nor Pokemon holding Heavy-Duty Boots.`);
+					this.hint(`Tar Pit increases the power of Poison-type moves by 1.3x and applies Powder to all Pokemon on the field.`);
+					this.hint(`Doesn't affect grounded Pokemon nor Pokemon holding Heavy-Duty Boots.`);
 				} else {
 					this.add('-fieldstart', 'move: Tar Pit');
 				}
@@ -117,7 +122,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			else {
 				this.field.clearTerrain();
 			}
-		},
+		}, */
 
 		secondary: null,
 		target: "all",
