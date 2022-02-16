@@ -55,7 +55,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		contestType: "Tough",
 	},
 
-	tarpit: {
+	tarpit: { //currently bugged!! ! ):
 		num: -102,
 		accuracy: true,
 		basePower: 0,
