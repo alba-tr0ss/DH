@@ -67,6 +67,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {nonsky: 1},
 		terrain: 'tarpit',
+		effectType: 'Terrain',
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
@@ -88,6 +89,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onStart(battle, source, effect) {
 				if (effect?.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Tar Pit', '[from] ability: ' + effect, '[of] ' + source);
+					this.add('-message', "The battlefield became a tar pit!");
+					this.hint(`Tar Pit increases the power of Poison-type moves by 1.3x and applies Powder to all Pokemon on the field. Doesn't affect grounded Pokemon nor Pokemon holding Heavy-Duty Boots.`);
 				} else {
 					this.add('-fieldstart', 'move: Tar Pit');
 				}
