@@ -20,7 +20,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onStart(battle, source, effect) {
 			if (effect?.effectType === 'Ability') {
-				this.add('-fieldstart', 'move: Tar Pit', '[from] ability: ' + effect, '[of] ' + source);
 				this.add('-message', "The battlefield became a tar pit!");
 				this.hint(`Tar Pit increases the power of Poison-type moves by 1.3x and applies Powder to all Pokemon on the field.`);
 				this.hint(`Doesn't affect grounded Pokemon nor Pokemon holding Heavy-Duty Boots.`);
@@ -40,7 +39,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 
 		onEnd() {
-			if (!this.effectData.duration) this.eachEvent('Terrain');
 			this.add('-fieldend', 'move: Tar Pit');
 		},
 	},
