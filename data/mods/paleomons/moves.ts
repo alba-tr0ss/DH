@@ -71,7 +71,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			else {
 				this.field.clearTerrain();
 			}
-			this.field.setTerrain('tarpit'),
+			this.field.setTerrain('tarpit');
 		},
 		secondary: null,
 		target: "all",
