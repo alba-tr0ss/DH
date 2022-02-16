@@ -67,7 +67,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {nonsky: 1},
 		onHitField(source) {
-			this.field.setTerrain('tarpit');
+			if (this.field.isTerrain('')) return;
+			else {
+				this.field.clearTerrain();
+			}
+			this.field.setTerrain('tarpit'),
 		},
 		secondary: null,
 		target: "all",
