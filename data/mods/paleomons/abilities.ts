@@ -138,8 +138,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-message', `Absorption Activation!`);
 
 			if(healing) {
-				pokemon.heal(pokemon.baseMaxhp * 0.12);
 				this.field.clearTerrain();
+				pokemon.heal(pokemon.baseMaxhp / 8);
 			}
 		},
 
