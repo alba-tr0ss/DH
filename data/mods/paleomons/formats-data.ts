@@ -202,8 +202,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 
 	tangelaancient: {
-		tier: "Paleomons",
-		doublesTier: "Paleomons",
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
 		isModded: true,
 	},
 
