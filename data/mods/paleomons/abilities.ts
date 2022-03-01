@@ -115,7 +115,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			let boosted = true;
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
-				if (!this.queue.willMove(target)) {
+				if (target.newlySwitched || !this.queue.willMove(target)) {
 					boosted = false;
 					break;
 				}
