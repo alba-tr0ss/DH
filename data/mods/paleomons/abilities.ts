@@ -130,12 +130,17 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.effectData.switchingIn = true;
 		},
 		onStart(pokemon) {
-			if (!this.effectData.switchingIn) return;
-			if(this.field.isTerrain('')) return;
+			let healing = true;
+			if (!this.effectData.switchingIn || this.field.isTerrain('')) {
+				healing = false;
+				return;
+			}
 			this.add('-message', `Absorption Activation!`);
 
-			pokemon.heal(pokemon.baseMaxhp * 0.12);
-			this.field.clearTerrain();
+			if(healing) {
+				pokemon.heal(pokemon.baseMaxhp * 0.12);
+				this.field.clearTerrain();
+			}
 		},
 
 		name: "Absorption",
