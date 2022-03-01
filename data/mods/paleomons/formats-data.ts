@@ -129,13 +129,11 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	/*
 	archenancient: {
 		tier: "Paleomons LC",
 		doublesTier: "Paleomons LC",
 		isModded: true,
 	},
-	*/
 
 	archeopsancient: {
 		tier: "Paleomons",
@@ -174,6 +172,42 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 
 	aurorusregnant: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	shellosentity: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
+		isModded: true,
+	},
+
+	gastrodonentity: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	gastrodonentityeast: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	yanmegaancient: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	tangelaancient: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	tangrowthancient: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
 		isModded: true,

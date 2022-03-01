@@ -340,7 +340,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 102.5,
 	},
 
-	/*
+	
 	archen: {
 		inherit: true,
 		otherFormes: ["Archen-Ancient"],
@@ -352,13 +352,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Archen-Ancient",
 		baseSpecies: "Archen",
 		forme: "Ancient",
-		evos: ["Archeops-Ancient"]
-		types: [""],
-		baseStats: {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0},
-		abilities: {0: ""},
-		weightkg: ,
+		evos: ["Archeops-Ancient"],
+		types: ["Fairy", "Flying"],
+		baseStats: {hp: 60, atk: 60, def: 70, spa: 68, spd: 65, spe: 90},
+		abilities: {0: "Natural Cure"},
+		weightkg: 9.5,
 	},
-	*/
+	
 
 	archeops: {
 		inherit: true,
@@ -479,5 +479,107 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 77, def: 85, spa: 109, spd: 90, spe: 88},
 		abilities: {0: "Snow Warning", H:"Refrigerate"},
 		weightkg: 225,
+	},
+
+	shellos: {
+		inherit: true,
+		cosmeticFormes: ["Shellos-East"],
+		otherFormes: ["Shellos-Entity"],
+		formeOrder: ["Shellos", "Shellos-East", "Shellos-Entity"],
+	},
+
+	shellosentity: {
+		num: -127,
+		name: "Shellos-Entity",
+		baseSpecies: "Shellos",
+		forme: "Entity",
+		evos: ["Gastrodon-Entity", "Gastrodon-Entity-East"],
+		types: ["Poison"],
+		baseStats: {hp: 70, atk: 50, def: 60, spa: 50, spd: 60, spe: 40},
+		abilities: {0: "Gooey", H: "Poison Point"},
+		weightkg: 6.3,
+	},
+
+	gastrodon: {
+		inherit: true,
+		cosmeticFormes: ["Gastrodon-East"],
+		otherFormes: ["Gastrodon-Entity"],
+		formeOrder: ["Gastrodoon", "Gastrodon-East", "Gastrodon-Entity"],
+	},
+
+	gastrodonentity: {
+		num: -128,
+		name: "Gastrodon-Entity",
+		baseSpecies: "Gastrodon",
+		forme: "Entity",
+		types: ["Poison", "Dragon"],
+		baseStats: {hp: 120, atk: 95, def: 60, spa: 100, spd: 50, spe: 50},
+		abilities: {0: "Gooey", H: "Damp"},
+		weightkg: 29.9,
+		otherFormes: ["Gastrodon-Entity-East"],
+		formeOrder: ["Gastrodon-Entity", "Gastrodon-Entity-East"],
+	},
+
+	gastrodonentityeast: {
+		num: -128,
+		name: "Gastrodon-Entity-West",
+		baseSpecies: "Gastrodon",
+		forme: "Entity-East",
+		types: ["Poison", "Psychic"],
+		baseStats: {hp: 100, atk: 75, def: 80, spa: 80, spd: 70, spe: 70},
+		abilities: {0: "Gooey", H: "Neuroforce"},
+		weightkg: 29.9,
+	},
+
+	yanmega: {
+		inherit: true,
+		otherFormes: ["Yanmega-Ancient"],
+		formeOrder: ["Yanmega", "Yanmega-Ancient"],
+	},
+
+	yanmegaancient: {
+		num: -129,
+		name: "Yanmega-Ancient",
+		baseSpecies: "Yanmega",
+		forme: "Ancient",
+		types: ["Bug", "Dragon"],
+		baseStats: {hp: 85, atk: 110, def: 70, spa: 110, spd: 70, spe: 70},
+		abilities: {0: "Strong Jaw", H: "Chaser"},
+		weightkg: 51.5,
+	},
+
+	tangela: {
+		inherit: true,
+		otherFormes: ["Tangela-Ancient"],
+		formeOrder: ["Tangela", "Tangela-Ancient"],
+	},
+
+	tangelaancient: {
+		num: -130,
+		name: "Tanglea-Ancient",
+		baseSpecies: "Tangela",
+		forme: "Ancient",
+		evos: ["Tangrowth-Ancient"],
+		types: ["Grass", "Fire"],
+		baseStats: {hp: 65, atk: 55, def: 40, spa: 100, spd: 115, spe: 60},
+		abilities: {0: "Mold Breaker", 1: "Grass Pelt", H: "Absorption"},
+		weightkg: 35,
+	},
+
+	tangrowth: {
+		inherit: true,
+		otherFormes: ["Tangrowth-Ancient"],
+		formeOrder: ["Tangrowth", "Tangrowth-Ancient"],
+	},
+
+	tangrowthancient: {
+		num: -131,
+		name: "Tangrowth-Ancient",
+		baseSpecies: "Tangrowth",
+		forme: "Ancient",
+		types: ["Grass", "Fire"],
+		baseStats: {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0},
+		abilities: {0: "Mold Breaker", 1: "Grass Pelt", H: "Absorption"},
+		weightkg: 128.6,
 	},
 };
