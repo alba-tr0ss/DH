@@ -483,7 +483,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	shellos: {
 		inherit: true,
-		cosmeticFormes: ["Shellos-East"],
 		otherFormes: ["Shellos-Entity"],
 		formeOrder: ["Shellos", "Shellos-East", "Shellos-Entity"],
 	},
@@ -492,7 +491,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: -127,
 		name: "Shellos-Entity",
 		baseSpecies: "Shellos",
-		forme: "Entity",
+		baseForme: "Entity",
 		evos: ["Gastrodon-Entity", "Gastrodon-Entity-East"],
 		types: ["Poison"],
 		baseStats: {hp: 70, atk: 50, def: 60, spa: 50, spd: 60, spe: 40},
@@ -502,7 +501,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	gastrodon: {
 		inherit: true,
-		cosmeticFormes: ["Gastrodon-East"],
 		otherFormes: ["Gastrodon-Entity"],
 		formeOrder: ["Gastrodoon", "Gastrodon-East", "Gastrodon-Entity"],
 	},
@@ -511,7 +509,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		num: -128,
 		name: "Gastrodon-Entity",
 		baseSpecies: "Gastrodon",
-		forme: "Entity",
+		baseForme: "Entity",
 		types: ["Poison", "Dragon"],
 		baseStats: {hp: 120, atk: 95, def: 60, spa: 100, spd: 50, spe: 50},
 		abilities: {0: "Gooey", H: "Damp"},
@@ -522,7 +520,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	gastrodonentityeast: {
 		num: -128,
-		name: "Gastrodon-Entity-West",
+		name: "Gastrodon-Entity-East",
 		baseSpecies: "Gastrodon",
 		forme: "Entity-East",
 		types: ["Poison", "Psychic"],
@@ -556,7 +554,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	tangelaancient: {
 		num: -130,
-		name: "Tanglea-Ancient",
+		name: "Tangela-Ancient",
 		baseSpecies: "Tangela",
 		forme: "Ancient",
 		evos: ["Tangrowth-Ancient"],
