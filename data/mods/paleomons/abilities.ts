@@ -125,6 +125,24 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		desc: "The power of this Pokemon's move is multiplied by 1.3 if it is the first to move in a turn. Does not affect Doom Desire and Future Sight.",
 		shortDesc: "This Pokemon's attacks have 1.3x power if it is the first to move in a turn.",
 	},
+
+	absorption: {
+		onSwitchIn(pokemon) {
+			this.effectData.switchingIn = true;
+		},
+
+		onStart(field) {
+			if (!this.effectData.switchingIn) return;
+			if(this.field.isTerrain('')) return;
+			else {
+				this.field.clearTerrain;
+			}
+		},
+
+		name: "Absorption",
+		desc: "If there is an active terrain, the terrain ends and the user is healed by 12% of its maximum HP",
+		shortDesc: "If there is a terrain active, ends the terrain and heals the user by 12% of its max HP",
+	},
 	
 	//
 	//
