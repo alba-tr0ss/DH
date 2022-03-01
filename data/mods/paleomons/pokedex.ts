@@ -580,7 +580,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseSpecies: "Tangrowth",
 		forme: "Ancient",
 		types: ["Grass", "Fire"],
-		baseStats: {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0},
+		baseStats: {hp: 100, atk: 100, def: 50, spa: 110, spd: 125, spe: 50},
 		abilities: {0: "Mold Breaker", 1: "Grass Pelt", H: "Absorption"},
 		weightkg: 128.6,
 	},
