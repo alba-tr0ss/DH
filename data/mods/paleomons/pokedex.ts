@@ -512,8 +512,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	gastrodonentity: {
 		num: -128,
 		name: "Gastrodon-Entity",
-		baseSpecies: "Gastrodon",
-		baseForme: "Entity",
+		//baseSpecies: "Gastrodon",
+		//baseForme: "Entity",
 		types: ["Poison", "Dragon"],
 		baseStats: {hp: 120, atk: 95, def: 60, spa: 100, spd: 50, spe: 50},
 		abilities: {0: "Gooey", H: "Damp"},
@@ -525,7 +525,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	gastrodonentityeast: {
 		num: -128,
 		name: "Gastrodon-Entity-East",
-		baseSpecies: "Gastrodon",
+		baseSpecies: "Gastrodon-Entity",
 		forme: "Entity-East",
 		types: ["Poison", "Psychic"],
 		baseStats: {hp: 100, atk: 75, def: 80, spa: 80, spd: 70, spe: 70},
