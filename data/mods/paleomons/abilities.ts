@@ -115,8 +115,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
 				if (target.newlySwitched || this.queue.willMove(target)) {
-					this.debug('Fishious Rend damage boost');
-					return basePower * 2;
+					this.add('-message', `Chaser boost!`);
+					return basePower * 1.3;
 				}
 				return basePower;
 			}
