@@ -115,7 +115,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
 				if (target.newlySwitched || this.queue.willMove(target)) {
-					this.add('-message', `Chaser boost!`);
 					return basePower * 1.3;
 				}
 				return basePower;
@@ -130,13 +129,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSwitchIn(pokemon) {
 			this.effectData.switchingIn = true;
 		},
-
 		onStart(field) {
 			if (!this.effectData.switchingIn) return;
 			if(this.field.isTerrain('')) return;
-			else {
-				this.field.clearTerrain;
-			}
+			this.add('-message', `Absorption Activation!`);
+			this.field.clearTerrain();
 		},
 
 		name: "Absorption",
