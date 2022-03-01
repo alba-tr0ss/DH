@@ -129,10 +129,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSwitchIn(pokemon) {
 			this.effectData.switchingIn = true;
 		},
-		onStart(field) {
+		onStart(source) {
 			if (!this.effectData.switchingIn) return;
 			if(this.field.isTerrain('')) return;
 			this.add('-message', `Absorption Activation!`);
+
+			source.heal(source.baseMaxhp * 0.12);
 			this.field.clearTerrain();
 		},
 
