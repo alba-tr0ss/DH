@@ -73,6 +73,18 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	swinubancient: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
+		isModded: true,
+	},
+
+	piloswineancient: {
+		tier: "Paleomons NFE",
+		doublesTier: "Paleomons NFE",
+		isModded: true,
+	},
+
 	mamoswineancient: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
@@ -103,13 +115,11 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	/*
-	shieldon: {
+	shieldonovergrown: {
 		tier: "Paleomons LC",
 		doublesTier: "Paleomons LC",
 		isModded: true,
 	},
-	*/
 
 	bastiodonovergrown: {
 		tier: "Paleomons",
@@ -192,6 +202,12 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	gastrodonentityeast: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
+		isModded: true,
+	},
+
+	yanmaancient: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
 		isModded: true,
 	},
 
