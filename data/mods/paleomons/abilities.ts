@@ -114,7 +114,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBasePower(basePower, pokemon, target) {
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
-				if (target.newlySwitched || this.queue.willMove(target)) {
+				if (/* target.newlySwitched || */ this.queue.willMove(target)) {
 					return basePower * 1.3;
 				}
 				return basePower;

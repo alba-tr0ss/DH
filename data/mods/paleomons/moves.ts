@@ -187,6 +187,30 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Ice",
 	},
 
+	jawforce: {
+		num: -105,
+		accuracy: 95,
+		basePower: 100,
+		category: "Physical",
+		name: "Jaw Force",
+		desc: "Priority increases by 1 if the user is at or under 1/4th of its maximum HP.",
+		shortDesc: "User has 1/4 HP: +1 priority",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, bite: 1},
+		secondary: {},
+		onModifyPriority(priority, source, target, move) {
+			if(source.hp <= source.maxhp / 4) {
+				priority += 1;
+				this.add('-message', "Priority = " + priority);
+				//return priority +1;
+			}
+		},
+		target: "normal",
+		type: "Dragon",
+	},
+	},
+
 	//
 	//
 	//

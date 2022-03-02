@@ -2363,7 +2363,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	yanmegaancient: {
 		learnset: {
-			//jaw force: ["8L1"],
+			jawforce: ["8L1"],
 			jawlock: ["8L1"],
 			crunch: ["8L1"],
 			poisonfang: ["8L1"],
