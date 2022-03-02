@@ -199,11 +199,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, bite: 1},
 		secondary: {},
-		onModifyPriority(priority, source, target, move) {
-			if(source.hp <= source.maxhp / 4) {
-				priority += 1;
-				this.add('-message', "Priority = " + priority);
-				//return priority +1;
+		onModifyPriority(priority, pokemon, move) {
+			if(pokemon.hp <= pokemon.maxhp / 4) {
+				return priority +1;
 			}
 		},
 		target: "normal",
