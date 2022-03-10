@@ -2949,6 +2949,26 @@ export const Formats: FormatList = [
 		teambuilderFormat: "OU",
 	},
 	{
+		name: "[Gen 8] Cirque de Mons",
+		desc: "Clown time.",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/paleomons-slate-3-non-dino-stars-dimetrodon-dodo-sea-scorpion-submission-phase.3695565/">Paleomons on Smogon Forums bc i cba to link anything else`,
+		],
+
+		mod: 'cirque',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
+		onValidateTeam(team, format) {
+			/**@type {{[k: string]: true}} */
+			let speciesTable = {};
+			for (const set of team) {
+				let template = this.dex.getSpecies(set.species);
+				if (template.tier !== 'Cirque' && template.tier !== 'Cirque NFE' && template.tier !== 'Cirque LC') {
+					return [set.species + ' is banned from the circus.'];
+				}
+			}
+		},
+	},
+	{
         name: "[Gen 8] Duomod",
         desc: `<b>Duomod</b>: DuoM2's solomod, which cuts 6 of the 18 types and only allows the use of certain Fakemon.`,
         threads: [
