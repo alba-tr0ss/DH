@@ -7,7 +7,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	*/
 
-	primariacirque: {
+	primarinacirque: {
 		tier: "Cirque",
 		doublesTier: "Cirque",
 		isModded: true,
