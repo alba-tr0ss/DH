@@ -26,12 +26,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 	
 	primarinacirque: {
+		num: -100,
 		name: "Primarina-Cirque",
 		baseSpecies: "Primarina",
 		forme: "Cirque",
 		types: ["Ghost", "Fairy"],
 		baseStats: {hp: 80, atk: 74, def: 116, spa: 126, spd: 74, spe: 60},
-		abilities: {0: "Torrent", H: "Liquid Voice"},
+		abilities: {0: "Torrent", H: "Ghastly Trill"},
 	},
 
 };
