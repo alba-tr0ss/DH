@@ -2949,13 +2949,13 @@ export const Formats: FormatList = [
 		teambuilderFormat: "OU",
 	},
 	{
-		name: "[Gen 8] Cirque de Mons",
+		name: "[Gen 8] Cirque de Mon",
 		desc: "Clown time.",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/paleomons-slate-3-non-dino-stars-dimetrodon-dodo-sea-scorpion-submission-phase.3695565/">Paleomons on Smogon Forums bc i cba to link anything else`,
 		],
 
-		mod: 'cirque',
+		mod: 'cirquedemon',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}} */
