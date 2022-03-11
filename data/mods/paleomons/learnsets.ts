@@ -3158,7 +3158,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		}
 	},
 
-	alohwo: {
+	liluo: {
 		learnset: {
 			//volttackle: ["8L1"],
 			flareblitz: ["8L1"],
