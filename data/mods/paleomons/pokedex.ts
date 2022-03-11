@@ -677,7 +677,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Alohwo",
 		types: ["Fire"],
 		baseStats: {hp: 111, atk: 92, def: 70, spa: 80, spd: 79, spe: 95},
-		abilities: {0: "Lightning Rod"}, //temp
+		abilities: {0: "Thunderstruck"}, //temp
 		weightkg: 30,
 		prevo: "Flaruo",
 	},

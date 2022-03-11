@@ -142,6 +142,35 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		desc: "If there is an active terrain, the terrain ends and the user is healed by 12% of its maximum HP",
 		shortDesc: "If there is a terrain active, ends the terrain and heals the user by 12% of its max HP",
 	},
+
+	thunderstruck: {
+		onSetStatus(status, target, source, effect) {
+			if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
+				if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
+					this.add('-activate', `${target.name} was too shocked to stop moving!`);
+				}
+				return false;
+			}
+		},
+		onTryAddVolatile(status, target) {
+			if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+			if (status.id === 'yawn') {
+				this.add('-activate', `${target.name} was too shocked to stop moving!`);
+				return null;
+			}
+		},
+		onBasePowerPriority: 6,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+				this.debug('electric terrain boost');
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+
+		name: "Thunderstruck",
+		desc: "h",
+		shortDesc: "Simulates the effects of Electric Terrain on the user.",
+	},
 	
 	//
 	//
