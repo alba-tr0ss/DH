@@ -3158,7 +3158,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		}
 	},
 
-	flaruo: {
+	alohwo: {
 		learnset: {
 			//volttackle: ["8L1"],
 			flareblitz: ["8L1"],
@@ -3365,7 +3365,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		learnset: {
 			acrobatics: ["8L1"],
 			bravebird: ["8L1"],
-			bodyprass: ["8L1"],
+			bodypress: ["8L1"],
 			drillpeck: ["8L1"],
 			facade: ["8L1"],
 			frustration: ["8L1"],
