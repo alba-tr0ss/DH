@@ -133,7 +133,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (!this.effectData.switchingIn || this.field.isTerrain('')) {
 				return;
 			}
-			this.add('-message', `Absorption Activation!`);
+			this.add('-message', `Absorption Activated!`);
 			this.field.clearTerrain();
 			this.heal((pokemon.baseMaxhp / 8), pokemon);
 		},
@@ -147,7 +147,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSetStatus(status, target, source, effect) {
 			if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
 				if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
-					this.add('-activate', target, 'was too shocked to stop moving!');
+					this.add('-message', `${target.name} was too shocked to stop moving!`);
 				}
 				return false;
 			}
@@ -155,14 +155,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onTryAddVolatile(status, target) {
 			if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 			if (status.id === 'yawn') {
-				this.add('-activate', target, 'was too shocked to stop moving!');
+				this.add('-message', `${target.name} was too shocked to stop moving!`);
 				return null;
 			}
 		},
 		onBasePowerPriority: 6,
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
-				this.debug('electric terrain boost');
+				this.debug('thunderstruck boost');
 				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
