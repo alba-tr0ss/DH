@@ -591,6 +591,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Yanma-Ancient",
 		baseSpecies: "Yanma",
 		forme: "Ancient",
+		evos: ["Yanmega-Ancient"],
 		types: ["Bug", "Dragon"],
 		baseStats: {hp: 60, atk: 80, def: 55, spa: 80, spd: 55, spe: 60},
 		abilities: {0: "Compound Eyes", H: "Chaser"},
