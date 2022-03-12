@@ -412,11 +412,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 			onBasePower(basePower, attacker, defender, move) {
 				const weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
-				if (weakenedMoves.includes(move.id) && (attacker.ability != "Thunderstruck" || defender.ability != "Thunderstruck")) {
+				if (weakenedMoves.includes(move.id)) {
+					for (const target of this.getAllActive()) {
+						if (target.hasAbility('thunderstruck')) {
+							return;
+						}
+					}
 					this.debug('move weakened by grassy terrain');
 					return this.chainModify(0.5);
 				}
-				if (move.type === 'Grass' && attacker.isGrounded() && (attacker.ability != "Thunderstruck" || defender.ability != "Thunderstruck")) {
+				if (move.type === 'Grass' && attacker.isGrounded()) {
+					for (const target of this.getAllActive()) {
+						if (target.hasAbility('thunderstruck')) {
+							return;
+						}
+					}
 					this.debug('grassy terrain boost');
 					return this.chainModify([0x14CD, 0x1000]);
 				}
@@ -436,7 +446,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 
 			onTerrain(pokemon) {
-				if(pokemon.ability == "Thunderstruck") return;
+				if(pokemon.hasAbility('thunderstruck')) return;
 				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
 					this.debug('Pokemon is grounded, healing through Grassy Terrain.');
 					this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
