@@ -147,7 +147,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSetStatus(status, target, source, effect) {
 			if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
 				if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
-					this.add('-activate', `${target.name} was too shocked to stop moving!`);
+					this.add('-activate', target, 'was too shocked to stop moving!');
 				}
 				return false;
 			}
@@ -155,7 +155,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onTryAddVolatile(status, target) {
 			if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 			if (status.id === 'yawn') {
-				this.add('-activate', `${target.name} was too shocked to stop moving!`);
+				this.add('-activate', target, 'was too shocked to stop moving!');
 				return null;
 			}
 		},
