@@ -436,11 +436,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 
 			onTerrain(pokemon) {
+				if(pokemon.ability == "Thunderstruck") return;
 				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
 					this.debug('Pokemon is grounded, healing through Grassy Terrain.');
 					this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
 				}
-				if(pokemon.ability == "Thunderstruck") return;
 			},
 
 			onEnd() {
