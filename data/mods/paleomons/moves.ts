@@ -471,15 +471,25 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				return 5;
 			},
 			onSetStatus(status, target, source, effect) {
-				if (!target.isGrounded() || target.isSemiInvulnerable() || target.hasAbility('thunderstruck')) return;
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (effect && ((effect as Move).status || effect.id === 'yawn')) {
+					for (const target of this.getAllActive()) {
+						if (target.hasAbility('thunderstruck')) {
+							return;
+						}
+					}
 					this.add('-activate', target, 'move: Misty Terrain');
 				}
 				return false;
 			},
 			onTryAddVolatile(status, target, source, effect) {
-				if (!target.isGrounded() || target.isSemiInvulnerable() || target.hasAbility('thunderstruck')) return;
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (status.id === 'confusion') {
+					for (const target of this.getAllActive()) {
+						if (target.hasAbility('thunderstruck')) {
+							return;
+						}
+					}
 					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Misty Terrain');
 					return null;
 				}
