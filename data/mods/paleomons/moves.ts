@@ -534,11 +534,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onSetStatus(status, target, source, effect) {
 				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
 					if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
-						for (const target of this.getAllActive()) {
-							if (target.hasAbility('thunderstruck')) {
-								return;
-							}
-						}
 						this.add('-activate', target, 'move: Electric Terrain');
 					}
 					return false;
@@ -547,11 +542,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onTryAddVolatile(status, target) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (status.id === 'yawn') {
-					for (const target of this.getAllActive()) {
-						if (target.hasAbility('thunderstruck')) {
-							return;
-						}
-					}
 					this.add('-activate', target, 'move: Electric Terrain');
 					return null;
 				}
