@@ -49,4 +49,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-fieldend', 'move: Tar Terrain');
 		},
 	},
+
+	fanglock: {
+		name: "Fanglock",
+		onStart(battle, source, effect) {
+		},
+	},
 };
