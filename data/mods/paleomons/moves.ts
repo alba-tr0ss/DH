@@ -208,6 +208,50 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Dragon",
 	},
 
+	tailspike: {
+		num: -106,
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		name: "Tail Spike",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		onHit(target) {
+			if (target.getAbility().isPermanent) return;
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage(damage, target) {
+			if (target.getAbility().isPermanent) return;
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dragon",
+	},
+
+	glacialgale: {
+		num: -107,
+		accuracy: 75,
+		basePower: 110,
+		category: "Special",
+		name: "Glacial Gale",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove(move) {
+			if (this.field.isWeather('hail')) move.accuracy = true;
+		},
+		secondary: {
+			chance: 10,
+			status: 'frz',
+		},
+		target: "allAdjacentFoes",
+		type: "Flying",
+	},
+
 	//
 	//
 	//
@@ -571,5 +615,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-fieldend', 'move: Electric Terrain');
 			},
 		},
+	},
+
+	fishiousrend: {
+		num: 755,
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		name: "Fishious Rend",
+		pp: 10,
+		priority: 0,
+		flags: {bite: 1, contact: 1, protect: 1, mirror: 1, heal: 1},
+		drain: [1, 2],
+		secondary: null,
+		target: "normal",
+		type: "Water",
 	},
 };

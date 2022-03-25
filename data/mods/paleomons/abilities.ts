@@ -123,6 +123,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Chaser",
 		desc: "The power of this Pokemon's move is multiplied by 1.3 if it is the first to move in a turn. Does not affect Doom Desire and Future Sight.",
 		shortDesc: "This Pokemon's attacks have 1.3x power if it is the first to move in a turn.",
+		rating: 3,
+		num: -105,
 	},
 
 	absorption: {
@@ -141,6 +143,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Absorption",
 		desc: "If there is an active terrain, the terrain ends and the user is healed by 12% of its maximum HP",
 		shortDesc: "If there is a terrain active, ends the terrain and heals the user by 12% of its max HP",
+		rating: 3,
+		num: -106,
 	},
 
 	thunderstruck: {
@@ -170,6 +174,34 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Thunderstruck",
 		desc: "h",
 		shortDesc: "Simulates the effects of Electric Terrain on the user.",
+		rating: 3,
+		num: -107,
+	},
+	fanglock: {
+		onHit(target, source, move) {
+			if(!move.flags['bite']) return;
+			return target.addVolatile('trapped', source, move, 'trapper');
+		},
+
+		name: "Fanglock",
+		desc: "h",
+		shortDesc: "h",
+		rating: 3,
+		num: -108,
+	},
+
+	frigidlanding: {
+		onDamage(damage, target, source, effect) {
+			if (effect && (effect.id === 'stealthrock' || effect.id === 'spikes' || effect.id === 'toxicspikes' || effect.id === 'scorchedpebbles')) {
+				return false;
+			}
+		},
+
+		name: "Frigid Landing",
+		desc: "h",
+		shortDesc: "h",
+		rating: 3,
+		num: -109,
 	},
 	
 	//
