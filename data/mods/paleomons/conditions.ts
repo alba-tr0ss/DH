@@ -52,8 +52,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	fanglock: {
 		name: 'fanglock',
-		onStart(move, target) {
-			this.add('-activate', `${target.name} can no longer escape!`);
+		onStart(target) {
+			this.add('-activate', target, 'trapped');
 		},
 	},
 };

@@ -187,7 +187,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				volatileStatus: 'fanglock',
 			});
 		},
-
 		onFoeTrapPokemon(pokemon) {
 			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
 			if (pokemon.volatiles['fanglock']) {
