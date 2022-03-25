@@ -1,4 +1,16 @@
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
+	aerialcombatant: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.isGrounded()) {
+				this.add('-message', 'Aerial Combatant');
+				return this.chainModify(0.75);
+			}
+		},
+		name: "Aerial Combatant",
+		shortDesc: "This Pokemon recieves 3/4 damage from attacks used by grounded Pokemon.",
+		desc: "This Pokemon recieves 3/4 damage from attacks used by grounded Pokemon.",
+	},
+
 	ghastlytrill: {
 		onPrepareHit(source, target, move) {
 			if (move.category === 'Status' || move.selfdestruct || move.multihit || !move.flags['sound']) return;
@@ -28,5 +40,5 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		desc: "The user's sound-based damaging moves become multi-hit moves that hit 5 times for a quarter of its damage. Sound-based damaging moves become Ghost-type.",
 		rating: 4,
 		num: -100,
-	}
+	},
 };
