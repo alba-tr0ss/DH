@@ -178,9 +178,18 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: -107,
 	},
 	fanglock: {
-		onHit(target, source, move) {
-			if(!move.flags['bite']) return;
-			return target.addVolatile('trapped', source, move, 'trapper');
+		onModifyMove(move) {
+			if (!move || !move.flags['bite'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				volatileStatus: 'partiallytrapped',
+			});
+		},
+		onResidualOrder: 11,
+		onResidual(pokemon) {
+			if(pokemon.volatiles['partiallytrapped']) return;
 		},
 
 		name: "Fanglock",

@@ -289,7 +289,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	artichoris: {
+	artachoris: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
 		isModded: true,

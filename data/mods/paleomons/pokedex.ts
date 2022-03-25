@@ -723,7 +723,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 
 	dracosaur: {
 		num: -142,
-		name: "Name",
+		name: "Dracosaur",
 		types: ["Dragon", "Ground"],
 		baseStats: {hp: 90, atk: 90, def: 90, spa: 100, spd: 80, spe: 75},
 		abilities: {0: "Hustle", H: "Sand Rush"},
