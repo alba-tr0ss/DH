@@ -51,8 +51,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 	},
 
 	fanglock: {
-		name: "Fanglock",
-		onHit(move) {
+		name: 'fanglock',
+		onStart(move) {
 		},
 	},
 };

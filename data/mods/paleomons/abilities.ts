@@ -194,6 +194,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				pokemon.tryTrap(true);
 			}
 		},
+		/*
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			if (!source) source = this.effectData.target;
 			if (!source || !this.isAdjacent(pokemon, source) || pokemon.volatiles['fanglock']) return;
@@ -201,6 +202,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				pokemon.maybeTrapped = true;
 			}
 		},
+		*/
 
 		name: "Fanglock",
 		desc: "h",
