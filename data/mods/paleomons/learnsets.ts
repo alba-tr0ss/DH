@@ -869,6 +869,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			scald: ["8L1"],
 			flipturn: ["8L1"],
 			wish: ["8L1"],
+			scorchedpebbles: ["8L1"],
 
 			afteryou: ["7T", "6T", "5T"],
 			amnesia: ["8M", "8L52", "7L40", "6L40", "5L49", "4L49", "3L40"],
