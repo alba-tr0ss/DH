@@ -52,7 +52,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	fanglock: {
 		name: "Fanglock",
-		onStart(battle, source, effect) {
+		onHit(move) {
 		},
 	},
 };
