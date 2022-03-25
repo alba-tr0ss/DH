@@ -195,8 +195,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 
 		name: "Fanglock",
-		desc: "h",
-		shortDesc: "h",
+		desc: "This Pokemon's bite-based attacks trap their target.",
+		shortDesc: "This Pokemon's bite-based attacks trap their target.",
 		rating: 3,
 		num: -108,
 	},
@@ -209,8 +209,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 
 		name: "Frigid Landing",
-		desc: "h",
-		shortDesc: "h",
+		desc: "On switch-in, this Pokemon avoids all hazard damage.",
+		shortDesc: "On switch-in, this Pokemon avoids all hazard damage.",
 		rating: 3,
 		num: -109,
 	},

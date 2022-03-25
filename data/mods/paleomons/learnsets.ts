@@ -1232,6 +1232,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			hornattack: ["8L1"],
 			iciclecrash: ["8L1"],
 			mimic: ["8L1"],
+			detect: ["8L1"],
 
 			amnesia: ["8M", "8L37"],
 			ancientpower: ["8L1", "7L1", "6L1", "5L1", "4T", "4L1"],
