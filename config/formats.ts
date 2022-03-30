@@ -2426,7 +2426,7 @@ export const Formats: FormatList = [
 		banlist: [],
 	},
 	{
-		name: "[Gen 8] PalCeomons",
+		name: "[Gen 8] PaLCeomons",
 		desc: [
 			"<b>PaLCeomons</b>: A Paleomons bonus format featuring the first forms of Paleomon's fully evolved metagame."
 		],
@@ -2446,8 +2446,7 @@ export const Formats: FormatList = [
 				}
 			}
 		},
-		forcedLevel: 5,
-		defaultLevel: 5,
+		maxLevel: 5,
 		teambuilderFormat: "PaLCeomons",
 	},
 	{
