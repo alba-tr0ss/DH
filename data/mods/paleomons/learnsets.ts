@@ -954,7 +954,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		},
 	},
 
-	relicanthancient: {
+	relicanthscorched: {
 		learnset: {
 			flamethrower: ["8L1"],
 			ember: ["8L1"],
@@ -3331,7 +3331,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			storedpower: ["8L1"],
 			solarbeam: ["8L1"],
 			sunnyday: ["8L1"],
-			switch: ["8L1"],
+			swift: ["8L1"],
 			synchronoise: ["8L1"],
 			telekinesis: ["8L1"],
 			topsyturvy: ["8L1"],
@@ -3691,6 +3691,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			acrobatics: ["8L1"],
 			aerialace: ["8L1"],
 			aircutter: ["8L1"],
+			airslash: ["8L1"],
 			ancientpower: ["8L1"],
 			aurorabeam: ["8L1"],
 			avalanche: ["8L1"],
@@ -3745,6 +3746,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			acrobatics: ["8L1"],
 			aerialace: ["8L1"],
 			aircutter: ["8L1"],
+			airslash: ["8L1"],
 			ancientpower: ["8L1"],
 			aurorabeam: ["8L1"],
 			avalanche: ["8L1"],
