@@ -252,6 +252,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (!move || move.category !== 'Status' || move.target === 'self') return;
 			if (!move.secondaries) {
 				move.secondaries = [];
+				this.add('-message', 'persistence added');
 			}
 			move.secondaries.push({
 				volatileStatus: 'persistence',
