@@ -230,8 +230,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			//move.type = item.naturalGift.type;
 
 			let type: string;
-			type = "Grass", item.naturalGift.type;
-			this.add('-start', pokemon, 'typechange', type, '[from] ability: Color Change');
+			type = "[Grass]", item.naturalGift.type;
+			this.add('-start', pokemon, 'typechange', type, '[from] ability: Nature Prowess');
+			return;
 		},
 
 		name: "Nature Prowess",
