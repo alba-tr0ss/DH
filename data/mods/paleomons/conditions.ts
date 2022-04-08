@@ -61,12 +61,15 @@ export const Conditions: {[k: string]: ConditionData} = {
 		name: 'persistence',
 		onStart() {
 			const isHit = false;
+			this.add('-message', "on start");
 		},
 		onResidual() {
 			const isHit = false;
+			this.add('-message', "on residual");
 		},
 		onDamagingHit() {
 			const isHit = true;
+			this.add('-message', "on damageing hit");
 		}
 	},
 };

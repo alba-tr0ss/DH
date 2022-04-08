@@ -256,9 +256,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			move.secondaries.push({
 				volatileStatus: 'persistence',
 			});
+			this.add('-message', "persistence added");
 		},
 
 		onAfterHit(source, target) {
+			this.add('-message', "after hit");
 			if(target.volatiles['persistence'].isHit) {
 				this.boost({atk: 1});
 			}
