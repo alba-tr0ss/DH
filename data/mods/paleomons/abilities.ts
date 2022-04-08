@@ -249,14 +249,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	persistence: {
 		onModifyMove(move) {
-			if (!move || move.category !== 'Status' || move.target === 'self') return;
+			if (!move || move.category === 'Status' || move.target === 'self') return;
 			if (!move.secondaries) {
 				move.secondaries = [];
-				this.add('-message', 'persistence added');
 			}
 			move.secondaries.push({
 				volatileStatus: 'persistence',
 			});
+			this.add('-message', 'persistence added');
 		},
 
 		name: "Persistence",
