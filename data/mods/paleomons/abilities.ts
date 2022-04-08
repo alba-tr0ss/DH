@@ -226,6 +226,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onUpdate(pokemon){
 			if (pokemon.ignoringItem() || !pokemon.getItem()) {
 				pokemon.setType("Grass");
+				this.add('-start', pokemon, 'typechange', type, '[from] ability: Nature Prowess');
 				return;
 			}
 			const item = pokemon.getItem();
