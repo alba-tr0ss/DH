@@ -231,13 +231,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			let type: string;
 			type = item.naturalGift.type;
 			if(pokemon.isActive) {
-				if (!pokemon.getTypes().includes(type) || !pokemon.setType(type)) {
+				if (pokemon.hasType(type) || !pokemon.setType(type)){
 					pokemon.setType("Grass");
 					let newType = "Grass";
 					pokemon.addType(type);
 					newType += "/" + type;
 
 					let battle = pokemon.battle;
+					if (pokemon.getTypes().join() === newType || !pokemon.setType(newType)) return false;
 					this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
 				}
 			}
