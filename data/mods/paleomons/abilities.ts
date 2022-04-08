@@ -224,7 +224,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	natureprowess: {
 		onUpdate(pokemon){
-			if (pokemon.ignoringItem()) return;
+			if (pokemon.ignoringItem() || !pokemon.getItem()) {
+				pokemon.setType("Grass");
+				return;
+			}
 			const item = pokemon.getItem();
 			if (!item.naturalGift) return;
 			let type: string;
