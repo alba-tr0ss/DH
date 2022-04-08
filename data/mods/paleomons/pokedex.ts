@@ -758,4 +758,59 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 150,
 		prevo: "Gorlifross",
 	},
+
+	dreepy: {
+		inherit: true,
+		otherFormes: ["Dreepy-Luminous"],
+		formeOrder: ["Dreepy", "Dreepy-Luminous"],
+	},
+
+	dreepyluminous: {
+		num: -146,
+		name: "Dreepy-Luminous",
+		baseSpecies: "Dreepy",
+		forme: "Luminous",
+		evos: ["Drakloak-Luminous"],
+		types: ["Poison"],
+		baseStats: {hp: 89, atk: 60, def: 65, spa: 70, spd: 85, spe: 71},
+		abilities: {0: "Clear Body", 1: "Illuminate", H: "Dazzling"},
+		weightkg: 1,
+	},
+
+	drakloak: {
+		inherit: true,
+		otherFormes: ["Drakloak-Luminous"],
+		formeOrder: ["Drakloak", "Drakloak-Luminous"],
+	},
+
+	drakloakluminous: {
+		num: -147,
+		name: "Drakloak-Luminous",
+		baseSpecies: "Drakloak",
+		forme: "Luminous",
+		evos: ["Dragapult-Luminous"],
+		types: ["Poison"],
+		baseStats: {hp: 89, atk: 60, def: 65, spa: 70, spd: 85, spe: 71},
+		abilities: {0: "Clear Body", 1: "Illuminate", H: "Dazzling"},
+		weightkg: 9,
+		prevo: "Dreepy-Luminous",
+	},
+
+	dragapult: {
+		inherit: true,
+		otherFormes: ["Dragapult-Luminous"],
+		formeOrder: ["Dragapult", "Dragapult-Luminous"],
+	},
+
+	dragapultluminous: {
+		num: -148,
+		name: "Dragapult-Luminous",
+		baseSpecies: "Dragapult",
+		forme: "Luminous",
+		types: ["Poison", "Electric"],
+		baseStats: {hp: 109, atk: 90, def: 75, spa: 100, spd: 105, spe: 121},
+		abilities: {0: "Clear Body", 1: "Illuminate", H: "Dazzling"},
+		weightkg: 46,
+		prevo: "Drakloak-Luminous",
+	},
 };

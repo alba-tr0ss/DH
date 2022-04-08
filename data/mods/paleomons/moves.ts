@@ -256,6 +256,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Flying",
 	},
 
+	luminousdarts: {
+		num: 751,
+		accuracy: 100,
+		basePower: 45,
+		category: "Physical",
+		name: "Luminous Darts",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, authentic: 1},
+		onHit(pokemon, source, move) {
+			move.infiltrates = true;
+		},
+		multihit: 2,
+		smartTarget: true,
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		maxMove: {basePower: 130},
+	},
+
 	//
 	//
 	//
