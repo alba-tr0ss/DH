@@ -248,9 +248,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onHit(source, target, move) {
+		onHit(pokemon, target, move) {
 			if (move.category === 'Status') return;
-			if (source.moveLastTurnResult === false || source.getVolatile('twoturnattack')) {
+			if (pokemon.moveLastTurnResult === false || pokemon.getVolatile('twoturnattack')) {
+				this.add('-message', "persistence");
 				this.boost({atk: 1});
 			}
 		},
