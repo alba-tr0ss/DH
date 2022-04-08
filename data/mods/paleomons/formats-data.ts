@@ -330,4 +330,22 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "Paleomons",
 		isModded: true,
 	},
+
+	giblepersistent: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
+		isModded: true,
+	},
+
+	gabitepersistent: {
+		tier: "Paleomons NFE",
+		doublesTier: "Paleomons NFE",
+		isModded: true,
+	},
+
+	garchomppersistent: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
 };

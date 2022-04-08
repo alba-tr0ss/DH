@@ -868,4 +868,59 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 202,
 		prevo: "Pupitar-Nature",
 	},
+
+	gible: {
+		inherit: true,
+		otherFormes: ["Gible-Persistent"],
+		formeOrder: ["Gible", "Gible-Persistent"],
+	},
+
+	giblepersistent: {
+		num: -152,
+		name: "Gible-Persistent",
+		baseSpecies: "Gible",
+		forme: "Persistent",
+		evos: ["Gabite-Persistent"],
+		types: ["Ground", "Ghost"],
+		baseStats: {hp: 55, atk: 53, def: 49, spa: 55, spd: 55, spe: 33},
+		abilities: {0: "Persistence", H: "Dragon's maw"},
+		weightkg: 20.5,
+	},
+
+	gabite: {
+		inherit: true,
+		otherFormes: ["Gabite-Peristent"],
+		formeOrder: ["Gabite", "Gabite-Persistent"],
+	},
+
+	gabitepersistent: {
+		num: -153,
+		name: "Gabite-Persistent",
+		baseSpecies: "Gabite",
+		forme: "Persistent",
+		evos: ["Garchomp-Persistent"],
+		types: ["Ground", "Ghost"],
+		baseStats: {hp: 63, atk: 83, def: 59, spa: 75, spd: 75, spe: 53},
+		abilities: {0: "Persistent", H: "Dragon's Maw"},
+		weightkg: 56,
+		prevo: "Gible-Persistent",
+	},
+
+	garchomp: {
+		inherit: true,
+		otherFormes: ["Garchomp-Peristent"],
+		formeOrder: ["Garchomp", "Garchomp-Persistent"],
+	},
+
+	garchomppersistent: {
+		num: -153,
+		name: "Garchomp-Persistent",
+		baseSpecies: "Garchomp",
+		forme: "Persistent",
+		types: ["Ground", "Ghost"],
+		baseStats: {hp: 95, atk: 113, def: 89, spa: 115, spd: 115, spe: 73},
+		abilities: {0: "Persistent", H: "Dragon's Maw"},
+		weightkg: 95,
+		prevo: "Gabite-Persistent",
+	},
 };

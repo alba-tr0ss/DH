@@ -246,6 +246,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		desc: "Adds a secondary type equal to Natural Gift to this Pokemon. Natural Gift doesn't consume the user's held berry.",
 		shortDesc: "Adds secondary type equal to Natural Gift; berry isn't consumed by Natural Gift."
 	},
+
+	persistence: {
+		onHit(target, source, move) {
+			if (move.category !== 'Status') return;
+			if (source.moveLastTurnResult === false) {
+				this.boost({atk: 1});
+			}
+		},
+
+		name: "Persistence",
+		desc: "",
+		shortDesc: "",
+	},
 	
 	//
 	//
