@@ -67,7 +67,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.damage = 0;
 			this.add('-message', "on residual");
 		},
-		onAfterHit(target, source, damage) {
+		onHit(target, source, damage) {
 			this.effectData.damage += damage;
 			if (this.effectData.damage > 0) {
 				source.boostBy({atk: 1});
