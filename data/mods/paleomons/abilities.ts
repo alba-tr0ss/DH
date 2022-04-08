@@ -248,14 +248,22 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onHit(source, target) {
-			if(target.attackedBy.some(p => p.source === target && p.damage > 0 && p.thisTurn)) {
+		onModifyMove(move) {
+			if (!move || move.category === 'Status' || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				volatileStatus: 'persistence',
+			});
+		},
+
+		onAfterHit(source, target) {
+			if(target.volatiles['persistence'].isHit) {
 				this.boost({atk: 1});
 			}
-			else {
-				this.add('-message', "h");
-			}
 		},
+
 		name: "Persistence",
 		desc: "",
 		shortDesc: "",

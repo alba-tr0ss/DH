@@ -56,4 +56,17 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-activate', target, 'trapped');
 		},
 	},
+
+	persistence: {
+		name: 'persistence',
+		onStart() {
+			const isHit = false;
+		},
+		onResidual() {
+			const isHit = false;
+		},
+		onDamagingHit() {
+			const isHit = true;
+		}
+	},
 };
