@@ -223,14 +223,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	natureprowess: {
-		onType(types, pokemon){
+		onStart(pokemon){
 			if (pokemon.ignoringItem()) return;
 			const item = pokemon.getItem();
 			if (!item.naturalGift) return;
 			//move.type = item.naturalGift.type;
 
 			let type: string;
-			type = "Grass" + item.naturalGift.type;
+			type = "Grass", item.naturalGift.type;
 			this.add('-start', pokemon, 'typechange', type, '[from] ability: Color Change');
 		},
 
