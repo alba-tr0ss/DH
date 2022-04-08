@@ -226,21 +226,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onUpdate(pokemon){
 			if (pokemon.ignoringItem()) return;
 			const item = pokemon.getItem();
-			if (!item.naturalGift) {
-				pokemon.setType("Grass");
-			} else {
-				let type: string;
-				type = item.naturalGift.type;
-				if(pokemon.isActive) {
-					if (!pokemon.getTypes().includes(type) || !pokemon.setType(type)){
-						pokemon.setType("Grass");
-						let newType = "Grass";
-						pokemon.addType(type);
-						newType += "/" + type;
-	
-						let battle = pokemon.battle;
-						this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
-					}
+			if (!item.naturalGift) return;
+
+			let type: string;
+			type = item.naturalGift.type;
+			if(pokemon.isActive) {
+				if (!pokemon.getTypes().includes(type) || !pokemon.setType(type)) {
+					pokemon.setType("Grass");
+					let newType = "Grass";
+					pokemon.addType(type);
+					newType += "/" + type;
+
+					let battle = pokemon.battle;
+					this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
 				}
 			}
 		},
