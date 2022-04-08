@@ -223,7 +223,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	natureprowess: {
-		onStart(pokemon){
+		onUpdate(pokemon){
 			if (pokemon.ignoringItem()) return;
 			const item = pokemon.getItem();
 			if (!item.naturalGift) return;
@@ -231,15 +231,18 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 			let type: string;
 			type = item.naturalGift.type;
-			pokemon.addType(type);
-			this.add('-start', pokemon, 'typeadd', type, '[from] move: Forest\'s Curse');
-			return;
-		},
-		onUpdate(pokemon) {
-			const types = pokemon.species.types;
-			if (pokemon.getTypes().join() === types.join() || !pokemon.setType(types)) return;
-			this.add('-activate', pokemon, 'ability: Nature Prowess');
-			this.add('-end', pokemon, 'typechange', '[silent]');
+			if(pokemon.isActive) {
+				if ( !pokemon.getTypes().includes( type )){
+					pokemon.setType("Grass");
+					let newType = "Grass";
+					if ( type !== "None" ){
+						pokemon.addType(type);
+						newType += "/" + type;
+					}
+					let battle = pokemon.battle;
+					this.add('-start', pokemon, 'typechange', type, '[from] ability: Nature Prowess');
+				}
+			}
 		},
 
 		name: "Nature Prowess",
