@@ -247,6 +247,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			*/
 			if(! pokemon.hasType(type) || pokemon.setType(type)) return;
 			pokemon.setType("Grass/" + type);
+			this.add('-start', pokemon, 'typechange', "Grass/" + type);
 		},
 
 		name: "Nature Prowess",
