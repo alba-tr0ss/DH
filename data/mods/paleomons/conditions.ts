@@ -60,7 +60,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	persistence: {
 		name: 'persistence',
 		onResidual(target) {
-			this.add('-message', "on residual");
+			this.add('-message', "on residual + damage: " + this.effectData.damage);
 			if (this.effectData.damage > 0) {
 				this.add('-message', "boostin' time");
 				const stats: BoostName[] = [];
@@ -81,9 +81,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 		},
 		onDamagingHit(target, source, damage) {
-			this.add('-message', "on hit + damage dealt: " + damage);
 			this.effectData.damage = 0;
-			this.effectData.damage += damage;
+			this.effectData.damage = damage;
+			this.add('-message', "on hit + damage dealt: " + this.effectData.damage);
 		}
 	},
 };
