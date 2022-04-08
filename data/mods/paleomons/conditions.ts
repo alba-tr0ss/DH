@@ -59,10 +59,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	persistence: {
 		name: 'persistence',
-		onStart() {
-			this.add('-message', 'persistence active');
-		},
-		onTryHit(target, source, move) {
+		onMoveFail(target, source, move) {
 			this.add('-message', 'persistence activated');
 			this.boost({atk: 1});
 		},
