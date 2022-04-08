@@ -1,5 +1,3 @@
-import { StateSnapshot } from "sucrase/dist/parser/tokenizer/state";
-
 export const Conditions: {[k: string]: ConditionData} = {	
 	tarterrain: {
 		name: "Tar Terrain",
