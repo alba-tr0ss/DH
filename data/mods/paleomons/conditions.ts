@@ -56,12 +56,4 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-activate', target, 'trapped');
 		},
 	},
-
-	persistence: {
-		name: 'persistence',
-		onMoveFail(target, source, move) {
-			this.add('-message', 'persistence activated');
-			this.boost({atk: 1});
-		},
-	}
 };

@@ -248,15 +248,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onModifyMove(move) {
-			if (!move || move.category === 'Status' || move.target === 'self') return;
-			if (!move.secondaries) {
-				move.secondaries = [];
-			}
-			move.secondaries.push({
-				volatileStatus: 'persistence',
-			});
-			this.add('-message', 'persistence added');
+		onMoveFail(target, source, move) {
+			this.add('-message', 'persistence activated');
+			this.boost({atk: 1});
 		},
 
 		name: "Persistence",
