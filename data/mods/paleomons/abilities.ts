@@ -223,37 +223,25 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	natureprowess: {
-		onUpdate(pokemon){
+		onStart(pokemon){
+			if(pokemon.ignoringItem()) return;
 			const item = pokemon.getItem();
 			if (!item.naturalGift) return;
 			let type: string;
 			type = item.naturalGift.type;
 
+			if (!pokemon.hasType(type) && pokemon.addType(type)) {
+				this.add('-start', pokemon, 'typeadd', ('Grass/' + type), '[from] ability: Nature Prowess');
+			}
+		},
+
+		onUpdate(pokemon) {
 			if (pokemon.ignoringItem() || !pokemon.item) {
 				this.add('-message', "Pokemon has no item !");
 				pokemon.setType("Grass");
-				this.add('-start', pokemon, 'typechange', type, '[from] ability: Nature Prowess');
+				this.add('-start', pokemon, 'typechange', 'Grass', '[from] ability: Nature Prowess');
 				return;
 			}
-
-			if (!pokemon.hasType(type) && pokemon.addType(type)) {
-				this.add('-start', pokemon, 'typeadd', type, '[from] ability: Nature Prowess');
-			}
-
-			/*
-			if(pokemon.isActive) {
-				if (pokemon.hasType(type) || !pokemon.setType(type)){
-					pokemon.setType("Grass");
-					let newType = "Grass";
-					pokemon.addType(type);
-					newType += "/" + type;
-
-					let battle = pokemon.battle;
-					if (!newType || pokemon.getTypes().join() === newType || !pokemon.setType(newType)) return false;
-					this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
-				}
-			}
-			*/
 		},
 
 		name: "Nature Prowess",
