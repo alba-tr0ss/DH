@@ -234,6 +234,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-start', pokemon, 'typeadd', type, '[from] move: Forest\'s Curse');
 			return;
 		},
+		onUpdate(pokemon) {
+			const types = pokemon.species.types;
+			if (pokemon.getTypes().join() === types.join() || !pokemon.setType(types)) return;
+			this.add('-activate', pokemon, 'ability: Nature Prowess');
+			this.add('-end', pokemon, 'typechange', '[silent]');
+		},
 
 		name: "Nature Prowess",
 		desc: "Adds a secondary type equal to Natural Gift to this Pokemon. Natural Gift doesn't consume the user's held berry.",
