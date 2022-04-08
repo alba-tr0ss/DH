@@ -239,7 +239,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					newType += "/" + type;
 
 					let battle = pokemon.battle;
-					this.add('-start', pokemon, 'typechange', type, '[from] Natures Prowess');
+					this.add('-start', pokemon, 'typechange', newType, '[from] Natures Prowess');
+					this.add('-message', "current type is " + pokemon.getTypes() + " / natural gift is " + type);
 				}
 			}
 		},
