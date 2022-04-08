@@ -68,11 +68,12 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', "on residual");
 		},
 		onHit(target, source, damage) {
+			this.add('-message', "on hit + damage dealt: " + damage);
+			this.effectData.damage = 0;
 			this.effectData.damage += damage;
 			if (this.effectData.damage > 0) {
 				source.boostBy({atk: 1});
 			}
-			this.add('-message', "on damaging hit + damage dealt: " + damage);
 		}
 	},
 };
