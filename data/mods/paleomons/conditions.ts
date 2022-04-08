@@ -80,9 +80,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 			}
 		},
-		onDamagingHit(target, source, damage) {
+		onHit(target, source, damage) {
 			this.effectData.damage = 0;
-			this.effectData.damage = damage;
+			this.effectData.damage += damage;
 			this.add('-message', "on hit + damage dealt: " + this.effectData.damage);
 		}
 	},
