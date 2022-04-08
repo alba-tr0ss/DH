@@ -227,9 +227,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (pokemon.ignoringItem()) return;
 			const item = pokemon.getItem();
 			if (!item.naturalGift) return;
-
 			let type: string;
 			type = item.naturalGift.type;
+
+			if (!pokemon.hasType(type) && pokemon.addType(type)) {
+				this.add('-start', pokemon, 'typeadd', type, '[from] ability: Nature Prowess');
+			}
 
 			/*
 			if(pokemon.isActive) {
@@ -245,9 +248,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				}
 			}
 			*/
-			if(! pokemon.hasType(type) || pokemon.setType(type)) return;
-			pokemon.setType("Grass/" + type);
-			this.add('-start', pokemon, 'typechange', "Grass/" + type);
 		},
 
 		name: "Nature Prowess",
