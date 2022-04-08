@@ -813,4 +813,22 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 46,
 		prevo: "Drakloak-Luminous",
 	},
+
+	tyranitar: {
+		inherit: true,
+		otherFormes: ["Tyranitar-Nature"],
+		formeOrder: ["Tyranitar", "Tyranitar-Nature"],
+	},
+
+	tyranitarnature: {
+		num: -151, //just in case we get prevos in the future
+		name: "Tyranitar-Nature",
+		baseSpecies: "Tyranitar",
+		forme: "Nature",
+		types: ["Grass"],
+		baseStats: {hp: 110, atk: 100, def: 90, spa: 100, spd: 110, spe: 90},
+		abilities: {0: "Natural Cure", H: "Nature Prowess"},
+		weightkg: 202,
+		prevo: "Pupitar",
+	},
 };

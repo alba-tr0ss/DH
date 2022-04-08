@@ -257,11 +257,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 
 	luminousdarts: {
-		num: 751,
+		num: -108,
 		accuracy: 100,
 		basePower: 45,
 		category: "Physical",
 		name: "Luminous Darts",
+		desc: "Hits the target twice. Each hit bypasses Substitute, Reflect, etc.",
+		shortDesc: "Hits twice. Bypasses Substitute, Reflect, etc.",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, authentic: 1},

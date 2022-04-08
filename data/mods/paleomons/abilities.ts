@@ -221,6 +221,23 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: -109,
 	},
+
+	natureprowess: {
+		onType(types, pokemon){
+			if (pokemon.ignoringItem()) return;
+			const item = pokemon.getItem();
+			if (!item.naturalGift) return;
+			//move.type = item.naturalGift.type;
+
+			let type: string;
+			type = "Grass" + item.naturalGift.type;
+
+		},
+
+		name: "Nature Prowess",
+		desc: "Adds a secondary type equal to Natural Gift to this Pokemon. Natural Gift doesn't consume the user's held berry.",
+		shortDesc: "Adds secondary type equal to Natural Gift; berry isn't consumed by Natural Gift."
+	},
 	
 	//
 	//
