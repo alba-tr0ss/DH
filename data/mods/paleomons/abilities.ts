@@ -231,7 +231,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 			let type: string;
 			type = item.naturalGift.type;
-			this.add('-start', pokemon, 'typeadd', type, '[from] ability: Nature Prowess');
+			this.add('-start', pokemon, 'typeadd', type, '[from] move: Forest\'s Curse');
 			return;
 		},
 
