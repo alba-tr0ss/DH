@@ -248,10 +248,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onHit(pokemon, target, move) {
+		onHit(source, target, move) {
 			if (move.category === 'Status') return;
-			const damagedTarget = target.attackedBy.some(p => p.source === pokemon && p.damage > 0 && p.thisTurn);
-			if (damagedTarget) {
+			const damagedTarget = target.attackedBy.some(p => p.source === source && p.damage > 0 && p.thisTurn);
+			if (!damagedTarget) {
 				this.boost({atk: 1});
 			}
 		},
