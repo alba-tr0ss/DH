@@ -230,6 +230,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 			let type: string;
 			type = item.naturalGift.type;
+
+			/*
 			if(pokemon.isActive) {
 				if (pokemon.hasType(type) || !pokemon.setType(type)){
 					pokemon.setType("Grass");
@@ -242,6 +244,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
 				}
 			}
+			*/
+			if(! pokemon.hasType(type) || pokemon.setType(type)) return;
+			pokemon.setType("Grass/" + type);
 		},
 
 		name: "Nature Prowess",
