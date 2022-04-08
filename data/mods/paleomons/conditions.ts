@@ -1,3 +1,5 @@
+import { StateSnapshot } from "sucrase/dist/parser/tokenizer/state";
+
 export const Conditions: {[k: string]: ConditionData} = {	
 	tarterrain: {
 		name: "Tar Terrain",
@@ -62,7 +64,22 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(target) {
 			this.add('-message', "on residual");
 			if (this.effectData.damage > 0) {
-				target.boostBy({atk: 1});
+				this.add('-message', "boostin' time");
+				const stats: BoostName[] = [];
+				let stat: BoostName;
+				for (stat in target.boosts) {
+					if (target.boosts[stat] < 6) {
+						stats.push(stat);
+					}
+				}
+				if (stats.length) {
+					const randomStat = this.sample(stats);
+					const boost: SparseBoostsTable = {};
+					boost[randomStat] = 2;
+					this.boost(boost);
+				} else {
+					return false;
+				}
 			}
 		},
 		onDamagingHit(target, source, damage) {
