@@ -814,6 +814,43 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		prevo: "Drakloak-Luminous",
 	},
 
+	larvitar: {
+		inherit: true,
+		otherFormes: ["Larvitar-Nature"],
+		formeOrder: ["Larvitar", "Larvitar-Nature"],
+	},
+
+	larvitarnature: {
+		num: -149,
+		name: "Larvitar-Nature",
+		baseSpecies: "Larvitar",
+		forme: "Nature",
+		evos: ["Pupitar-Nature"],
+		types: ["Grass"],
+		baseStats: {hp: 60, atk: 70, def: 45, spa: 35, spd: 45, spe: 45},
+		abilities: {0: "Natural Cure", H: "Tough Claws"},
+		weightkg: 72,
+	},
+
+	pupitar: {
+		inherit: true,
+		otherFormes: ["Pupitar-Nature"],
+		formeOrder: ["Pupitar", "Pupitar-Nature"],
+	},
+
+	pupitarnature: {
+		num: -150,
+		name: "Pupitar-Nature",
+		baseSpecies: "Pupitar",
+		forme: "Nature",
+		evos: ["Tyranitar-Nature"],
+		types: ["Grass"],
+		baseStats: {hp: 85, atk: 50, def: 90, spa: 60, spd: 85, spe: 45},
+		abilities: {0: "Natural Cure", H: "Flower Veil"},
+		weightkg: 152,
+		prevo: "Larvitar-Nature",
+	},
+
 	tyranitar: {
 		inherit: true,
 		otherFormes: ["Tyranitar-Nature"],
@@ -829,6 +866,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 110, atk: 100, def: 90, spa: 100, spd: 110, spe: 90},
 		abilities: {0: "Natural Cure", H: "Nature Prowess"},
 		weightkg: 202,
-		prevo: "Pupitar",
+		prevo: "Pupitar-Nature",
 	},
 };

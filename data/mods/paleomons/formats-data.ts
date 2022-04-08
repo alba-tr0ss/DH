@@ -313,6 +313,18 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	larvitarnature: {
+		tier: "Paleomons LC",
+		doublesTier: "Paleomons LC",
+		isModded: true,
+	},
+
+	pupitarnature: {
+		tier: "Paleomons NFE",
+		doublesTier: "Paleomons NFE",
+		isModded: true,
+	},
+
 	tyranitarnature: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons",
