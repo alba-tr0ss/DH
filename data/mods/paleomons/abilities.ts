@@ -250,8 +250,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	persistence: {
 		onHit(source, target, move) {
 			if (move.category === 'Status') return;
-			const damagedTarget = target.attackedBy.some(p => p.source === source && p.damage > 0 && p.thisTurn);
-			if (!damagedTarget) {
+			if (source.moveLastTurnResult === false || source.getVolatile('twoturnattack')) {
 				this.boost({atk: 1});
 			}
 		},
