@@ -883,7 +883,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		evos: ["Gabite-Persistent"],
 		types: ["Ground", "Ghost"],
 		baseStats: {hp: 55, atk: 53, def: 49, spa: 55, spd: 55, spe: 33},
-		abilities: {0: "Persistence", H: "Dragon's maw"},
+		abilities: {0: "Persistence", H: "Dragon's Maw"},
 		weightkg: 20.5,
 	},
 
@@ -901,7 +901,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		evos: ["Garchomp-Persistent"],
 		types: ["Ground", "Ghost"],
 		baseStats: {hp: 63, atk: 83, def: 59, spa: 75, spd: 75, spe: 53},
-		abilities: {0: "Persistent", H: "Dragon's Maw"},
+		abilities: {0: "Persistence", H: "Dragon's Maw"},
 		weightkg: 56,
 		prevo: "Gible-Persistent",
 	},
@@ -913,13 +913,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 
 	garchomppersistent: {
-		num: -153,
+		num: -154,
 		name: "Garchomp-Persistent",
 		baseSpecies: "Garchomp",
 		forme: "Persistent",
 		types: ["Ground", "Ghost"],
 		baseStats: {hp: 95, atk: 113, def: 89, spa: 115, spd: 115, spe: 73},
-		abilities: {0: "Persistent", H: "Dragon's Maw"},
+		abilities: {0: "Persistence", H: "Dragon's Maw"},
 		weightkg: 95,
 		prevo: "Gabite-Persistent",
 	},
