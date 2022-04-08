@@ -238,7 +238,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					newType += "/" + type;
 
 					let battle = pokemon.battle;
-					if (pokemon.getTypes().join() === newType || !pokemon.setType(newType)) return false;
+					if (!newType || pokemon.getTypes().join() === newType || !pokemon.setType(newType)) return false;
 					this.add('-start', pokemon, 'typechange', newType, '[from] move: Forest\'s Curse');
 				}
 			}
