@@ -248,9 +248,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onHit(damage, move) {
-			if(damage) {
+		onHit(source, target) {
+			if(target.attackedBy.some(p => p.source === target && p.damage > 0 && p.thisTurn)) {
 				this.boost({atk: 1});
+			}
+			else {
+				this.add('-message', "h");
 			}
 		},
 		name: "Persistence",
