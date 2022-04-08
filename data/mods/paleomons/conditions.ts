@@ -62,14 +62,17 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart() {
 			const isHit = false;
 			this.add('-message', "on start");
+			return isHit;
 		},
 		onResidual() {
 			const isHit = false;
 			this.add('-message', "on residual");
+			return isHit;
 		},
 		onDamagingHit() {
 			const isHit = true;
-			this.add('-message', "on damageing hit");
+			this.add('-message', "on damaging hit + damage dealt: " + damage);
+			return isHit;
 		}
 	},
 };
