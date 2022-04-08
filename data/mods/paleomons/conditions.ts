@@ -60,19 +60,19 @@ export const Conditions: {[k: string]: ConditionData} = {
 	persistence: {
 		name: 'persistence',
 		onStart() {
-			const isHit = false;
+			this.effectData.damage = 0;
 			this.add('-message', "on start");
-			return isHit;
 		},
 		onResidual() {
-			const isHit = false;
+			this.effectData.damage = 0;
 			this.add('-message', "on residual");
-			return isHit;
 		},
-		onDamagingHit() {
-			const isHit = true;
+		onAfterHit(target, source, damage) {
+			this.effectData.damage += damage;
+			if (this.effectData.damage > 0) {
+				source.boostBy({atk: 1});
+			}
 			this.add('-message', "on damaging hit + damage dealt: " + damage);
-			return isHit;
 		}
 	},
 };

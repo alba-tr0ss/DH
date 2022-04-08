@@ -259,12 +259,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-message', "persistence added");
 		},
 
+		/*
 		onAfterMove(source, target) {
 			this.add('-message', "after move");
 			if(target.volatiles['persistence'].isHit) {
 				this.boost({atk: 1});
 			}
 		},
+		*/
 
 		name: "Persistence",
 		desc: "",
