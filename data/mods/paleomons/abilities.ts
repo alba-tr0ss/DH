@@ -248,11 +248,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onMoveFail(target, source, move) {
-			this.add('-message', 'persistence activated');
-			this.boost({atk: 1});
+		onHit(damage, move) {
+			if(damage) {
+				this.boost({atk: 1});
+			}
 		},
-
 		name: "Persistence",
 		desc: "",
 		shortDesc: "",
