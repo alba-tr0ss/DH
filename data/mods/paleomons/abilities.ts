@@ -251,7 +251,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBeforeMove(target, source, move) {
 			if (!source || source === target) return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
-			if (move.flags['charge'] && source.volatiles['twoturnmove']) {
+			if (source.volatiles['twoturnmove'] && source.volatiles['twoturnmove'].duration === 2) {
 				this.add('-message', 'Charged + twoturnmove');
 				this.boost({atk: 1});
 			} else if (!this.dex.getImmunity(moveType, target)) {

@@ -22,7 +22,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		},
 	},
 
-	/*
 	hitStepAccuracy(targets, pokemon, move) {
 		const hitResults = [];
 		for (const [i, target] of targets.entries()) {
@@ -96,5 +95,4 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		}
 		return hitResults;
 	},
-	*/
 };
