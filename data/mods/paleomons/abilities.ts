@@ -254,7 +254,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (move.flags['charge'] && source.volatiles['twoturnmove']) {
 				this.add('-message', 'Charged + twoturnmove');
 				this.boost({atk: 1});
-			} else if (this.dex.getImmunity(moveType, target)) {
+			} else if (!this.dex.getImmunity(moveType, target)) {
 				this.add('-message', 'getImmunity');
 				this.boost({atk: 1});
 			}
