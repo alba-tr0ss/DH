@@ -31,9 +31,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				hitResults[i] = false;
 			} else if (!this.singleEvent('TryImmunity', move, {}, target, pokemon, move)) {
 				this.add('-immune', target);
-				if((move as any).persistence) {
-					this.boost({atk: 1}, pokemon);
-				}
 				hitResults[i] = false;
 			} else if (this.gen >= 7 && move.pranksterBoosted && pokemon.hasAbility('prankster') &&
 				targets[i].side !== pokemon.side && !this.dex.getImmunity('prankster', target)) {
@@ -44,6 +41,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			} else {
 				hitResults[i] = true;
 			}
+		}
+		if(!hitResults && (move as any).persistence) {
+			this.boost({atk: 1}, pokemon);
 		}
 		return hitResults;
 	},
