@@ -249,7 +249,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	persistence: {
 		onBeforeMove(target, source, move) {
-			if (!source || source === target || move.category === 'Status') return;
+			if (!source || source === target || move.category === 'Status' || move.name === 'counter') return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
 			if (target.volatiles['twoturnmove']) {
 				this.add('-hint', `Persistence raised ${target.name}'s Attack!`);
