@@ -248,15 +248,17 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	persistence: {
-		onModifyMove(move) {
-			if (!move || move.category === 'Status' || move.target === 'self') return;
-			if (!move.secondaries) {
-				move.secondaries = [];
-			}
-			move.secondaries.push({
-				volatileStatus: 'persistence',
-			});
-			this.add('-message', "persistence added");
+		/*
+		onStart(pokemon) {
+			pokemon.addVolatile('persistence');
+		},
+		*/
+		onAfterMoveSecondary(target, source, move) {
+			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (lastAttackedBy) return;
+			
+			this.add('-message', "on hit");
 		},
 
 		/*

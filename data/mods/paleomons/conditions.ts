@@ -59,6 +59,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	persistence: {
 		name: 'persistence',
+		/*
 		onResidual(target) {
 			this.add('-message', "on residual + damage: " + this.effectData.damage);
 			if (this.effectData.damage > 0) {
@@ -85,5 +86,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.damage += damage;
 			this.add('-message', "on hit + damage dealt: " + this.effectData.damage);
 		}
+		*/
 	},
 };
