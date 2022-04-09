@@ -21,41 +21,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return totalTypeMod;
 		},
 	},
-	
-	tryMoveHit(target, pokemon, move) {
-		this.setActiveMove(move, pokemon, target);
-
-		if (!this.singleEvent('Try', move, null, pokemon, target, move)) {
-			return false;
-		}
-
-		let hitResult = this.singleEvent('PrepareHit', move, {}, target, pokemon, move);
-		if (!hitResult) {
-			if (hitResult === false) {
-				this.add('-fail', pokemon);
-				this.attrLastMove('[still]');
-			}
-			return false;
-		}
-		this.runEvent('PrepareHit', pokemon, target, move);
-
-		if (move.target === 'all') {
-			hitResult = this.runEvent('TryHitField', target, pokemon, move);
-		} else {
-			hitResult = this.runEvent('TryHitSide', target, pokemon, move);
-		}
-		if (!hitResult) {
-			if (hitResult === false) {
-				this.add('-fail', pokemon);
-				this.attrLastMove('[still]');
-				if((move as any).persistence) {
-					this.boost({atk: 1}, pokemon);
-				}
-			}
-			return false;
-		}
-		return this.moveHit(target, pokemon, move);
-	},
 
 	hitStepAccuracy(targets, pokemon, move) {
 		const hitResults = [];
