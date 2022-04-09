@@ -249,21 +249,21 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	persistence: {
 		onBeforeMove(target, source, move) {
-			if (!source || source === target) return;
+			if (!source || source === target || move.category === 'Status') return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
 			if (target.volatiles['twoturnmove']) {
-				this.add('-message', 'Charged + twoturnmove');
+				this.add('-hint', `Persistence raised ${target.name}'s Attack!`);
 				this.boost({atk: 1});
 			} else if (!this.dex.getImmunity(moveType, target)) {
-				this.add('-message', 'getImmunity');
+				this.add('-hint', `Persistence raised ${target.name}'s Attack!`);
 				this.boost({atk: 1});
 			}
 			(move as any).persistence = true;
 		},
 
 		name: "Persistence",
-		desc: "",
-		shortDesc: "",
+		desc: "If the user chooses an attacking move but doesn't damage the target on the same turn, raises the user's Attack by 1 stage.",
+		shortDesc: "If the user doesn't damage the target with an attacking move, raises user's Attack by 1 stage.",
 	},
 	
 	//

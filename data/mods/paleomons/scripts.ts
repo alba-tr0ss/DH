@@ -86,6 +86,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					this.boost({spe: 2}, pokemon);
 				}
 				if ((move as any).persistence) {
+					this.add('-hint', `Persistence raised ${target.name}'s Attack!`);
 					this.boost({atk: 1}, pokemon);
 				}
 				hitResults[i] = false;
