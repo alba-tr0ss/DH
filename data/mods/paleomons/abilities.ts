@@ -256,7 +256,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMoveSecondary(target, source, move) {
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
 			const lastAttackedBy = target.getLastAttackedBy();
-			if (lastAttackedBy) return;
+			if (!lastAttackedBy) return;
+			if (move.flags['charge']) {
+				this.boost({atk: 1});
+			}
 			
 			this.add('-message', "on hit");
 		},
