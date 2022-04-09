@@ -251,12 +251,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBeforeMove(target, source, move) {
 			if (!source || source === target) return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
-			if ((move.flags['charge'] && source.volatiles['twoturnattack']) || this.dex.getImmunity(moveType, source)) {
+			if (move.flags['charge'] && source.volatiles['twoturnmove']) {
+				this.add('-message', 'Charged + twoturnmove');
+			} else if (this.dex.getImmunity(moveType, source)) {
+				this.add('-message', 'getImmunity');
 				this.boost({atk: 1}, source);
 			}
 			(move as any).persistence = true;
-			
-			this.add('-message', "on hit");
 		},
 
 		name: "Persistence",
