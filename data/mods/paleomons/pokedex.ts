@@ -956,4 +956,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Flame Body", H: "Regenerator"},
 		weightkg: 60,
 	},
+
+	listoxina: {
+		num: -156,
+		name: "Listoxina",
+		types: ["Water", "Poison"],
+		baseStats: {hp: 125, atk: 60, def: 75, spa: 80, spd: 90, spe: 85},
+		abilities: {0: "Sticky Hold", H: "Levitate"},
+		weightkg: 8,
+	},
 };

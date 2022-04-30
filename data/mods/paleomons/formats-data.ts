@@ -366,4 +366,10 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "Paleomons",
 		isModded: true,
 	},
+
+	listoxina: {
+		tier: "Paleomons",
+		doublesTier: "Paleomons",
+		isModded: true,
+	},
 };
