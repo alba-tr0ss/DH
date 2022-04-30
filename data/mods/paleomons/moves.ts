@@ -310,6 +310,27 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		maxMove: {basePower: 130},
 	},
 
+	stickkick: {
+		num: -110,
+		accuracy: 130,
+		basePower: 45,
+		category: "Physical",
+		name: "Stick Kick",
+		desc: "Stick Kick.",
+		shortDesc: "Stick Kick.",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
+		hasCrashDamage: true,
+		onMoveFail(target, source, move) {
+			this.damage(source.baseMaxhp / 2, source, source, this.dex.getEffect('High Jump Kick'));
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electr",
+		maxMove: {basePower: 130},
+	},
+
 	//
 	//
 	//

@@ -1,5 +1,5 @@
 export const Items: {[itemid: string]: ItemData} = {
-	spinollie: {
+	spinollite: {
 		name: "Spinollite",
 		spritenum: 624,
 		megaStone: "Spinollina-Mega",

@@ -4611,7 +4611,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			stoneedge: ["8L1"],
 			triplekick: ["8L1"],
 			poltergeist: ["8L1"],
-			//stickkick: ["8L1"],
+			stickkick: ["8L1"],
 			spikes: ["8L1"],
 			stealthrock: ["8L1"],
 			bulldoze: ["8L1"],
