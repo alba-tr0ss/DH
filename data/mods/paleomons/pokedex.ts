@@ -923,4 +923,37 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 95,
 		prevo: "Gabite-Persistent",
 	},
+
+	scorcharnia: {
+		num: -155,
+		name: "Scorcharnia",
+		baseForme: "Average",
+		types: ["Water", "Fire"],
+		baseStats: {hp: 90, atk: 114, def: 85, spa: 70, spd: 80, spe: 76},
+		abilities: {0: "Flame Body", H: "Regenerator"},
+		weightkg: 40,
+		otherFormes: ["Scorcharnia-Short", "Scorcharnia-Long"],
+		formeOrder: ["Scorcharnia-Average", "Scorcharnia-Short", "Scorcharnia-Long"],
+	},
+
+	scorcharniashort: {
+		num: -155,
+		name: "Scorcharnia-Short",
+		baseSpecies: "Scorcharnia",
+		forme: "Short",
+		types: ["Water", "Fire"],
+		baseStats: {hp: 75, atk: 94, def: 85, spa: 85, spd: 70, spe: 106},
+		abilities: {0: "Flame Body", H: "Regenerator"},
+		weightkg: 20,
+	},
+
+	scorcharnialong: { //longe boye
+		num: -155,
+		name: "Scorcharnia-Long",
+		baseSpecies: "Scorcharnia",
+		types: ["Water", "Fire"],
+		baseStats: {hp: 105, atk: 134, def: 85, spa: 55, spd: 90, spe: 46},
+		abilities: {0: "Flame Body", H: "Regenerator"},
+		weightkg: 60,
+	},
 };
