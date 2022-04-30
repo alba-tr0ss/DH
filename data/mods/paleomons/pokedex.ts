@@ -965,4 +965,27 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Sticky Hold", H: "Levitate"},
 		weightkg: 8,
 	},
+
+	spinollina: {
+		num: -157,
+		name: "Spinollina",
+		types: ["Ground", "Electric"],
+		baseStats: {hp: 106, atk: 90, def: 95, spa: 69, spd: 92, spe: 10},
+		abilities: {0: "Rotation", 1: "Water Absorb", H:"Rough Skin"},
+		weightkg: 24,
+		otherFormes: ["Spinollina-Mega"],
+		formeOrder: ["Spinollina", "Spinollina-Mega"],
+	},
+
+	spinollinamega: {
+		num: -157,
+		name: "Spinollina-Mega",
+		baseSpecies: "Spinollina",
+		forme: "Mega",
+		types: ["Ground", "Electric"],
+		baseStats: {hp: 106, atk: 110, def: 95, spa: 69, spd: 92, spe: 90},
+		abilities: {0: "Intimidate"}, //temp
+		weightkg: 35,
+		requiredItem: "Spinollite",
+	},
 };
