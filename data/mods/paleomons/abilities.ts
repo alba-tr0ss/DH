@@ -154,7 +154,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-message', `Absorption Activated!`);
 			this.field.clearTerrain();
 			this.heal((pokemon.baseMaxhp / 8), pokemon);
-		}
+		},
 		onTryHit(target, source, move) {
 			if (!target.volatiles['absorption']) return;
 			if (!target.volatiles['absorption'].type) return;
