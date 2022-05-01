@@ -984,7 +984,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		forme: "Mega",
 		types: ["Ground", "Electric"],
 		baseStats: {hp: 106, atk: 110, def: 95, spa: 69, spd: 92, spe: 90},
-		abilities: {0: "Intimidate"}, //temp
+		abilities: {0: "Thunder Thighs"},
 		weightkg: 35,
 		requiredItem: "Spinollite",
 	},

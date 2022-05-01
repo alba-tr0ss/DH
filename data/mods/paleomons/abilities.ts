@@ -1,3 +1,6 @@
+const kickMoves = [
+	'thunderouskick',
+];
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	bloodsuck: {
@@ -284,6 +287,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Rotation",
 		desc: "Rotation",
 		shortDesc: "Rotation",
+	},
+
+	thunderthighs: {
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if(kickMoves.includes(move.id) && move.category !== "Status") {
+				this.add('-activate', "Thunder Thighs activation");
+				return this.chainModify(1.2);
+			}
+		},
+		name: "Thunder Thighs",
+		desc: "Thunder Thighs",
+		shortDesc: "Thunder Thighs",
 	},
 	
 	//
