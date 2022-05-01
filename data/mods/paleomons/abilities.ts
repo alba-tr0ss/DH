@@ -256,16 +256,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
 			if (move.flags['charge'] && !target.volatiles['twoturnmove']) {
 				this.boost({atk: 1});
-			} 
-			(move as any).persistence = true;
-		},
-		onTryMove(target, source, move) {
-			const isImmune = target.runImmunity;
-			if (!isImmune) { //if the target is immune
+			} else if (!this.dex.getImmunity(moveType, source) || (move.type === 'Ground') && !target.isGrounded) {
 				this.boost({atk: 1});
 			}
+			(move as any).persistence = true;
 		},
-
 		name: "Persistence",
 		desc: "If the user chooses an attacking move but doesn't damage the target on the same turn, raises the user's Attack by 1 stage.",
 		shortDesc: "If the user doesn't damage the target with an attacking move, raises user's Attack by 1 stage.",
