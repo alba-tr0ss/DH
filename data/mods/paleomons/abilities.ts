@@ -251,7 +251,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "Adds secondary type equal to Natural Gift; berry isn't consumed by Natural Gift."
 	},
 
-	persistence: {
+	persistence: { //currently bugged ):
 		onBeforeMove(target, source, move) {
 			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
@@ -265,26 +265,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		name: "Persistence",
 		desc: "If the user chooses an attacking move but doesn't damage the target on the same turn, raises the user's Attack by 1 stage.",
 		shortDesc: "If the user doesn't damage the target with an attacking move, raises user's Attack by 1 stage.",
-	},
-
-	rotation: { // sorry for stealing your ability and code hema. i'm pinning all blame for this on moretto lol
-		onStart(pokemon) {
-			let totalatk = 0;
-			let totalspa = 0;
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-				totalatk += target.getStat('atk', false, true);
-				totalspa += target.getStat('spa', false, true);
-			}
-			if (totalatk && totalatk >= totalspa) {
-				this.boost({def: 1});
-			} else if (totalspa) {
-				this.boost({spd: 1});
-			}
-		},
-		name: "Rotation",
-		desc: "Rotation",
-		shortDesc: "Rotation",
 	},
 
 	thunderthighs: {

@@ -21,7 +21,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return totalTypeMod;
 		},
 
-				/** false = immune, true = not immune */
+		// attempted bug fix for Persistence. currently not in use, but i'll come back to this later
+		/*
+				/ false = immune, true = not immune 
 		runImmunity(type: string, message?: string | boolean) {
 			if (!type || type === '???') return true;
 			if (!(type in this.battle.dex.data.TypeChart)) {
@@ -58,6 +60,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return true;
 		},
 	},
+	*/
 
 	hitStepAccuracy(targets, pokemon, move) {
 		const hitResults = [];
@@ -119,7 +122,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					if (!move.spreadHit) this.attrLastMove('[miss]');
 					this.add('-miss', pokemon, target);
 				}
-				if (!move.ohko && (pokemon.hasItem('blunderpolicy') && pokemon.useItem() || pokemon.hasAbility('thunderthighs')) ) {
+				if (!move.ohko && pokemon.hasItem('blunderpolicy') && pokemon.useItem()) {
 					this.boost({spe: 2}, pokemon);
 				}
 				if ((move as any).persistence) {

@@ -971,7 +971,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Spinollina",
 		types: ["Ground", "Electric"],
 		baseStats: {hp: 106, atk: 90, def: 95, spa: 69, spd: 92, spe: 10},
-		abilities: {0: "Rotation", 1: "Water Absorb", H:"Rough Skin"},
+		abilities: {0: "Water Absorb", H: "Rough Skin"},
 		weightkg: 24,
 		otherFormes: ["Spinollina-Mega"],
 		formeOrder: ["Spinollina", "Spinollina-Mega"],
