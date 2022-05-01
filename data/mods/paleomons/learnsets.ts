@@ -612,6 +612,9 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 	},
 	cradilyancient: {
 		learnset: {
+			knockoff: ["8L1"],
+			scald: ["8L1"],
+
 			barrier: ["8L1"],
 			curse: ["8L1"],
 			mirrorcoat: ["8L1"],
@@ -1362,6 +1365,8 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	blossobite: {
 		learnset: {
+			voltswitch: ["8L1"],
+
 			knockoff: ["8L1"],
 			pursuit: ["8L1"],
 			stealthrock: ["8L1"],
@@ -2775,6 +2780,9 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	yanmaancient: {
 		learnset: {
+			crosschop: ["8L1"],
+			thunderfang: ["8L1"],
+
 			poisonfang: ["8L1"],
 			dragonpulse: ["8L1"],
 			hyperfang: ["8L1"],
@@ -3439,7 +3447,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			facade: ["8L1"],
 			frustration: ["8L1"],
 			ironhead: ["8L1"],
-			knockoff: ["8L1"],
+			//knockoff: ["8L1"],
 			return: ["8L1"],
 			uturn: ["8L1"],
 			airslash: ["8L1"],

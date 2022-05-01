@@ -256,7 +256,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
 			if (move.flags['charge'] && !target.volatiles['twoturnmove']) {
 				this.boost({atk: 1});
-			} else if (!this.dex.getImmunity(moveType, source) || (move.type === 'Ground') && !target.isGrounded) {
+			} else if (!this.dex.getImmunity(moveType, source) || !(move.type === 'Ground') && !target.isGrounded) {
 				this.boost({atk: 1});
 			}
 			(move as any).persistence = true;
