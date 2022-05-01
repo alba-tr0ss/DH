@@ -64,6 +64,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 		onStart(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
 			if (!this.effectData.switchingIn || this.field.isTerrain('')) {
+				this.add('-message', `piss`);
 				return;
 			}
 			let type;
@@ -90,8 +91,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			return type;
 		},
 		onTryHit(target, source, move) {
-			this.add('-message', `Target: ${target.name}, Source: ${target.name}`);
-			if (!target.volatiles['absorption']) return;
+			this.add('-message', `Target: ${target.name}, Source: ${target.name}, terrain type: ${!target.volatiles['absorption'].type}`);
 			if (!target.volatiles['absorption'].type) return;
 			if (target !== source && move.type === target.volatiles['absorption'].type) {
 				if (!this.heal(target.baseMaxhp / 4)) {
