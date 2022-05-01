@@ -82,7 +82,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					if (!move.spreadHit) this.attrLastMove('[miss]');
 					this.add('-miss', pokemon, target);
 				}
-				if (!move.ohko && pokemon.hasItem('blunderpolicy') && pokemon.useItem()) {
+				if (!move.ohko && (pokemon.hasItem('blunderpolicy') && pokemon.useItem() || pokemon.hasAbility('thunderthighs')) ) {
 					this.boost({spe: 2}, pokemon);
 				}
 				if ((move as any).persistence) {

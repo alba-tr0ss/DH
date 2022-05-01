@@ -293,7 +293,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBasePowerPriority: 23,
 		onModifyMove(critRatio, source, target, move) {
 			if (kickMoves.includes(move.id)) {
-				this.add('-message', move.id, " ", move.name);
 				move.basePower *= 1.2;
 			}
 		},
