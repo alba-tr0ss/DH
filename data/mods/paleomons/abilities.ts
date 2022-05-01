@@ -144,6 +144,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.field.clearTerrain();
 			this.heal((pokemon.baseMaxhp / 8), pokemon);
 		},
+		/*
 		onTryHit(target, source, move) {
 			if (!target.volatiles['absorption']) return;
 			if (!target.volatiles['absorption'].type) return;
@@ -154,6 +155,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				return null;
 			}
 		},
+		*/
 
 		name: "Absorption",
 		desc: "If there is an active terrain, the terrain ends and the user is healed by 12% of its maximum HP",

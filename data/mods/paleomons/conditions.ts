@@ -64,7 +64,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 		onStart(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
 			if (this.field.isTerrain('')) {
-				this.add('-message', `piss`);
 				return;
 			}
 			let type;
@@ -82,22 +81,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 					this.effectData.type = 'Psychic';
 					break;
 				case 'tarterrain':
-					this.effectData.type = 'Psychic';
+					this.effectData.type = 'Poison';
 					break;
 				default:
 					this.effectData.type = '';
 					break;
 				}
-			this.add('-message', `${type} is the current type`);
 			return type;
 		},
 		onTryHit(target, source, move) {
 			this.add('-message', `Target: ${target.name}, Source: ${target.name}, terrain type: ${target.volatiles['absorption'].type}`);
 			if (target.volatiles['absorption'].type === '') return;
 			if (target !== source && move.type === target.volatiles['absorption'].type) {
-				if (!this.heal(target.baseMaxhp / 4)) {
-					this.add('-immune', target, '[from] ability: Absorption');
-				}
+				this.add('-immune', target, '[from] ability: Absorption');
+				this.add('-hint', "Absorption gives Tangrowth-A an immunity to the terrain's type!");
 				return null;
 			}
 		},
