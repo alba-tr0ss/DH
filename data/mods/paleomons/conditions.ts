@@ -90,7 +90,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			return type;
 		},
 		onTryHit(target, source, move) {
-			this.add('-message', `Target: ${target.name}, Source: ${target.name}, terrain type: ${target.volatiles['absorption'].type}`);
 			if (target.volatiles['absorption'].type === '') return;
 			if (target !== source && move.type === target.volatiles['absorption'].type) {
 				this.add('-immune', target, '[from] ability: Absorption');

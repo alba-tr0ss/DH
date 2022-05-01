@@ -288,8 +288,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Thunder Thighs",
-		desc: "Thunder Thighs",
-		shortDesc: "Thunder Thighs",
+		desc: "Moves with the word 'kick' in their name have their power multiplied by 1.2x.",
+		shortDesc: "Kicking moves deal 1.2x damage.",
 	},
 	
 	//
