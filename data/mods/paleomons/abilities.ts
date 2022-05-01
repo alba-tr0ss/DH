@@ -143,6 +143,36 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.field.clearTerrain();
 			this.heal((pokemon.baseMaxhp / 8), pokemon);
 		},
+		onTryHit(target, source, move) {
+			let type;
+				switch (this.field.terrain) {
+				case 'electricterrain':
+					type = 'Electric';
+					break;
+				case 'grassyterrain':
+					type = 'Grass';
+					break;
+				case 'mistyterrain':
+					type = 'Fairy';
+					break;
+				case 'psychicterrain':
+					type = 'Psychic';
+					break;
+				case 'tarterrain':
+					type = 'Psychic';
+					break;
+				default:
+					break;
+				}
+
+			if (!type) return;
+			if (target !== source && move.type === type) {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Absorption');
+				}
+				return null;
+			}
+		},
 
 		name: "Absorption",
 		desc: "If there is an active terrain, the terrain ends and the user is healed by 12% of its maximum HP",

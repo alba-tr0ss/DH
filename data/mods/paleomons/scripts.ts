@@ -59,8 +59,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 			return true;
 		},
+		*/
 	},
-	*/
 
 	hitStepAccuracy(targets, pokemon, move) {
 		const hitResults = [];
