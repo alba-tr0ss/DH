@@ -312,8 +312,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 	stickkick: {
 		num: -110,
-		accuracy: 130,
-		basePower: 45,
+		accuracy: 30, //temp
+		basePower: 130,
 		category: "Physical",
 		name: "Stick Kick",
 		desc: "Stick Kick.",
