@@ -257,11 +257,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (move.flags['charge'] && !target.volatiles['twoturnmove']) {
 				this.boost({atk: 1});
 			} 
+			(move as any).persistence = true;
+		},
+		onTryMove(target, source, move) {
 			const isImmune = target.runImmunity;
 			if (!isImmune) { //if the target is immune
 				this.boost({atk: 1});
 			}
-			(move as any).persistence = true;
 		},
 
 		name: "Persistence",

@@ -4597,7 +4597,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	spinollina: {
 		learnset: {
-			//superdrill: ["8L1"],
+			superdrill: ["8L1"],
 			moonlight: ["8L1"],
 			highjumpkick: ["8L1"],
 			earthquake: ["8L1"],
