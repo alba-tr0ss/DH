@@ -70,22 +70,22 @@ export const Conditions: {[k: string]: ConditionData} = {
 			let type;
 				switch (this.field.terrain) {
 				case 'electricterrain':
-					type = 'Electric';
+					this.effectData.type = 'Electric';
 					break;
 				case 'grassyterrain':
-					type = 'Grass';
+					this.effectData.type = 'Grass';
 					break;
 				case 'mistyterrain':
-					type = 'Fairy';
+					this.effectData.type = 'Fairy';
 					break;
 				case 'psychicterrain':
-					type = 'Psychic';
+					this.effectData.type = 'Psychic';
 					break;
 				case 'tarterrain':
-					type = 'Psychic';
+					this.effectData.type = 'Psychic';
 					break;
 				default:
-					type = '';
+					this.effectData.type = '';
 					break;
 				}
 			this.add('-message', `${type} is the current type`);
