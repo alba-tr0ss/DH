@@ -85,14 +85,15 @@ export const Conditions: {[k: string]: ConditionData} = {
 					type = 'Psychic';
 					break;
 				default:
+					type = '';
 					break;
 				}
 			this.add('-message', `${type} is the current type`);
 			return type;
 		},
 		onTryHit(target, source, move) {
-			this.add('-message', `Target: ${target.name}, Source: ${target.name}, terrain type: ${!target.volatiles['absorption'].type}`);
-			if (!target.volatiles['absorption'].type) return;
+			this.add('-message', `Target: ${target.name}, Source: ${target.name}, terrain type: ${target.volatiles['absorption'].type}`);
+			if (target.volatiles['absorption'].type === '') return;
 			if (target !== source && move.type === target.volatiles['absorption'].type) {
 				if (!this.heal(target.baseMaxhp / 4)) {
 					this.add('-immune', target, '[from] ability: Absorption');
