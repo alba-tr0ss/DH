@@ -21,41 +21,42 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return totalTypeMod;
 		},
 
-		/** false = immune, true = not immune */
-	runImmunity(type: string, message?: string | boolean) {
-		if (!type || type === '???') return true;
-		if (!(type in this.battle.dex.data.TypeChart)) {
-			if (type === 'Fairy' || type === 'Dark' || type === 'Steel') return true;
-			throw new Error("Use runStatusImmunity for " + type);
-		}
-		if (this.fainted) return false;
+				/** false = immune, true = not immune */
+		runImmunity(type: string, message?: string | boolean) {
+			if (!type || type === '???') return true;
+			if (!(type in this.battle.dex.data.TypeChart)) {
+				if (type === 'Fairy' || type === 'Dark' || type === 'Steel') return true;
+				throw new Error("Use runStatusImmunity for " + type);
+			}
+			if (this.fainted) return false;
 
-		const negateResult = this.battle.runEvent('NegateImmunity', this, type);
-		const persistenceBoost = false;
-		let isGrounded;
-		if (type === 'Ground') {
-			isGrounded = this.isGrounded(!negateResult);
-			if (isGrounded === null) {
+			const negateResult = this.battle.runEvent('NegateImmunity', this, type);
+			const persistenceBoost = false;
+			let isGrounded;
+			if (type === 'Ground') {
+				isGrounded = this.isGrounded(!negateResult);
+				if (isGrounded === null) {
+					if (message) {
+						this.battle.add('-immune', this, '[from] ability: Levitate');
+					}
+					if(this.ability === "Persistence") {
+						const persistenceBoost = true;
+					}
+					return false;
+				}
+			}
+			if (!negateResult) return true;
+			if ((isGrounded === undefined && !this.battle.dex.getImmunity(type, this)) || isGrounded === false) {
 				if (message) {
-					this.battle.add('-immune', this, '[from] ability: Levitate');
+					this.battle.add('-immune', this);
 				}
 				if(this.ability === "Persistence") {
 					const persistenceBoost = true;
 				}
 				return false;
 			}
-		}
-		if (!negateResult) return true;
-		if ((isGrounded === undefined && !this.battle.dex.getImmunity(type, this)) || isGrounded === false) {
-			if (message) {
-				this.battle.add('-immune', this);
-			}
-			if(this.ability === "Persistence") {
-				const persistenceBoost = true;
-			}
-			return false;
-		}
-		return true;
+			return true;
+		},
 	},
 
 	hitStepAccuracy(targets, pokemon, move) {
