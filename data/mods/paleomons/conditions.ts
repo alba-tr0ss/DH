@@ -63,7 +63,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.switchingIn = true;
 		},
 		onStart(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
-			if (!this.effectData.switchingIn) {
+			if (this.field.isTerrain('')) {
 				this.add('-message', `piss`);
 				return;
 			}
