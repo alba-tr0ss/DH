@@ -39,8 +39,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					if (message) {
 						this.battle.add('-immune', this, '[from] ability: Levitate');
 					}
-					if(this.ability === "Persistence") {
-						const persistenceBoost = true;
+					if(this.hasAbility('persistence')) {
+						this.boostBy({atk: 1});
 					}
 					return false;
 				}
@@ -50,8 +50,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				if (message) {
 					this.battle.add('-immune', this);
 				}
-				if(this.ability === "Persistence") {
-					const persistenceBoost = true;
+				if(this.hasAbility('persistence')) {
+					this.boostBy({atk: 1});
 				}
 				return false;
 			}
