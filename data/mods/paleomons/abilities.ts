@@ -1,5 +1,5 @@
 const kickMoves = [
-	'thunderouskick',
+	'thunderouskick', 'stickkick',
 ];
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
@@ -291,10 +291,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	thunderthighs: {
 		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
-			if(kickMoves.includes(move.id) && move.category !== "Status") {
-				this.add('-activate', "Thunder Thighs activation");
-				return this.chainModify(1.2);
+		onModifyMove(critRatio, source, target, move) {
+			if (kickMoves.includes(move.id)) {
+				move.basePower *= 1.2;
 			}
 		},
 		name: "Thunder Thighs",
