@@ -59,7 +59,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	absorption: {
 		name: 'absorption',
+		onSwitchIn(pokemon) {
+			this.effectData.switchingIn = true;
+		},
 		onStart(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
+			if (!this.effectData.switchingIn || this.field.isTerrain('')) {
+				return;
+			}
 			let type;
 				switch (this.field.terrain) {
 				case 'electricterrain':
@@ -82,6 +88,17 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 			this.add('-message', `${type} is the current type`);
 			return type;
-		}
+		},
+		onTryHit(target, source, move) {
+			this.add('-message', `Target: ${target.name}, Source: ${target.name}`);
+			if (!target.volatiles['absorption']) return;
+			if (!target.volatiles['absorption'].type) return;
+			if (target !== source && move.type === target.volatiles['absorption'].type) {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Absorption');
+				}
+				return null;
+			}
+		},
 	},
 };
