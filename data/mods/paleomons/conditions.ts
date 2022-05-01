@@ -57,35 +57,31 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 	},
 
-	persistence: {
-		name: 'persistence',
-		/*
-		onResidual(target) {
-			this.add('-message', "on residual + damage: " + this.effectData.damage);
-			if (this.effectData.damage > 0) {
-				this.add('-message', "boostin' time");
-				const stats: BoostName[] = [];
-				let stat: BoostName;
-				for (stat in target.boosts) {
-					if (target.boosts[stat] < 6) {
-						stats.push(stat);
-					}
+	absorption: {
+		name: 'absorption',
+		onSwitchIn(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
+			let type;
+				switch (this.field.terrain) {
+				case 'electricterrain':
+					type = 'Electric';
+					break;
+				case 'grassyterrain':
+					type = 'Grass';
+					break;
+				case 'mistyterrain':
+					type = 'Fairy';
+					break;
+				case 'psychicterrain':
+					type = 'Psychic';
+					break;
+				case 'tarterrain':
+					type = 'Psychic';
+					break;
+				default:
+					break;
 				}
-				if (stats.length) {
-					const randomStat = this.sample(stats);
-					const boost: SparseBoostsTable = {};
-					boost[randomStat] = 2;
-					this.boost(boost);
-				} else {
-					return false;
-				}
-			}
-		},
-		onHit(target, source, damage) {
-			this.effectData.damage = 0;
-			this.effectData.damage += damage;
-			this.add('-message', "on hit + damage dealt: " + this.effectData.damage);
+			this.add('-message', `${type} is the current type`);
+			return type;
 		}
-		*/
 	},
 };

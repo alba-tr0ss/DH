@@ -134,6 +134,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	absorption: {
 		onSwitchIn(pokemon) {
 			this.effectData.switchingIn = true;
+			pokemon.addVolatile('absorption');
 		},
 		onStart(pokemon) {
 			if (!this.effectData.switchingIn || this.field.isTerrain('')) {
@@ -144,29 +145,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.heal((pokemon.baseMaxhp / 8), pokemon);
 		},
 		onTryHit(target, source, move) {
-			let type;
-				switch (this.field.terrain) {
-				case 'electricterrain':
-					type = 'Electric';
-					break;
-				case 'grassyterrain':
-					type = 'Grass';
-					break;
-				case 'mistyterrain':
-					type = 'Fairy';
-					break;
-				case 'psychicterrain':
-					type = 'Psychic';
-					break;
-				case 'tarterrain':
-					type = 'Psychic';
-					break;
-				default:
-					break;
-				}
-
-			if (!type) return;
-			if (target !== source && move.type === type) {
+			if (!target.volatiles['absorption']) return;
+			if (!target.volatiles['absorption'].type) return;
+			if (target !== source && move.type === target.volatiles['absorption'].type) {
 				if (!this.heal(target.baseMaxhp / 4)) {
 					this.add('-immune', target, '[from] ability: Absorption');
 				}
