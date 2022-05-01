@@ -59,7 +59,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	absorption: {
 		name: 'absorption',
-		onSwitchIn(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
+		onStart(pokemon) { //i have 0 idea if this will activate when i want it to but whatever lol
 			let type;
 				switch (this.field.terrain) {
 				case 'electricterrain':
