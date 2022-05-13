@@ -270,10 +270,22 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
 			if (move.flags['charge'] && !target.volatiles['twoturnmove']) {
 				this.boost({atk: 1});
-			} else if (!this.dex.getImmunity(moveType, source)) {
+			} /*else if (!this.dex.getImmunity(moveType, source)) {
 				this.boost({atk: 1});
 			}
 			(move as any).persistence = true;
+			*/
+		},
+		onAfterMove(target, source, move) {
+			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
+			if(source.moveThisTurnResult === null || source.moveThisTurnResult === undefined) return;
+			this.add('-message', "AfterMove activated");
+			if(!target.moveThisTurnResult) {
+				this.boost({atk: 1});
+				this.add('-message', `${target.name}; moveThisTurn is False! target is ${source.name}`);
+			} else if(target.moveThisTurnResult) {
+				this.add('-message', `${target.name}; moveThisTurn is True! target is ${source.name}`);
+			}
 		},
 		name: "Persistence",
 		desc: "If the user chooses an attacking move but doesn't damage the target on the same turn, raises the user's Attack by 1 stage.",
