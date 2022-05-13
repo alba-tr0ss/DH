@@ -276,7 +276,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			(move as any).persistence = true;
 			*/
 		},
-		onAfterMove(target, source, move) {
+		onAfterMove(source, target, move) {
 			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
 			if(source.moveThisTurnResult === null || source.moveThisTurnResult === undefined) return;
 			this.add('-message', "AfterMove activated");
