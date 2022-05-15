@@ -280,11 +280,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
 			if(source.moveThisTurnResult === null || source.moveThisTurnResult === undefined) return;
 			this.add('-message', "AfterMove activated");
-			if(!target.moveThisTurnResult) {
+			if(!source.moveThisTurnResult) {
 				this.boost({atk: 1});
-				this.add('-message', `${target.name}; moveThisTurn is False! target is ${source.name}`);
+				this.add('-message', `${source.name}; moveThisTurn is False! target is ${target.name}`);
 			} else if(target.moveThisTurnResult) {
-				this.add('-message', `${target.name}; moveThisTurn is True! target is ${source.name}`);
+				this.add('-message', `${source.name}; moveThisTurn is True! target is ${target.name}`);
 			}
 		},
 		name: "Persistence",
