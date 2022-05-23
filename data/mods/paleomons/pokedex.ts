@@ -1094,7 +1094,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 80, atk: 80, def: 80, spa: 100, spd: 80, spe: 100},
 		abilities: {0: "Levitate", H: "Vibrato"},
 		weightkg: 82,
-		prevo: "Vibrava",
+		//prevo: "Vibrava",
 	},
 
 	walrein: {
@@ -1112,7 +1112,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 110, def: 65, spa: 90, spd: 95, spe: 80},
 		abilities: {0: "Fur Coat", 1: "Ice Body", H: "Oblivious"},
 		weightkg: 105.6,
-		prevo: "Sealeo",
+		//prevo: "Sealeo",
 	},
 
 	exploud: {
@@ -1130,6 +1130,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 104, atk: 81, def: 73, spa: 86, spd: 53, spe: 93},
 		abilities: {0: "Vital Spirit", H: "Audio Rupture"},
 		weightkg: 84,
-		prevo: "Loudred",
+		//prevo: "Loudred",
 	},
 };

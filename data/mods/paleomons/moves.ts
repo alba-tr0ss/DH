@@ -401,7 +401,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePower: 20,
 		category: "Physical",
 		name: "Furious Tusks",
-		pp: 20,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		multihit: 2,
@@ -433,7 +433,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 		target: "normal",
-		type: "Dragon",
+		type: "Rock",
 	},
 	//
 	//
