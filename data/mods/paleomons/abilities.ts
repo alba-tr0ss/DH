@@ -265,7 +265,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: -110,
 	},
 
-	persistence: { //currently bugged ):
+	persistence: { 
 		onBeforeMove(target, source, move) {
 			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
 			const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
@@ -280,12 +280,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMove(source, target, move) {
 			if (!source || source === target || move.category === 'Status' || move.name === "Counter") return;
 			if(source.moveThisTurnResult === null || source.moveThisTurnResult === undefined) return;
-			this.add('-message', "AfterMove activated");
 			if(!source.moveThisTurnResult) {
 				this.boost({atk: 1});
-				this.add('-message', `${source.name}; moveThisTurn is False! target is ${target.name}`);
 			} else if(target.moveThisTurnResult) {
-				this.add('-message', `${source.name}; moveThisTurn is True! target is ${target.name}`);
 			}
 		},
 		name: "Persistence",
@@ -314,7 +311,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 		name: "Magic Surge",
 		desc: "Upon switch-in, summons Magic Room",
-		shortDesc: "Upon switch-in, summonns Magic Room"
+		shortDesc: "Upon switch-in, summonns Magic Room",
 		num: -113,
 	},
 
