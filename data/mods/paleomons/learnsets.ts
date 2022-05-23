@@ -2588,6 +2588,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			twister: ["8L1"],
 			flipturn: ["8L1"],
 			dragonrage: ["8L1"],
+			calmmind: ["8L1"],
 
 			acidarmor: ["8L1"],
 			clearsmog: ["8L1"],
@@ -4495,7 +4496,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			firelash: ["8L1"],
 			gunkshot: ["8L1"],
 			powerwhip: ["8L1"],
-			scorchingpebbles: ["8L1"],
+			scorchedpebbles: ["8L1"],
 			spikes: ["8L1"],
 			willowisp: ["8L1"],
 

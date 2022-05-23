@@ -320,7 +320,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			const noModifyType = [
 				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
 			];
-			if (move.flags['Sound'] && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			if (move.flags['sound'] && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Electric';
 			}
 		},
