@@ -342,7 +342,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (move.flags['sound']) {
 				const oldAbility = source.setAbility('soundproof', target);
 				if (oldAbility) {
-					this.add('-activate', target, 'ability: Soundproof', this.dex.getAbility(oldAbility).name, '[of] ' + source);
+					this.add('-activate', source, 'ability: Soundproof', this.dex.getAbility(oldAbility).name, '[of] ' + target);
 				}
 			}
 		},
