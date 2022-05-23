@@ -342,8 +342,15 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (move.flags['sound']) {
 				const oldAbility = target.setAbility('soundproof', target);
 				if (oldAbility) {
-					this.add('-ability', source, 'Soundproof', '[from] Ability: Audio Rupture', '[of] ' + target);
+					this.add('-ability', target, 'Soundproof', '[from] Ability: Audio Rupture', '[of] ' + target);
 				}
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['sound'] && move.category !== "Status") {
+				this.debug('Audio Rupture boost');
+				return this.chainModify([0x14CD, 0x1000]);
 			}
 		},
 		name: "Audio Rupture",
