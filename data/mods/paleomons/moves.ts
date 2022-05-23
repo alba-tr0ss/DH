@@ -416,6 +416,25 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		maxMove: {basePower: 100},
 		contestType: "Cool",
 	},
+	
+	primevalrock: {
+		num: -113,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		name: "Primeval Rock",
+		pp: 5,
+		priority: 0,
+		flags: {authentic: 1, mirror: 1, protect: 1, sound: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				atk: -1,
+			},
+		},
+		target: "normal",
+		type: "Dragon",
+	},
 	//
 	//
 	//
