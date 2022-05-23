@@ -332,6 +332,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
 	audiorupture: {
+		onModifyMove(move, source, target) {
+			if(!target) return;
+			const targetAbility = target.getAbility();
+			if (targetAbility.isPermanent || targetAbility.id === 'soundproof') {
+				return;
+			}
+			if (move.flags['sound']) {
+				const oldAbility = source.setAbility('soundproof', target);
+				if (oldAbility) {
+					this.add('-activate', target, 'ability: Audio Rupture', this.dex.getAbility(oldAbility).name, '[of] ' + source);
+				}
+			}
+		},
 		name: "Audio Rupture",
 		desc: "This Pokemon's sound-based moves have their power boosted by 1.3x. When this Pokemon uses a sound-based move, the target's ability becomes Soundproof if it is not already Soundproof.",
 		shortDesc: "This Pokemon's sound-based moves cause the opponent to gain Soundproof and are boosted.",
