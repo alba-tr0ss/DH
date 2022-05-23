@@ -373,7 +373,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 
 	photonball: {
-		num: 783,
+		num: -111,
 		accuracy: 100,
 		basePower: 110,
 		category: "Physical",
@@ -391,6 +391,28 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		target: "normal",
 		type: "Electric",
+	},
+
+	furioustusks: {
+		num: -112,
+		accuracy: 100,
+		basePower: 20,
+		category: "Physical",
+		name: "Furious Tusks",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 2,
+		secondary: {
+			chance: 100,
+			boosts: {
+				def: -1,
+			},
+		},
+		target: "normal",
+		type: "Fighting",
+		maxMove: {basePower: 100},
+		contestType: "Cool",
 	},
 	//
 	//

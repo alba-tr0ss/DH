@@ -310,9 +310,34 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 
 		name: "Magic Surge",
-		desc: "Upon switch-in, summons Mgaic Room",
+		desc: "Upon switch-in, summons Magic Room",
 		shortDesc: "Upon switch-in, summonns Magic Room"
 	},
+
+	vibrato: {
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.flags['Sound'] && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Electric';
+			}
+		},
+		name: "Vibrato",
+		desc: "This Pokemon's sound-based moves become Electric-type. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's sound-based moves become Electric-type.",
+		rating: 4,
+		num: -103,
+	},
+
+	audiorupture: {
+		name: "Audio Rupture",
+		desc: "This Pokemon's sound-based moves have their power boosted by 1.3x. When this Pokemon uses a sound-based move, the target's ability becomes Soundproof if it is not already Soundproof.",
+		shortDesc: "This Pokemon's sound-based moves cause the opponent to gain Soundproof and are boosted.",
+		rating: 4,
+		num: -103,
+	}
 	
 	//
 	//
