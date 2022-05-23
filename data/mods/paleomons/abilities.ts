@@ -337,7 +337,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon's sound-based moves cause the opponent to gain Soundproof and are boosted.",
 		rating: 4,
 		num: -103,
-	}
+	},
 	
 	//
 	//
