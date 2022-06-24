@@ -673,7 +673,7 @@ export const Formats: FormatList = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/metamorphosis-slate-3-liepard-delcatty-meowstic.3683773/">Metamorphosis on Smogon Forums</a>`,
 		],
 
-		mod: 'MMorph',
+		mod: 'metamorphosis',
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod'],
 		banlist: [
             'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass'
