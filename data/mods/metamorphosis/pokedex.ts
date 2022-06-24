@@ -45,7 +45,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 110, atk: 100, def: 80, spa: 100, spd: 80, spe: 50},
 		abilities: {0: "Slow Start"},
 		otherFormes: ["Regigigas-Unleashed"],
-		formeOrder: ["Regigigas-Slumber", "Regigigas-Unleashed"],
+		formeOrder: ["Regigigas", "Regigigas-Unleashed"],
 	},
 
 	regigigasunleashed: {
