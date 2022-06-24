@@ -21,8 +21,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return this.chainModify(0.5);
 			},
 			onEnd(target) {
-				if (pokemon.species.baseSpecies === 'Regigigas') {
-					pokemon.formeChange('Regigigas-Unleashed', this.effect, true);
+				if (target.species.id === 'regigigas') {
+					target.formeChange('Regigigas-Unleashed', this.effect, true);
 				}
 				this.add('-end', target, 'Slow Start');
 			},
