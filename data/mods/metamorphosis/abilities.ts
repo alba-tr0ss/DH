@@ -22,6 +22,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			},
 			onEnd(target) {
 				if (target.species.baseSpecies === 'Regigigas') {
+					this.add('-activate', target, 'ability: Slow Start');
 					target.formeChange('Regigigas-Unleashed', this.effect, true);
 				}
 				this.add('-end', target, 'Slow Start');
