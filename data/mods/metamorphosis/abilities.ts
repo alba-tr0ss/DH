@@ -5,6 +5,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			pokemon.addVolatile('slowstart');
 		},
 		onEnd(pokemon) {
+			pokemon.addVolatile('slowstart');
+			pokemon.removeVolatile('slowstart');
 			delete pokemon.volatiles['slowstart'];
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
 		},
