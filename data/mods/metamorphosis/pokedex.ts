@@ -33,6 +33,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 115, def: 70, spa: 112, spd: 65, spe: 130},
 		abilities: {0: "Defeatist"},
 		weightkg: 32,
+		requiredAbility: "Defeatist",
+		battleOnly: "Archeops"
 	},
 
 	regigigas: {
@@ -57,5 +59,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 110, atk: 160, def: 110, spa: 100, spd: 110, spe: 100},
 		abilities: {0: "Slow Start"},
 		weightkg: 420,
+		requiredAbility: "Slow Start",
+		battleOnly: "Regigigas"
 	},
 };
