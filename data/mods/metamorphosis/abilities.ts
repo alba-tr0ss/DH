@@ -13,7 +13,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
 		},
 		condition: {
-			duration: 5,
+			duration: 1,
 			onStart(target) {
 				this.add('-start', target, 'ability: Slow Start');
 			},
