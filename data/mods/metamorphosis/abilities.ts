@@ -4,7 +4,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (pokemon.species.id === 'regigigasunleashed') return;
 			pokemon.addVolatile('slowstart');
 		},
-		onUpdate(pokemon) {
+		onResidual(pokemon) {
 			if (pokemon.volatiles['slowstart'] && pokemon.species.baseSpecies === 'Regigigas') {
 				this.add('-activate', pokemon, 'ability: Slow Start');
 				pokemon.formeChange('Regigigas-Unleashed', this.effect, true);
@@ -15,7 +15,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
 		},
 		condition: {
-			duration: 1,
+			duration: 5,
 			onStart(target) {
 				this.add('-start', target, 'ability: Slow Start');
 			},
