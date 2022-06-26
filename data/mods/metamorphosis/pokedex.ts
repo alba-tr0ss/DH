@@ -62,4 +62,21 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		requiredAbility: "Slow Start",
 		battleOnly: "Regigigas"
 	},
+
+	golurk: {
+		inherit: true,
+		otherFormes: ["Golurk-Unsealed"],
+		formeOrder: ["Golurk", "Golurk-Unsealed"],
+	},
+
+	golurkunsealed: {
+		num: -102,
+		name: "Golurk-Unsealed",
+		baseSpecies: "Golurk",
+		forme: "Unsealed",
+		types: ["Ground", "Fighting"],
+		baseStats: {hp: 58, atk: 130, def: 90, spa: 55, spd: 90, spe: 100},
+		abilities: {0: "No Guard", 1: "Iron Fist", H: "Reckless"},
+		weightkg: 330,
+	},
 };

@@ -16,4 +16,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	golurk: {
+		tier:'MMorph',
+		isModded: true,
+	},
 };
