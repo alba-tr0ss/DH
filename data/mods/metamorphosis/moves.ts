@@ -24,6 +24,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			source.moveSlots[sealIndex] = sealMove;
 			source.baseMoveSlots[sealIndex] = sealMove;
 			this.add('-activate', source, 'move: Seal Shatter', seal.name);
+
+			if (source.baseSpecies.baseSpecies === 'Golurk') {
+				source.formeChange('golurkunsealed')
+			}
 		},
 		secondary: null,
 		target: "normal",
@@ -41,7 +45,26 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		heal: [1, 2],
-		
+		onAfterHit(target, source) {
+			const seal = this.dex.getMove('sealshatter');
+			const sealIndex = source.moves.indexOf('sealstitch');
+			const sealMove = {
+				move: seal.name,
+				id: seal.id,
+				pp: seal.pp,
+				maxpp: seal.pp,
+				target: seal.target,
+				disabled: false,
+				used: false,
+			};
+			source.moveSlots[sealIndex] = sealMove;
+			source.baseMoveSlots[sealIndex] = sealMove;
+			this.add('-activate', source, 'move: Seal Stitch', seal.name);
+
+			if (source.baseSpecies.baseSpecies === 'Golurk') {
+				source.formeChange('golurk')
+			}
+		},
 		secondary: null,
 		target: "self",
 		type: "Ground",
