@@ -46,6 +46,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {snatch: 1, heal: 1},
 		heal: [1, 2],
 		onAfterHit(target, source) {
+			this.add('-message', "After Hit is playing")
 			const seal = this.dex.getMove('sealshatter');
 			const sealIndex = source.moves.indexOf('sealstitch');
 			const sealMove = {
