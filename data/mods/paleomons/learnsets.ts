@@ -5525,7 +5525,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	trobsidon: {
 		learnset: {
-			accelrock: ["8L1"],
+			accelerock: ["8L1"],
 			breakingswipe: ["8L1"],
 			dracometeor: ["8L1"],
 			dualchop: ["8L1"],
