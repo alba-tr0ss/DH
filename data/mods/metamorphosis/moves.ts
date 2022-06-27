@@ -9,7 +9,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		recoil: [33, 100],
-		onAfterHit(target, source) {
+		onHit(target, source) {
 			const seal = this.dex.getMove('sealstitch');
 			const sealIndex = source.moves.indexOf('sealshatter');
 			const sealMove = {
@@ -45,7 +45,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		heal: [1, 2],
-		onAfterHit(target, source) {
+		onHit(target, source) {
 			this.add('-message', "After Hit is playing")
 			const seal = this.dex.getMove('sealshatter');
 			const sealIndex = source.moves.indexOf('sealstitch');
