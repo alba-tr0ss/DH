@@ -23,7 +23,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			};
 			source.moveSlots[sealIndex] = sealMove;
 			source.baseMoveSlots[sealIndex] = sealMove;
-			this.add('-activate', source, 'move: Seal Shatter', seal.name);
+			this.add('-activate', source, 'move: Sketch', seal.name);
 
 			if (source.baseSpecies.baseSpecies === 'Golurk') {
 				source.formeChange('golurkunsealed')
@@ -60,7 +60,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			};
 			source.moveSlots[sealIndex] = sealMove;
 			source.baseMoveSlots[sealIndex] = sealMove;
-			this.add('-activate', source, 'move: Seal Stitch', seal.name);
+			this.add('-activate', source, 'move: Sketch', seal.name);
 
 			if (source.baseSpecies.baseSpecies === 'Golurk') {
 				source.formeChange('golurk')
