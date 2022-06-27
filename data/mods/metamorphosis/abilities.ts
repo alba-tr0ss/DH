@@ -58,4 +58,45 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: -1,
 		num: 129,
 	},
+
+	vaporflux: {
+		onUpdate(pokemon) {
+			if(!pokemon.isActive || pokemon.species.baseSpecies !== 'Cryogonal' || pokemon.transformed) return;
+			if(['raindance', 'primordialsea', 'sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				if(pokemon.species.id !== 'cryogonalvapor') {
+					pokemon.formeChange('Cryogonal-Vapor', this.effect, false, '[msg]');
+				}
+			} else {
+				if(pokemon.species.id === 'cryogonalvapor') {
+					pokemon.formeChange('Cryogonal', this.effect, false, '[msg]');
+				}
+			}
+		},
+		name: "Vapor Flux",
+	},
+
+	intelligencereport: {
+			onStart(pokemon) {
+				for (const target of pokemon.side.foe.active) {
+					if (!target || target.fainted) continue;
+					for (const moveSlot of target.moveSlots) {
+						const move = this.dex.getMove(moveSlot.move);
+						if (move.category === 'Status') continue;
+						const moveType = move.id === 'hiddenpower' ? target.hpType : move.type;
+						if (
+							this.dex.getImmunity(moveType, pokemon) && this.dex.getEffectiveness(moveType, pokemon) > 0 ||
+							move.ohko
+						) {
+							if (pokemon.species.baseSpecies !== 'Falinks' || pokemon.transformed) return;
+							this.add('-activate', pokemon, 'ability: Intelligence Report');
+							const targetForme = pokemon.species.name === 'Falinks' ? 'Falinks-Stratagem' : 'Falinks';
+							pokemon.formeChange(targetForme, this.effect, true);
+							return;
+						}
+					}
+				}
+			},
+		isPermanent: true,
+		name: "Intelligence Report",
+	},
 };
