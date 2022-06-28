@@ -99,4 +99,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		isPermanent: true,
 		name: "Intelligence Report",
 	},
+
+	rainmaker: {
+		onDamagingHit(damage, target, source, move) {
+			if (this.field.getWeather().id !== 'raindance') {
+				this.field.setWeather('raindance');
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.species.baseSpecies !== "Bronzong" || pokemon.transformed) return;
+			const targetForme = ['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())
+			? 'Bronzong-Rain' : 'Bronzong';
+		},
+		isPermanent: true,
+		name: "Rainmaker",
+	}
 };

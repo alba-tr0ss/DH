@@ -20,4 +20,11 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier:'MMorph',
 		isModded: true,
 	},
+
+	//vry
+
+	bronzong: {
+		tier:'MMorph',
+		isModded: true,
+	},
 };

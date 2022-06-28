@@ -60,7 +60,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Slow Start"},
 		weightkg: 420,
 		requiredAbility: "Slow Start",
-		battleOnly: "Regigigas"
+		battleOnly: "Regigigas",
 	},
 
 	golurk: {
@@ -78,5 +78,29 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 58, atk: 130, def: 90, spa: 55, spd: 90, spe: 100},
 		abilities: {0: "No Guard", 1: "Iron Fist", H: "Reckless"},
 		weightkg: 330,
+	},
+
+	// crygogognogngonal
+
+	bronzong: {
+		inherit: true,
+		num: -104,
+		types: ["Steel", "Psychic"],
+		abilities: {0: "Levitate", 1: "Heatproof", H: "Rainmaker"},
+		otherFormes: ["Bronzong-Rain"],
+		formeOrder: ["Bonzong", "Bronzong-Rain"],
+	},
+
+	bronzongrain: {
+		num: -104,
+		name: "Bronzong-Rain",
+		baseSpecies: "Bronzong",
+		forme: "Rain",
+		types: ["Steel", "Water"],
+		baseStats: {hp: 67, atk: 109, def: 116, spa: 109, spd: 116, spe: 33},
+		abilities: {0: "Rainmaker"},
+		weightkg: 100,
+		requiredAbility: "Rainmaker",
+		battleOnly: "Bronzong",
 	},
 };
