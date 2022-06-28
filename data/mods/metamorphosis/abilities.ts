@@ -108,9 +108,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		onUpdate(pokemon) {
 			if (pokemon.species.baseSpecies !== "Bronzong" || pokemon.transformed) return;
-			const targetForme = ['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())
-			? 'Bronzong-Rain' : 'Bronzong';
-			pokemon.formeChange(targetForme);
+			if(['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())) {
+				if(pokemon.species.id !== 'bronzongrain') {
+					pokemon.formeChange('Bronzong-Rain', this.effect, false, '[msg]');
+				}
+			} else {
+				if(pokemon.species.id === 'bronzongrain') {
+					pokemon.formeChange('Bronzong', this.effect, false, '[msg]');
+				}
+			}
 		},
 		isPermanent: true,
 		name: "Rainmaker",
