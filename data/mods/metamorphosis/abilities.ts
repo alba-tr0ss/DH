@@ -110,6 +110,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (pokemon.species.baseSpecies !== "Bronzong" || pokemon.transformed) return;
 			const targetForme = ['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())
 			? 'Bronzong-Rain' : 'Bronzong';
+			pokemon.formeChange(targetForme);
 		},
 		isPermanent: true,
 		name: "Rainmaker",
