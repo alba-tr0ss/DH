@@ -34,4 +34,44 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.damage(pokemon.baseMaxhp / 16);
 		},
 	},
+
+	hail: {
+		name: 'Hail',
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback(source, effect) {
+			if (source?.hasItem('icyrock')) {
+				return 8;
+			}
+			return 5;
+		},
+		onStart(battle, source, effect) {
+			if (effect?.effectType === 'Ability') {
+				if (this.gen <= 5) this.effectData.duration = 0;
+				this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Hail');
+			}
+		},
+		onModifyMove(move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== 'frz') return;
+					this.add('-message', 'doubling secondary chance');
+					if (secondary.chance) secondary.chance *= 2;
+				}
+			}
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'Hail', '[upkeep]');
+			if (this.field.isWeather('hail')) this.eachEvent('Weather');
+		},
+		onWeather(target) {
+			this.damage(target.baseMaxhp / 16);
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
 };

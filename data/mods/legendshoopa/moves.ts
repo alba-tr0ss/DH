@@ -9,7 +9,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	icebeam: {
 		inherit: true,
 		secondary: {
-			chance: 100,
+			chance: 50,
 			status: 'frz',
 		},
 	}
