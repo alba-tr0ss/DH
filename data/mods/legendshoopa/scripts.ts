@@ -6,7 +6,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 
 	// this is all for Frostbite
 	// god fuck
-	battle: {
+	pokemon: {
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
 		) {
@@ -69,6 +69,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					baseDamage = this.modify(baseDamage, 0.5);
 				}
 			}
+
 			if (pokemon.status === 'frz' && move.category === 'Special') {
 				baseDamage = this.modify(baseDamage, 0.5);
 			}
