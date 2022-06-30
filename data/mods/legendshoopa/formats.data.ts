@@ -11,7 +11,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	groovyle: {
+	grovyle: {
 		tier: "ANL NFE",
 		isModded: true,
 	},
