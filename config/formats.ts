@@ -674,7 +674,7 @@ export const Formats: FormatList = [
 			let allowedTiers = ['ANL OU', "ANL NFE", "ANL LC"];
 			for (const set of team) {
 				let template = this.dex.getSpecies(set.species);
-				if (template.tier !== 'ANL OU' && template.tier !== 'ANL NFE' && template.tier !== 'ANL LC') {
+				if (!allowedTiers.includes(template.tier)) {
 					return [set.species + ' is not legal in Pokemon Legends: Hoopa OU.'];
 				}
 			}
