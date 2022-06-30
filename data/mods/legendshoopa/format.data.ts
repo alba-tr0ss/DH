@@ -20,4 +20,34 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "ANL OU",
 		isModded: true,
 	},
+
+	torchic: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	combusken: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	blaziken: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	mudkip: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	marshtomp: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	swampert: {
+		tier: "ANL OU",
+		isModded: true,
+	},
 };

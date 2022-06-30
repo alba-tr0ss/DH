@@ -655,7 +655,7 @@ export const Formats: FormatList = [
 					'Soul Blade Lvl. 2', 'Soul Blade Lvl. 3', 'Soul Blade Lvl. 4', 'Soul Blade Lvl. 5', 'Ultra Soul Blade'],
 	},
 	{
-		name: "[Gen 8] Legends: Hoopa",
+		name: "[Gen 8] Legends Hoopa",
 		desc: [
 			"<b>A New Legend</b>: A Pet Mod that aims to create a hypothetical new entry in a full Pokemon Legends subseries - Pokemon Legends Hoopa.",
 		],
