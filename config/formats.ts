@@ -678,7 +678,7 @@ export const Formats: FormatList = [
 				}
 			}
 		},
-	}
+	},
 	{
 		name: "[Gen 8] Megas for All",
 		desc: ["<b>Megas for All</b>: A Pet Mod that aims to create unique Mega Evolutions for every fully evolved Pokémon. Plays like National Dex, just with more Megas.",
