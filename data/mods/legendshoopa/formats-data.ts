@@ -135,4 +135,159 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "ANL OU",
 		isModded: true,
 	},
+
+	wingull: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	pelipper: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	ralts: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	kirlia: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	gardevoir: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	gallade: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	surskit: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	masquerain: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	shroomish: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	breloom: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	slakoth: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	vigoroth: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	slaking: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	abra: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	kadabra: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	alakazam: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	nincada: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	ninjask: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	shedninja: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	whismur: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	loudred: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	exploud: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	makuhita: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	hariyama: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	goldeen: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	seaking: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	magikarp: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	gyarados: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	azurill: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	marill: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	azumarill: {
+		tier: "ANL OU",
+		isModded: true,
+	},
 };
