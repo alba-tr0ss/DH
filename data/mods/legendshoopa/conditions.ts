@@ -9,8 +9,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			} else {
 				this.add('-status', target, 'frz');
 			}
-			this.hint(`${this.effectData.target.name} is frostbitten! It can still use moves, but its special moves will be half as strong.`);
-			this.hint(`Like a burn, frostbite will damage the afflicted Pokémon at the end of each turn.`);
 			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
 				target.formeChange('Shaymin', this.effect, true);
 			}
@@ -33,6 +31,42 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.hint(`${this.effectData.target.name} is afflicted with frostbite!`);
 			this.damage(pokemon.baseMaxhp / 16);
 		},
+	},
+
+	slp: {
+		name: 'slp',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'slp', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else if (sourceEffect && sourceEffect.effectType === 'Move') {
+				this.add('-status', target, 'slp', '[from] move: ' + sourceEffect.name);
+			} else {
+				this.add('-status', target, 'slp');
+			}
+		},
+
+		onBeforeMovePriority: 1,
+		onBeforeMove(pokemon) {
+			if(this.field.isWeather('hail')) {
+				if (this.randomChance(1, 1.5)) {
+					this.add('cant', pokemon, 'slp');
+					return false;
+				}
+			} else {
+				if (this.randomChance(1, 3)) {
+					this.add('cant', pokemon, 'slp');
+					return false;
+				}
+			}
+		},
+
+		onFoeBasePowerPriority: 17,
+		onFoeBasePower(basePower, attacker, defender, move) {
+			if (this.effectData.target !== defender) return;
+			return this.chainModify(1.33);
+		},
+
 	},
 
 	hail: {
