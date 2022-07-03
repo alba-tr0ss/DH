@@ -27,7 +27,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 	par: {
 		name: 'par',
 		effectType: 'Status',
-		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'par', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
@@ -63,7 +62,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 	frz: {
 		name: 'frz',
 		effectType: 'Status',
-		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'frz', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
@@ -95,7 +93,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.damage(pokemon.baseMaxhp / 16);
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
-				pokemon.cureStatus();
+				pokemon.setStatus('');
 				return;
 			}
 		},
@@ -104,7 +102,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 	slp: {
 		name: 'slp',
 		effectType: 'Status',
-		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'slp', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
