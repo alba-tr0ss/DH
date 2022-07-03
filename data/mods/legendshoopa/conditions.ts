@@ -19,7 +19,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.damage(pokemon.baseMaxhp / 16);
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
-				pokemon.cureStatus();
+				this.add('-curestatus', pokemon, 'brn');
+				pokemon.setStatus('');
 				return;
 			}
 		},
@@ -52,7 +53,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
-				pokemon.cureStatus();
+				this.add('-curestatus', pokemon, 'par');
+				pokemon.setStatus('');
 				return;
 			}
 		}
@@ -140,7 +142,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
-				pokemon.cureStatus();
+				this.add('-curestatus', pokemon, 'slp');
+				pokemon.setStatus('');
+
 				return;
 			}
 		}
