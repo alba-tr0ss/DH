@@ -2,23 +2,24 @@ export const Conditions: {[k: string]: ConditionData} = {
 	fixated: {
 		name: 'fixated',
 		onStart(target, source, effect) {
-			this.add('-start', source, ' is fixated on its current move!');
+			this.add('-start', source, 'fixated');
 			this.effectData.move = effect.id;
 		},
 
-		onBeforeMove(pokemon, target, move) {
-			if(this.effectData.move !== move) {
+		onTryMovePriority: -2,
+		onTryMove(pokemon, target, move) {
+			if(this.effectData.move !== move.id) {
 				delete pokemon.volatiles['fixated'];
 			}
 		},
 
 		onModifyDamage(damage, source, target, move) {
-			this.debug('Fixated boost');
+			this.add('-add', 'fixated boost !');
 			return this.chainModify(1.5);
 		},
 
 		onEnd(pokemon) {
-			this.add('-end', pokemon, ' is no longer fixated!');
+			this.add('-end', pokemon, 'fixated');
 		},
 	},
 
