@@ -19,5 +19,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 50,
 			status: 'frz',
 		},
-	}
+	},
+
+	outrage: {
+		inherit: true,
+			self: {
+				volatileStatus: 'fixated',
+			},
+	},
 };
