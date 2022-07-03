@@ -1,8 +1,53 @@
 export const Conditions: {[k: string]: ConditionData} = {	
+	brn: {
+		name: 'brn',
+		effectType: 'Status',
+		duration: 5,
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.id === 'flameorb') {
+				this.add('-status', target, 'brn', '[from] item: Flame Orb');
+			} else if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'brn', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'brn');
+			}
+		},
+		// Damage reduction is handled directly in the sim/battle.js damage function
+		onResidualOrder: 9,
+		onResidual(pokemon) {
+			this.damage(pokemon.baseMaxhp / 16);
+		},
+	},
+	par: {
+		name: 'par',
+		effectType: 'Status',
+		duration: 5,
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'par', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'par');
+			}
+		},
+		onModifySpe(spe, pokemon) {
+			if (!pokemon.hasAbility('quickfeet')) {
+				return this.chainModify(0.5);
+			}
+		},
+		onBeforeMovePriority: 1,
+		onBeforeMove(pokemon) {
+			if (this.randomChance(1, 4)) {
+				this.add('cant', pokemon, 'par');
+				return false;
+			}
+		},
+	},
+
 	// code stolen from M4A's Sandbox x
 	frz: {
 		name: 'frz',
 		effectType: 'Status',
+		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'frz', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
@@ -36,6 +81,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	slp: {
 		name: 'slp',
 		effectType: 'Status',
+		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType === 'Ability') {
 				this.add('-status', target, 'slp', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
