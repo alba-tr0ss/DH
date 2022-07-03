@@ -1,4 +1,32 @@
 export const Conditions: {[k: string]: ConditionData} = {	
+	fixated: {
+		name: 'fixated',
+		onStart(target, source, effect) {
+			this.add('-start', source, ' is fixated on its current move!');
+			this.effectData.move = effect.id;
+		},
+
+		onBeforeMove(pokemon, target, move) {
+			if(this.effectData.move !== move) {
+				delete pokemon.volatiles['fixated'];
+			}
+		},
+
+		onModifyDamage(damage, source, target, move) {
+			this.debug('Fixated boost');
+			return this.chainModify(1.5);
+		},
+
+		onEnd(pokemon) {
+			this.add('-end', pokemon, ' is no longer fixated!');
+		},
+	},
+
+
+	/// Canon Conditions ///
+
+
+
 	brn: {
 		name: 'brn',
 		effectType: 'Status',
@@ -148,6 +176,60 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		}
+	},
+
+	psn: {
+		name: 'psn',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+			if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'psn', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'psn');
+			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
+		},
+		onResidualOrder: 9,
+		onResidual(pokemon) {
+			this.damage(pokemon.baseMaxhp / 8);
+			if (pokemon.statusData.time <= 0) {
+				this.add('-curestatus', pokemon, 'psn');
+				pokemon.setStatus('');
+				return;
+			}
+		},
+	},
+	tox: {
+		name: 'tox',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+			this.effectData.stage = 0;
+			if (sourceEffect && sourceEffect.id === 'toxicorb') {
+				this.add('-status', target, 'tox', '[from] item: Toxic Orb');
+			} else if (sourceEffect && sourceEffect.effectType === 'Ability') {
+				this.add('-status', target, 'tox', '[from] ability: ' + sourceEffect.name, '[of] ' + source);
+			} else {
+				this.add('-status', target, 'tox');
+			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
+		},
+		onSwitchIn() {
+			this.effectData.stage = 0;
+		},
+		onResidualOrder: 9,
+		onResidual(pokemon) {
+			if (this.effectData.stage < 15) {
+				this.effectData.stage++;
+			}
+			this.damage(this.clampIntRange(pokemon.baseMaxhp / 16, 1) * this.effectData.stage);
+			if (pokemon.statusData.time <= 0) {
+				this.add('-curestatus', pokemon, 'tox');
+				pokemon.setStatus('');
+				return;
+			}
+		},
 	},
 
 	hail: {
