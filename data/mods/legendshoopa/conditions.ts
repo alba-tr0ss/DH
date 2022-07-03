@@ -2,7 +2,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 	brn: {
 		name: 'brn',
 		effectType: 'Status',
-		duration: 5,
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === 'flameorb') {
 				this.add('-status', target, 'brn', '[from] item: Flame Orb');
@@ -11,11 +10,18 @@ export const Conditions: {[k: string]: ConditionData} = {
 			} else {
 				this.add('-status', target, 'brn');
 			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
 		},
 		// Damage reduction is handled directly in the sim/battle.js damage function
 		onResidualOrder: 9,
 		onResidual(pokemon) {
 			this.damage(pokemon.baseMaxhp / 16);
+			pokemon.statusData.time--;
+			if (pokemon.statusData.time <= 0) {
+				pokemon.cureStatus();
+				return;
+			}
 		},
 	},
 	par: {
@@ -28,6 +34,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			} else {
 				this.add('-status', target, 'par');
 			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
 		},
 		onModifySpe(spe, pokemon) {
 			if (!pokemon.hasAbility('quickfeet')) {
@@ -41,6 +49,14 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return false;
 			}
 		},
+		onResidualOrder: 9,
+		onResidual(pokemon) {
+			pokemon.statusData.time--;
+			if (pokemon.statusData.time <= 0) {
+				pokemon.cureStatus();
+				return;
+			}
+		}
 	},
 
 	// code stolen from M4A's Sandbox x
@@ -57,6 +73,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
 				target.formeChange('Shaymin', this.effect, true);
 			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
 		},
 		/*
 		onModifyMove(move, pokemon) {
@@ -75,6 +93,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			this.hint(`${this.effectData.target.name} is afflicted with frostbite!`);
 			this.damage(pokemon.baseMaxhp / 16);
+			pokemon.statusData.time--;
+			if (pokemon.statusData.time <= 0) {
+				pokemon.cureStatus();
+				return;
+			}
 		},
 	},
 
@@ -90,6 +113,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			} else {
 				this.add('-status', target, 'slp');
 			}
+			this.effectData.startTime = 6;
+			this.effectData.time = this.effectData.startTime;
 		},
 
 		onBeforeMovePriority: 1,
@@ -113,6 +138,14 @@ export const Conditions: {[k: string]: ConditionData} = {
 			return this.chainModify(1.33);
 		},
 
+		onResidualOrder: 9,
+		onResidual(pokemon) {
+			pokemon.statusData.time--;
+			if (pokemon.statusData.time <= 0) {
+				pokemon.cureStatus();
+				return;
+			}
+		}
 	},
 
 	hail: {
