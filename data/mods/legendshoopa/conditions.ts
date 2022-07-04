@@ -31,6 +31,25 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 	},
 
+	primed: {
+		name: 'primed',
+		duration: 5,
+
+		onStart(target, source, effect) {
+			this.add('-start', source, 'primed', '[silent]');
+			this.add('-message', `${source.name} is primed!`);
+		},
+
+		onModifyDamage(damage, source, target, move) {
+			this.add('-message', 'primed boost !');
+			return this.chainModify(1.5);
+		},
+
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'primed', '[silent]');
+		},
+	},
+
 
 	/// Canon Conditions ///
 

@@ -12,12 +12,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 
-
 	icebeam: {
 		inherit: true,
-		secondary: {
-			chance: 50,
-			status: 'frz',
+		self: {
+			volatileStatus: 'primed',
 		},
 	},
 
@@ -26,5 +24,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			self: {
 				volatileStatus: 'fixated',
 			},
+	},
+
+	petaldance: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated',
+		},
+	},
+
+	rollout: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated',
+		},
+	},
+
+	iceball: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated',
+		},
 	},
 };
