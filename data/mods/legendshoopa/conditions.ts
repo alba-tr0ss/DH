@@ -8,13 +8,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onTryMovePriority: -2,
 		onTryMove(pokemon, target, move) {
-			if(this.effectData.move !== move.id) {
-				delete pokemon.volatiles['fixated'];
-			}
+			this.add('-message', `effectdata is: ${this.effectData.move} and move.id is ${move.id}`);
+			if(this.effectData.move === move.id) return;
+			pokemon.removeVolatile('fixated');
 		},
 
 		onModifyDamage(damage, source, target, move) {
-			this.add('-add', 'fixated boost !');
+			this.add('-message', 'fixated boost !');
 			return this.chainModify(1.5);
 		},
 
