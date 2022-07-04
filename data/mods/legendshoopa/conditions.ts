@@ -2,24 +2,32 @@ export const Conditions: {[k: string]: ConditionData} = {
 	fixated: {
 		name: 'fixated',
 		onStart(target, source, effect) {
-			this.add('-start', source, 'fixated');
+			this.add('-start', source, 'fixated', '[silent]');
 			this.effectData.move = effect.id;
+			this.add('-message', `${source.name} is fixated on ${this.effectData.move}!`);
 		},
 
 		onTryMovePriority: -2,
 		onTryMove(pokemon, target, move) {
-			this.add('-message', `effectdata is: ${this.effectData.move} and move.id is ${move.id}`);
+			//this.add('-message', `effectdata is: ${this.effectData.move} and move.id is: ${move.id}`);
 			if(this.effectData.move === move.id) return;
 			pokemon.removeVolatile('fixated');
 		},
 
 		onModifyDamage(damage, source, target, move) {
-			this.add('-message', 'fixated boost !');
+			//this.add('-message', 'fixated boost !');
 			return this.chainModify(1.5);
 		},
 
-		onEnd(pokemon) {
-			this.add('-end', pokemon, 'fixated');
+		onFoeBasePowerPriority: 17,
+		onFoeBasePower(basePower, attacker, defender, move) {
+			if (this.effectData.target !== defender) return;
+			return this.chainModify(1.33);
+		},
+
+		onEnd(pokemon) { //idk how to properly do messages and stuff so this is the next best thing x
+			this.add('-end', pokemon, 'fixated', '[silent]');
+			this.add('-message', `${pokemon.name} is no longer fixated!`);
 		},
 	},
 
