@@ -81,6 +81,18 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
+
+		onBeforeMove(pokemon, target, move) {
+			if(!move.status ) return;
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', pokemon, 'brn', '[Silent');
+					pokemon.setStatus('');
+				}
+			}
+		},
 	},
 	par: {
 		name: 'par',
