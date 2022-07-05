@@ -70,6 +70,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.startTime = 6;
 			this.effectData.time = this.effectData.startTime;
 		},
+		onRestart() {
+			this.effectData.startTime = 6;
+		},
 		// Damage reduction is handled directly in the sim/battle.js damage function
 		onResidualOrder: 9,
 		onResidual(pokemon) {
