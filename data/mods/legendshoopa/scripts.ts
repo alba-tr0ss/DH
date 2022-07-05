@@ -19,7 +19,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 			if (!source) source = this;
 	
-			/*
 			if (this.status === status.id) {
 				if ((sourceEffect as Move)?.status === this.status) {
 					this.battle.add('-fail', this, this.status);
@@ -29,7 +28,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				}
 				return false;
 			}
-			*/
 	
 			if (!ignoreImmunities && status.id &&
 					!(source?.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))) {
@@ -60,6 +58,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.statusData.duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
 			}
 	
+			/*
 			if (status.id && !this.battle.singleEvent('Start', status, this.statusData, this, source, sourceEffect)) {
 				this.battle.debug('status start [' + status.id + '] interrupted');
 				// cancel the setstatus
@@ -67,6 +66,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.statusData = prevStatusData;
 				return false;
 			}
+			*/
 			if (status.id && !this.battle.runEvent('AfterSetStatus', this, source, sourceEffect, status)) {
 				return false;
 			}
