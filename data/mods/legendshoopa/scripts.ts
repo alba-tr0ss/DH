@@ -18,6 +18,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				if (!sourceEffect) sourceEffect = this.battle.effect;
 			}
 			if (!source) source = this;
+			this.add('-curestatus', source, 'brn');
+			source.setStatus('');
 	
 			if (this.status === status.id) {
 				if ((sourceEffect as Move)?.status === this.status) {
@@ -26,7 +28,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					this.battle.add('-fail', source);
 					this.battle.attrLastMove('[still]');
 				}
-				//return false;
+				return false;
 			}
 	
 			if (!ignoreImmunities && status.id &&
@@ -63,13 +65,11 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				// cancel the setstatus
 				this.status = prevStatus;
 				this.statusData = prevStatusData;
-				//return false;
+				return false;
 			}
-			/*
 			if (status.id && !this.battle.runEvent('AfterSetStatus', this, source, sourceEffect, status)) {
 				return false;
 			}
-			*/
 			return true;
 		},
 
