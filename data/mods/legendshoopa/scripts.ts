@@ -63,7 +63,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				// cancel the setstatus
 				this.status = prevStatus;
 				this.statusData = prevStatusData;
-				return false;
+				//return false;
 			}
 			/*
 			if (status.id && !this.battle.runEvent('AfterSetStatus', this, source, sourceEffect, status)) {
