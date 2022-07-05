@@ -4,9 +4,35 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		customTiers: ['ANL OU', 'ANL NFE', 'ANL LC'],
 	},
 
-	// this is all for Frostbite
-	// god fuck
 	pokemon: {
+		setStatus(
+			status: string | Condition,
+			source: Pokemon | null = null,
+			sourceEffect: Effect | null = null,
+			ignoreImmunities = false
+		) {
+			if (!this.hp) return false;
+			status = this.battle.dex.getEffect(status);
+			if (this.battle.event) {
+				if (!source) source = this.battle.event.source;
+				if (!sourceEffect) sourceEffect = this.battle.effect;
+			}
+			if (!source) source = this;
+	
+			/*
+			if (this.status === status.id) {
+				if ((sourceEffect as Move)?.status === this.status) {
+					this.battle.add('-fail', this, this.status);
+				} else if ((sourceEffect as Move)?.status) {
+					this.battle.add('-fail', source);
+					this.battle.attrLastMove('[still]');
+				}
+				return false;
+			
+			}
+			*/
+		},
+
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
 		) {
@@ -90,6 +116,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	
 			// ...but 16-bit truncation happens even later, and can truncate to 0
 			return tr(baseDamage, 16);
-		}
+		},
 	},
 };

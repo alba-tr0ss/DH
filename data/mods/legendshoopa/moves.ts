@@ -12,13 +12,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 
-	icebeam: {
-		inherit: true,
-		self: {
-			volatileStatus: 'primed',
-		},
-	},
-
 	outrage: {
 		inherit: true,
 			self: {

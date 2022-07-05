@@ -47,6 +47,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'primed', '[silent]');
+			this.add('-message', `${pokemon.name} is no longer primed!`);
 		},
 	},
 
