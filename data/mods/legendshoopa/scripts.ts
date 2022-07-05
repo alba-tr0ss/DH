@@ -58,7 +58,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.statusData.duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
 			}
 	
-			/*
 			if (status.id && !this.battle.singleEvent('Start', status, this.statusData, this, source, sourceEffect)) {
 				this.battle.debug('status start [' + status.id + '] interrupted');
 				// cancel the setstatus
@@ -66,10 +65,11 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.statusData = prevStatusData;
 				return false;
 			}
-			*/
+			/*
 			if (status.id && !this.battle.runEvent('AfterSetStatus', this, source, sourceEffect, status)) {
 				return false;
 			}
+			*/
 			return true;
 		},
 
