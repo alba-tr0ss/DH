@@ -26,7 +26,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					this.battle.add('-fail', source);
 					this.battle.attrLastMove('[still]');
 				}
-				return false;
+				//return false;
 			}
 	
 			if (!ignoreImmunities && status.id &&
