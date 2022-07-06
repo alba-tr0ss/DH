@@ -85,14 +85,14 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onAnyTryMove(this, source, target, move) {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox')) return;
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
 					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
 					this.add('-message', 'cleared Status');
-					this.add('-curestatus', target, 'brn', '[Silent');
+					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
 		},
@@ -119,6 +119,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (this.randomChance(1, 4)) {
 				this.add('cant', pokemon, 'par');
 				return false;
+			}
+		},
+		onAnyTryMove(this, source, target, move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent');
+					target.setStatus('');
+				}
+			}	else if (move.status) {
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent]');
+					target.setStatus('');
 			}
 		},
 		onResidualOrder: 9,
@@ -148,14 +162,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.startTime = 6;
 			this.effectData.time = this.effectData.startTime;
 		},
-		/*
-		onModifyMove(move, pokemon) {
-			if (move.flags['defrost']) {
-				this.add('-curestatus', pokemon, 'frz', '[from] move: ' + move);
-				pokemon.setStatus('');
+		onAnyTryMove(this, source, target, move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent');
+					target.setStatus('');
+				}
+			}	else if (move.status) {
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent]');
+					target.setStatus('');
 			}
 		},
-		*/
 		onHit(target, source, move) {
 			if (move.thawsTarget || (move.id === 'flamewheel' || move.id === 'flareblitz') && move.category !== 'Status') {
 				target.cureStatus();
@@ -203,6 +223,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 			}
 		},
+		onAnyTryMove(this, source, target, move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent');
+					target.setStatus('');
+				}
+			}	else if (move.status) {
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent]');
+					target.setStatus('');
+			}
+		},
 
 		onFoeBasePowerPriority: 17,
 		onFoeBasePower(basePower, attacker, defender, move) {
@@ -243,6 +277,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
+		onAnyTryMove(this, source, target, move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent');
+					target.setStatus('');
+				}
+			}	else if (move.status) {
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent]');
+					target.setStatus('');
+			}
+		},
 	},
 	tox: {
 		name: 'tox',
@@ -272,6 +320,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-curestatus', pokemon, 'tox');
 				pokemon.setStatus('');
 				return;
+			}
+		},
+		onAnyTryMove(this, source, target, move) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				for (const secondary of move.secondaries) {
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent');
+					target.setStatus('');
+				}
+			}	else if (move.status) {
+					this.add('-message', 'cleared Status');
+					this.add('-curestatus', target, 'brn', '[Silent]');
+					target.setStatus('');
 			}
 		},
 	},
