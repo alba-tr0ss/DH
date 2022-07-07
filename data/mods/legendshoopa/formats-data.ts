@@ -422,11 +422,11 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 
 	magnemite: {
-		tier: "ANL LC,
+		tier: "ANL LC",
 		isModded: true,
 	},
 
-	megnaton: {
+	magneton: {
 		tier: "ANL NFE",
 		isModded: true,
 	},
