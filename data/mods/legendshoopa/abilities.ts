@@ -4,7 +4,22 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 
 
+	static: {
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				if (this.randomChance(3, 10)) {
+					target.setStatus('');
+					source.trySetStatus('par', target);
+				}
+			}
+		},
+		name: "Static",
+		rating: 2,
+		num: 9,
+	},
 
+	//just gonna leave this as is bc who the fuck cares about synchronoize
+	//(i am so tired please forgive me)
 	synchronize: {
 		inherit: true,
 		onAfterSetStatus(status, target, source, effect) {

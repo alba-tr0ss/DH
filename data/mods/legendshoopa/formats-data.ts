@@ -290,4 +290,199 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "ANL OU",
 		isModded: true,
 	},
+
+	geodude : {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	gravler: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	golem: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	nosepass: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	probopass: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	skitty: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	delcatty: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	zubat: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	golbat: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	crobat: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	tentacool: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	tentacruel: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	sableye: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+	
+	mawile: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	aron: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	lairon: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	aggron: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	machop: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	machoke: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	machamp: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	meditite: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	medicham: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	electrike: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	manectric: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	plusle: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	minun: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	magnemite: {
+		tier: "ANL LC,
+		isModded: true,
+	},
+
+	megnaton: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	magnezone: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	voltorb: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	electrode: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	volbeat: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	illumise: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	oddish: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	gloom: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	vileplume: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	bellosom: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	doduo: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	dodrio: {
+		tier: "ANL OU",
+		isModded: true,
+	},
 };
