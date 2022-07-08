@@ -41,50 +41,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return this.battle.modify(stat, (modifier || 1));
 		},
 
-		/*
-		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
-			statName = toID(statName) as StatNameExceptHP;
-			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
-			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
-	
-			// base stat
-			let stat = this.storedStats[statName];
-	
-			// Download ignores Wonder Room's effect, but this results in
-			// stat stages being calculated on the opposite defensive stat
-			if (unmodified && 'wonderroom' in this.battle.field.pseudoWeather) {
-				if (statName === 'def') {
-					statName = 'spd';
-				} else if (statName === 'spd') {
-					statName = 'def';
-				}
-			}
-	
-			// stat boosts
-			if (!unboosted) {
-				const boosts = this.battle.runEvent('ModifyBoost', this, null, null, {...this.boosts});
-				let boost = boosts[statName];
-				const boostTable = [1, 1.5];
-				if (boost > 1) boost = 1;
-				if (boost < -1) boost = -1;
-				if (boost >= 0) {
-					stat = Math.floor(stat * boostTable[boost]);
-				} else {
-					stat = Math.floor(stat / boostTable[-boost]);
-				}
-			}
-	
-			// stat modifier effects
-			if (!unmodified) {
-				const statTable: {[s in StatNameExceptHP]?: string} = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
-				stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
-			}
-	
-			if (statName === 'spe' && stat > 10000) stat = 10000;
-			return stat;
-		},
-		*/
-
 		boostBy(boosts: SparseBoostsTable) {
 			let delta = 0;
 			let boostName: BoostName;
@@ -94,6 +50,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				if (this.boosts[boostName] > 1) {
 					delta -= this.boosts[boostName] - 1;
 					this.boosts[boostName] = 1;
+					if (boostName === 'atk' || boostName === 'spa') {
+
+					}
 				}
 				if (this.boosts[boostName] < -1) {
 					delta -= this.boosts[boostName] - (-1);
@@ -102,6 +61,77 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 			return delta;
 		},
+
+		boost(
+			boost: SparseBoostsTable, target: Pokemon | null = null, source: Pokemon | null = null,
+			effect: Effect | null = null, isSecondary = false, isSelf = false
+		) {
+			if (this.event) {
+				if (!target) target = this.event.target;
+				if (!source) source = this.event.source;
+				if (!effect) effect = this.effect;
+			}
+			if (!target || !target.hp) return 0;
+			if (!target.isActive) return false;
+			if (this.gen > 5 && !target.side.foe.pokemonLeft) return false;
+			boost = this.runEvent('Boost', target, source, effect, {...boost});
+			let success = null;
+			let boosted = isSecondary;
+			let boostName: BoostName;
+			for (boostName in boost) {
+				const currentBoost: SparseBoostsTable = {};
+				currentBoost[boostName] = boost[boostName];
+
+				if (!currentBoost[boostName] && (boostName === 'atk' || boostName === 'spa')) {
+					this.add('-message', 'Attacke booste helle yeahe')
+				}
+
+				let boostBy = target.boostBy(currentBoost);
+				let msg = '-boost';
+				if (boost[boostName]! < 0) {
+					msg = '-unboost';
+					boostBy = -boostBy;
+				}
+				if (boostBy) {
+					success = true;
+					switch (effect?.id) {
+					case 'bellydrum':
+						this.add('-setboost', target, 'atk', target.boosts['atk'], '[from] move: Belly Drum');
+						break;
+					case 'bellydrum2':
+						this.add(msg, target, boostName, boostBy, '[silent]');
+						this.hint("In Gen 2, Belly Drum boosts by 2 when it fails.");
+						break;
+					case 'zpower':
+						this.add(msg, target, boostName, boostBy, '[zeffect]');
+						break;
+					default:
+						if (!effect) break;
+						if (effect.effectType === 'Move') {
+							this.add(msg, target, boostName, boostBy);
+						} else if (effect.effectType === 'Item') {
+							this.add(msg, target, boostName, boostBy, '[from] item: ' + effect.name);
+						} else {
+							if (effect.effectType === 'Ability' && !boosted) {
+								this.add('-ability', target, effect.name, 'boost');
+								boosted = true;
+							}
+							this.add(msg, target, boostName, boostBy);
+						}
+						break;
+					}
+					this.runEvent('AfterEachBoost', target, source, effect, currentBoost);
+				} else if (effect && effect.effectType === 'Ability') {
+					if (isSecondary) this.add(msg, target, boostName, boostBy);
+				} else if (!isSecondary && !isSelf) {
+					this.add(msg, target, boostName, boostBy);
+				}
+			}
+			this.runEvent('AfterBoost', target, source, effect, boost);
+			if (success && Object.values(boost).some(x => x! > 0)) target.statsRaisedThisTurn = true;
+			if (success && Object.values(boost).some(x => x! < 0)) target.statsLoweredThisTurn = true;
+			return success;
+		}
 
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
