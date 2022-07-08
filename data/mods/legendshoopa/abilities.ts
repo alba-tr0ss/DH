@@ -5,9 +5,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 
 	static: {
-		onDamagingHit(damage, target, source, move) {
+		onTryHit(this, source, target, move) {
 			if (move.flags['contact']) {
 				target.setStatus('');
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
 				source.trySetStatus('par', target);
 				/*
 				if (this.randomChance(3, 10)) {
