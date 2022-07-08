@@ -5,73 +5,40 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	},
 
 	pokemon: {
-		setStatus(
-			status: string | Condition,
-			source: Pokemon | null = null,
-			sourceEffect: Effect | null = null,
-			ignoreImmunities = false
-		) {
-			if (!this.hp) return false;
-			status = this.battle.dex.getEffect(status);
-			if (this.battle.event) {
-				if (!source) source = this.battle.event.source;
-				if (!sourceEffect) sourceEffect = this.battle.effect;
-			}
-			if (!source) source = this;
+		calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
+			statName = toID(statName) as StatNameExceptHP;
+			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
+			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
 	
-			if (this.status === status.id) {
-				if ((sourceEffect as Move)?.status === this.status) {
-					this.battle.add('-fail', this, this.status);
-				} else if ((sourceEffect as Move)?.status) {
-					this.battle.add('-fail', source);
-					this.battle.attrLastMove('[still]');
-				}
-				//return false;
-				return true;
-			}
+			// base stat
+			let stat = this.storedStats[statName];
 	
-			if (!ignoreImmunities && status.id &&
-					!(source?.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))) {
-				// the game currently never ignores immunities
-				if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
-					this.battle.debug('immune to status');
-					if ((sourceEffect as Move)?.status) {
-						this.battle.add('-immune', this);
-					}
-					return false;
-				}
-			}
-			const prevStatus = this.status;
-			const prevStatusData = this.statusData;
-			if (status.id) {
-				const result: boolean = this.battle.runEvent('SetStatus', this, source, sourceEffect, status);
-				if (!result) {
-					this.battle.debug('set status [' + status.id + '] interrupted');
-					return result;
+			// Wonder Room swaps defenses before calculating anything else
+			if ('wonderroom' in this.battle.field.pseudoWeather) {
+				if (statName === 'def') {
+					stat = this.storedStats['spd'];
+				} else if (statName === 'spd') {
+					stat = this.storedStats['def'];
 				}
 			}
 	
-			this.status = status.id;
-			this.statusData = {id: status.id, target: this};
-			if (source) this.statusData.source = source;
-			if (status.duration) this.statusData.duration = status.duration;
-			if (status.durationCallback) {
-				this.statusData.duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
+			// stat boosts
+			let boosts: SparseBoostsTable = {};
+			const boostName = statName as BoostName;
+			boosts[boostName] = boost;
+			boosts = this.battle.runEvent('ModifyBoost', this, null, null, boosts);
+			boost = boosts[boostName]!;
+			const boostTable = [1, 1.5];
+			if (boost > 1) boost = 1;
+			if (boost < -1) boost = -1;
+			if (boost >= 0) {
+				stat = Math.floor(stat * boostTable[boost]);
+			} else {
+				stat = Math.floor(stat / boostTable[-boost]);
 			}
 	
-			if (status.id && !this.battle.singleEvent('Start', status, this.statusData, this, source, sourceEffect)) {
-				this.battle.debug('status start [' + status.id + '] interrupted');
-				// cancel the setstatus
-				this.status = prevStatus;
-				this.statusData = prevStatusData;
-				//return false;
-				return true;
-			}
-			if (status.id && !this.battle.runEvent('AfterSetStatus', this, source, sourceEffect, status)) {
-				//return false;
-				return true;
-			}
-			return true;
+			// stat modifier
+			return this.battle.modify(stat, (modifier || 1));
 		},
 
 		modifyDamage(
