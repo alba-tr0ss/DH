@@ -5,25 +5,49 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 
 
 	static: {
+		onStart(pokemon) {
+			this.effectData.active = false;
+		},
 		onTryHit(this, source, target, move) {
 			if (move.flags['contact']) {
-				target.setStatus('');
+				if (this.randomChance(3, 10)) {
+					this.effectData.active = true;
+					target.setStatus('');
+				}
+				
 			}
 		},
 		onDamagingHit(damage, target, source, move) {
 			if (move.flags['contact']) {
-				source.trySetStatus('par', target);
-				/*
-				if (this.randomChance(3, 10)) {
-					target.setStatus('');
+				if (this.effectData.active === true) {
 					source.trySetStatus('par', target);
+					this.effectData.active = false;
+					return;
 				}
-				*/
 			}
 		},
 		name: "Static",
 		rating: 2,
 		num: 9,
+	},
+
+	
+	effectspore: {
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact'] && !source.status && source.runStatusImmunity('powder')) {
+				const r = this.random(100);
+				if (r < 11) {
+					source.setStatus('slp', target);
+				} else if (r < 21) {
+					source.setStatus('par', target);
+				} else if (r < 30) {
+					source.setStatus('psn', target);
+				}
+			}
+		},
+		name: "Effect Spore",
+		rating: 2,
+		num: 27,
 	},
 
 	//just gonna leave this as is bc who the fuck cares about synchronoize
