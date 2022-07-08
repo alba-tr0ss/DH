@@ -41,6 +41,66 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return this.battle.modify(stat, (modifier || 1));
 		},
 
+		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
+			statName = toID(statName) as StatNameExceptHP;
+			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
+			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+	
+			// base stat
+			let stat = this.storedStats[statName];
+	
+			// Download ignores Wonder Room's effect, but this results in
+			// stat stages being calculated on the opposite defensive stat
+			if (unmodified && 'wonderroom' in this.battle.field.pseudoWeather) {
+				if (statName === 'def') {
+					statName = 'spd';
+				} else if (statName === 'spd') {
+					statName = 'def';
+				}
+			}
+	
+			// stat boosts
+			if (!unboosted) {
+				const boosts = this.battle.runEvent('ModifyBoost', this, null, null, {...this.boosts});
+				let boost = boosts[statName];
+				const boostTable = [1, 1.5];
+				if (boost > 1) boost = 1;
+				if (boost < -1) boost = -1;
+				if (boost >= 0) {
+					stat = Math.floor(stat * boostTable[boost]);
+				} else {
+					stat = Math.floor(stat / boostTable[-boost]);
+				}
+			}
+	
+			// stat modifier effects
+			if (!unmodified) {
+				const statTable: {[s in StatNameExceptHP]?: string} = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
+				stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
+			}
+	
+			if (statName === 'spe' && stat > 10000) stat = 10000;
+			return stat;
+		},
+
+		boostBy(boosts: SparseBoostsTable) {
+			let delta = 0;
+			let boostName: BoostName;
+			for (boostName in boosts) {
+				delta = boosts[boostName]!;
+				this.boosts[boostName] += delta;
+				if (this.boosts[boostName] > 1) {
+					delta -= this.boosts[boostName] - 1;
+					this.boosts[boostName] = 1;
+				}
+				if (this.boosts[boostName] < -1) {
+					delta -= this.boosts[boostName] - (-1);
+					this.boosts[boostName] = -1;
+				}
+			}
+			return delta;
+		},
+
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
 		) {
