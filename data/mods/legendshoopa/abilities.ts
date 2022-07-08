@@ -30,24 +30,94 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 9,
 	},
-
 	
 	effectspore: {
+		onStart(pokemon) {
+			this.effectData.active = false;
+		},
+		onTryHit(this, source, target, move) {
+			if (move.flags['contact']) {
+				if (this.randomChance(3, 10)) {
+					this.effectData.active = true;
+					target.setStatus('');
+				}
+			}
+		},
 		onDamagingHit(damage, target, source, move) {
-			if (move.flags['contact'] && !source.status && source.runStatusImmunity('powder')) {
+			if (move.flags['contact'] && !source.status && source.runStatusImmunity('powder') && this.effectData.active === true) {
 				const r = this.random(100);
 				if (r < 11) {
 					source.setStatus('slp', target);
+					this.effectData.active = false;
+					return;
 				} else if (r < 21) {
 					source.setStatus('par', target);
+					this.effectData.active = false;
+					return;
 				} else if (r < 30) {
 					source.setStatus('psn', target);
+					this.effectData.active = false;
+					return;
 				}
 			}
 		},
 		name: "Effect Spore",
 		rating: 2,
 		num: 27,
+	},
+
+	flamebody: {
+		onStart(pokemon) {
+			this.effectData.active = false;
+		},
+		onTryHit(this, source, target, move) {
+			if (move.flags['contact']) {
+				if (this.randomChance(3, 10)) {
+					this.effectData.active = true;
+					target.setStatus('');
+				}
+				
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				if (this.effectData.active === true) {
+					source.trySetStatus('brn', target);
+					this.effectData.active = false;
+					return;
+				}
+			}
+		},
+		name: "Flame Body",
+		rating: 2,
+		num: 49,
+	},
+
+	poisonpoint: {
+		onStart(pokemon) {
+			this.effectData.active = false;
+		},
+		onTryHit(this, source, target, move) {
+			if (move.flags['contact']) {
+				if (this.randomChance(3, 10)) {
+					this.effectData.active = true;
+					target.setStatus('');
+				}
+				
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				if (this.effectData.active === true) {
+					source.trySetStatus('psn', target);
+					this.effectData.active = false;
+					return;
+				}
+			}
+		},
+		name: "Poison Point",
+		rating: 1.5,
+		num: 38,
 	},
 
 	//just gonna leave this as is bc who the fuck cares about synchronoize
