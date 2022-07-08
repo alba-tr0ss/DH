@@ -51,7 +51,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					delta -= this.boosts[boostName] - 1;
 					this.boosts[boostName] = 1;
 					if (boostName === 'atk' || boostName === 'spa') {
-
+						this.add('-message', 'Attacke booste helle yeahe')
 					}
 				}
 				if (this.boosts[boostName] < -1) {
