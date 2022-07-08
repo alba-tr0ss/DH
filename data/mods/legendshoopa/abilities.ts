@@ -7,10 +7,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	static: {
 		onDamagingHit(damage, target, source, move) {
 			if (move.flags['contact']) {
+				target.setStatus('');
+				source.trySetStatus('par', target);
+				/*
 				if (this.randomChance(3, 10)) {
 					target.setStatus('');
 					source.trySetStatus('par', target);
 				}
+				*/
 			}
 		},
 		name: "Static",
