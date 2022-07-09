@@ -663,7 +663,7 @@ export const Formats: FormatList = [
 			`&bullet: <a href="https://www.smogon.com/forums/threads/a-new-legend-hoopa.3703382/">Thread on Smogon.`,
 			`&bullet: <a href="https://docs.google.com/spreadsheets/d/1oBcQpXGar8CwoBpqbIa7Y1gVbx7HwtqtXMy_c017OoY/edit?usp=sharing">Spreadsheet.`,
 		],
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod', 'Legends Boosts Mod'],
 		banlist: [
 			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
 		],
