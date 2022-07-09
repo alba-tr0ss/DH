@@ -15,10 +15,11 @@ export const Formats: {[k: string]: FormatData} = {
 				if(boost[i]! === 1 || boost[i]! === 3) { //idk lol
 					//let altBoost: boost | undefined = stats.length ? this.sample(stats) : undefined;
 					//let altBoost : SparseBoostsTable = {};
-					const altBoost = boost === 'atk' ? 'spa' : 'atk';
+					const altBoost = boost === 'atk' ? 'atk' : 'spa';
 					if (altBoost) LegendsBoost[altBoost] = 2;
 				}
 				this.boost(LegendsBoost);
+				return;
 			}
 		},
 		/*
