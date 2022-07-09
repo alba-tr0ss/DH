@@ -23,7 +23,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					foeActive.removeVolatile('substitutebroken');
 				}
 			}
-			pokemon.addVolatile('legendsBoost');
+			pokemon.addVolatile('legendsboost');
 			pokemon.draggedIn = null;
 			return true;
 		},
