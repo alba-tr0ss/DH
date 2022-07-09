@@ -1,4 +1,26 @@
 export const Conditions: {[k: string]: ConditionData} = {	
+	legendsBoost: {
+		name: 'altBoost',
+		onStart(pokemon) {
+			this.add('-message', 'altBoost is here !');
+		},
+		onBoost(this, boost, target, source, effect) {
+			let i: BoostName;
+			for (i in boost) {
+				let LegendsBoost : SparseBoostsTable = {};
+				this.add('-message', `i (BoostName) is ${i}`);
+				if(boost[i]! === 1 || boost[i]! === 3) { //idk lol
+					//let altBoost: boost | undefined = stats.length ? this.sample(stats) : undefined;
+					//let altBoost : SparseBoostsTable = {};
+					const altBoost = boost === 'atk' ? 'spa' : 'atk';
+					if (altBoost) LegendsBoost[altBoost] = 2;
+				}
+				this.boost(LegendsBoost);
+			}
+		},
+	},
+
+
 	fixated: {
 		name: 'fixated',
 		onStart(target, source, effect) {
