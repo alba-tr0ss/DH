@@ -29,6 +29,13 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			boosts = this.battle.runEvent('ModifyBoost', this, null, null, boosts);
 			boost = boosts[boostName]!;
 			const boostTable = [1, 1.5];
+			let altBoost: BoostName;
+			for (altBoost in boosts) {
+				if (altBoost === 'atk' || altBoost === 'spa') { 
+					const addBoost = altBoost === 'atk' ? 'spa' : 'atk';
+					boosts = this.battle.runEvent('ModifyBoost', this, null, null, addBoost);
+				}
+			};
 			if (boost > 1) boost = 1;
 			if (boost < -1) boost = -1;
 			if (boost >= 0) {
@@ -51,7 +58,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					delta -= this.boosts[boostName] - 1;
 					this.boosts[boostName] = 1;
 					if (boostName === 'atk' || boostName === 'spa') {
-						const altBoost = boostName === 'atk' ? 'atk' : 'spa';
+						const altBoost = boostName === 'atk' ? 'spa' : 'atk';
 						delta -= this.boosts[altBoost] - 1;
 						this.boosts[altBoost] = 1;
 					}
@@ -83,10 +90,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			for (boostName in boost) {
 				const currentBoost: SparseBoostsTable = {};
 				currentBoost[boostName] = boost[boostName];
-
-				if ((currentBoost === 'atk' || currentBoost === 'spa')) {
-					this.add('-message', 'Attacke booste helle yeahe')
-				}
 
 				let boostBy = target.boostBy(currentBoost);
 				let msg = '-boost';
@@ -129,6 +132,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					this.add(msg, target, boostName, boostBy);
 				}
 			}
+
 			this.runEvent('AfterBoost', target, source, effect, boost);
 			if (success && Object.values(boost).some(x => x! > 0)) target.statsRaisedThisTurn = true;
 			if (success && Object.values(boost).some(x => x! < 0)) target.statsLoweredThisTurn = true;
