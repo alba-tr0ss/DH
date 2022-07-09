@@ -84,7 +84,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				const currentBoost: SparseBoostsTable = {};
 				currentBoost[boostName] = boost[boostName];
 
-				if (!currentBoost[boostName] && (boostName === 'atk' || boostName === 'spa')) {
+				if ((boostName === 'atk' || boostName === 'spa')) {
 					this.add('-message', 'Attacke booste helle yeahe')
 				}
 
