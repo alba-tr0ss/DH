@@ -5,6 +5,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', 'legendsboost is here !');
 		},
 		onBoost(this, boost, target, source, effect) {
+			this.add('-message', 'legendsboost is here !');
 			let i: BoostName;
 			for (i in boost) {
 				let LegendsBoost : SparseBoostsTable = {};
