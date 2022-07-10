@@ -30,7 +30,7 @@ export const Formats: {[k: string]: FormatData} = {
 				}
 			} 
 			if (activated === true) {
-				this.boost(LegendsBoost, target, target, null, true);
+				this.boost(LegendsBoost);
 				return;
 			}
 		},
