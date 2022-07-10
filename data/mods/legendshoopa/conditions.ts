@@ -4,7 +4,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		onAfterBoost(boost, pokemon) {
+		onAfterEachBoost(boost, pokemon) {
 			let activated = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
