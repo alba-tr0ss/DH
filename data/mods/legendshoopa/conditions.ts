@@ -4,7 +4,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		/*
 		onBoost(this, boost, target, source, effect) {
 			let i: BoostName;
 			for (i in boost) {
@@ -19,7 +18,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.boost(LegendsBoost);
 			}
 		},
-		*/
 	},
 
 
