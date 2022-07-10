@@ -11,24 +11,26 @@ export const Formats: {[k: string]: FormatData} = {
 			let activated = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
-			if (boost.spa) {
-				LegendsBoost.atk = -1 * boost.spa;
-				activated = true;
-			}
-			if (boost.spd) {
-				LegendsBoost.def = -1 * boost.spd;
-				activated = true;
-			}
-			if (boost.atk) {
-				LegendsBoost.spa = -1 * boost.atk;
-				activated = true;
-			}
-			if (boost.def) {
-				LegendsBoost.spd = -1 * boost.def;
-				activated = true;
-			}
-			if (activated === true) {
+			if(activated === false) {
+				if (boost.spa) {
+					LegendsBoost.atk = 1 * boost.spa;
+					activated = true;
+				}
+				if (boost.spd) {
+					LegendsBoost.def = 1 * boost.spd;
+					activated = true;
+				}
+				if (boost.atk) {
+					LegendsBoost.spa = 1 * boost.atk;
+					activated = true;
+				}
+				if (boost.def) {
+					LegendsBoost.spd = 1 * boost.def;
+					activated = true;
+				}
+			} else if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
+				return;
 			}
 		},
 		/*
