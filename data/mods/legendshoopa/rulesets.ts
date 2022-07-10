@@ -10,6 +10,11 @@ export const Formats: {[k: string]: FormatData} = {
 		onSwitchIn(pokemon) {
 			pokemon.addVolatile('legendsboost');
 		},
+		onResidual(pokemon) {
+			if(!pokemon.volatiles['legendsboost']) {
+				pokemon.addVolatile('legendsboost')
+			}
+		}
 		/*
 		onAfterBoost(boost) {
 			let activated = false;

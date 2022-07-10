@@ -4,18 +4,30 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		onBoost(this, boost, target, source, effect) {
-			let i: BoostName;
-			for (i in boost) {
-				let LegendsBoost : SparseBoostsTable = {};
-				this.add('-message', `i (BoostName) is ${i}`);
-				if(boost[i]! === 1 || boost[i]! === 3) { //idk lol
-					//let altBoost: boost | undefined = stats.length ? this.sample(stats) : undefined;
-					//let altBoost : SparseBoostsTable = {};
-					const altBoost = boost === 'atk' ? 'spa' : 'atk';
-					if (altBoost) LegendsBoost[altBoost] = 2;
-				}
+		onBoost(boost, pokemon) {
+			let activated = false;
+			let boostName: BoostName;
+			const LegendsBoost : SparseBoostsTable = {};
+			if (boost.spa) {
+				LegendsBoost.atk = 1 * boost.spa;
+				activated = true;
+			}
+			if (boost.spd) {
+				LegendsBoost.def = 1 * boost.spd;
+				activated = true;
+			}
+			if (boost.atk) {
+				LegendsBoost.spa = 1 * boost.atk;
+				activated = true;
+			}
+			if (boost.def) {
+				LegendsBoost.spd = 1 * boost.def;
+				activated = true;
+			}
+			if (activated === true) {
 				this.boost(LegendsBoost);
+				pokemon.removeVolatile('legendsboost');
+				return;
 			}
 		},
 	},
