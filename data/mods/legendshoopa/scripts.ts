@@ -133,6 +133,12 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 					case 'zpower':
 						this.add(msg, target, boostName, boostBy, '[zeffect]');
 						break;
+					case 'legendsboostsmod':
+						this.add('-message', "boost in scripts.ts activated");
+						if (success && Object.values(boost).some(x => x! > 0)) target.statsRaisedThisTurn = true;
+						if (success && Object.values(boost).some(x => x! < 0)) target.statsLoweredThisTurn = true;
+						return success;
+						break;
 					default:
 						if (!effect) break;
 						if (effect.effectType === 'Move') {
