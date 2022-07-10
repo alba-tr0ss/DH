@@ -4,20 +4,26 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		onAfterEachBoost(boost, pokemon) {
+		onModifyBoost(boost, pokemon) {
 			let activated = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
+			if (boost.atk) {
+				//LegendsBoost.spa = 1 * boost.atk;
+				this.effectData.atkBoost = 1 * boost.atk;
+				delete boost.atk;
+				pokemon.addVolatile('atkBoost');
+				activated = true;
+			}
 			if (boost.spa) {
-				LegendsBoost.atk = 1 * boost.spa;
+				//LegendsBoost.atk = 1 * boost.spa;
+				this.effectData.atkBoost = 1 * boost.spa;
+				delete boost.spa;
+				pokemon.addVolatile('atkBoost');
 				activated = true;
 			}
 			if (boost.spd) {
 				LegendsBoost.def = 1 * boost.spd;
-				activated = true;
-			}
-			if (boost.atk) {
-				LegendsBoost.spa = 1 * boost.atk;
 				activated = true;
 			}
 			if (boost.def) {
@@ -25,8 +31,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 				activated = true;
 			}
 			if (activated === true) {
-				pokemon.removeVolatile('legendsboost');
-				this.boost(LegendsBoost);
+				//pokemon.removeVolatile('legendsboost');
+				//this.boost(LegendsBoost);
 				return;
 			}
 		},
@@ -34,6 +40,24 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'legendsboost', '[silent]');
 			this.add('-message', `hhhhhh`);
+		},
+	},
+
+	atkboost: {
+		name: 'atkboost',
+		onStart(pokemon) {
+			this.add('-message', 'atkboost is here !');
+
+			if(pokemon.volatiles['atkboost'].effectData.atkBoost < 0) {
+				this.boost({atk: -1, spa: -1});
+			} else {
+				this.boost({atk: 1, spa: 1});
+			}
+		},
+
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'atkboost', '[silent]');
+			this.add('-message', `atkboost gone :(`);
 		},
 	},
 
