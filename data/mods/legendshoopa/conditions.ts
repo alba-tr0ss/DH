@@ -25,8 +25,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 				activated = true;
 			}
 			if (activated === true) {
-				this.boost(LegendsBoost);
 				pokemon.removeVolatile('legendsboost');
+				this.boost(LegendsBoost);
 				return;
 			}
 		},
