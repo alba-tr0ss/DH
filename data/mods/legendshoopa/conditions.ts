@@ -47,12 +47,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		name: 'atkboost',
 		onStart(pokemon) {
 			this.add('-message', 'atkboost is here !');
-
-			if(pokemon.volatiles['legendsboost'].effectData.atkBoost < 0) {
-				this.boost({atk: -1, spa: -1});
-			} else {
-				this.boost({atk: 1, spa: 1});
-			}
+			this.boost({atk: 1, spa: 1});
 		},
 
 		onEnd(pokemon) {
