@@ -28,7 +28,8 @@ export const Formats: {[k: string]: FormatData} = {
 					LegendsBoost.spd = 1 * boost.def;
 					activated = true;
 				}
-			} else if (activated === true) {
+			} 
+			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 				return;
 			}
