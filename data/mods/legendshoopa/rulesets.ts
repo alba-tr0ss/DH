@@ -11,7 +11,7 @@ export const Formats: {[k: string]: FormatData} = {
 			let activated = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
-			if(activated === false && this.effectData.legendsBoosted === true) {
+			if(activated === false && (this.effectData.legendsBoosted === true || this.effectData.legendsBoosted === undefined)) {
 				if (boost.spa) {
 					LegendsBoost.atk = 1 * boost.spa;
 					activated = true;
