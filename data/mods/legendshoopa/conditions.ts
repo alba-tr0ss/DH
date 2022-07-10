@@ -30,6 +30,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
+
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'legendsboost', '[silent]');
+			this.add('-message', `hhhhhh`);
+		},
 	},
 
 
