@@ -11,7 +11,7 @@ export const Formats: {[k: string]: FormatData} = {
 			pokemon.addVolatile('legendsboost');
 		},
 		onResidual(pokemon) {
-			if(!pokemon.getVolatile('legendsboost')) {
+			if(pokemon.volatiles['legendsboost'] !== undefined || !pokemon.volatiles['legendsboost']) {
 				pokemon.addVolatile('legendsboost')
 			}
 		}
