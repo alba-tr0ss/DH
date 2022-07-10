@@ -7,7 +7,7 @@ export const Formats: {[k: string]: FormatData} = {
 		onBegin() {
 			this.add('rule', "Legends Boost Mod: Stat changes imitate Legends: Arceus's !");
 		},
-		onAfterBoost(this, boost, target, source, effect) {
+		onModifyBoost(boost) {
 			let activated = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
