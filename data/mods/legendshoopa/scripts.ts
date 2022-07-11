@@ -54,13 +54,6 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			boosts = this.battle.runEvent('ModifyBoost', this, null, null, boosts);
 			boost = boosts[boostName]!;
 			const boostTable = [1, 1.5];
-			let altBoost: BoostName;
-			for (altBoost in boosts) {
-				if (altBoost === 'atk' || altBoost === 'spa') { 
-					const addBoost = altBoost === 'atk' ? 'spa' : 'atk';
-					boosts = this.battle.runEvent('ModifyBoost', this, null, null, addBoost);
-				}
-			};
 			if (boost > 1) boost = 1;
 			if (boost < -1) boost = -1;
 			if (boost >= 0) {
