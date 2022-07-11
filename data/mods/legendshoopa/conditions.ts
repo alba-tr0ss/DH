@@ -11,22 +11,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			const LegendsBoost : SparseBoostsTable = {};
 			if (boost.atk) {
 				LegendsBoost.spa = 1 * boost.atk;
-				/*
-				if(LegendsBoost.atk > 0) {
-					pokemon.addVolatile('atkBoost');
-				} else {
-					pokemon.addVolatile('atkDrop');
-				}
-				delete boost.atk;
-				*/
 				activated = true;
 			}
 			if (boost.spa) {
 				LegendsBoost.atk = 1 * boost.spa;
-				/*
-				delete boost.spa;
-				pokemon.addVolatile('atkBoost');
-				*/
 				activated = true;
 			}
 			if (boost.spd) {
@@ -38,46 +26,15 @@ export const Conditions: {[k: string]: ConditionData} = {
 				activated = true;
 			}
 			if (activated === true) {
-				//pokemon.removeVolatile('legendsboost');
-				this.boost(LegendsBoost);
+				this.boost(LegendsBoost, target, target, null, true);
 				return;
 			}
 		},
 
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'legendsboost', '[silent]');
-			this.add('-message', `hhhhhh`);
 		},
 	},
-
-	/*
-	atkboost: {
-		name: 'atkboost',
-		onStart(pokemon) {
-			this.add('-message', 'atkboost is here !');
-			this.boost({atk: 1, spa: 1});
-		},
-
-		onEnd(pokemon) {
-			this.add('-end', pokemon, 'atkboost', '[silent]');
-			this.add('-message', `atkboost gone :(`);
-		},
-	},
-
-	atkdrop: {
-		name: 'atkboost',
-		onStart(pokemon) {
-			this.add('-message', 'atkboost is here !');
-			this.boost({atk: -1, spa: -1});
-		},
-
-		onEnd(pokemon) {
-			this.add('-end', pokemon, 'atkdrop', '[silent]');
-			this.add('-message', `atkdrop gone :(`);
-		},
-	},
-	*/
-
 
 	fixated: {
 		name: 'fixated',
