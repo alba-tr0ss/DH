@@ -106,7 +106,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	
 			if (statName === 'spe' && stat > 10000) stat = 10000;
 			return stat;
-		}
+		},
 
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
