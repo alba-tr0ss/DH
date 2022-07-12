@@ -66,6 +66,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return this.battle.modify(stat, (modifier || 1));
 		},
 
+		/*
 		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
 			statName = toID(statName) as StatNameExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
@@ -107,6 +108,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			if (statName === 'spe' && stat > 10000) stat = 10000;
 			return stat;
 		},
+		*/
 
 		modifyDamage(
 			baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false
