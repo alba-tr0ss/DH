@@ -4,42 +4,43 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		customTiers: ['ANL OU', 'ANL NFE', 'ANL LC'],
 	},
 
+	calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
+		statName = toID(statName) as StatNameExceptHP;
+		// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
+		if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+
+		// base stat
+		let stat = this.storedStats[statName];
+
+		// Wonder Room swaps defenses before calculating anything else
+		if ('wonderroom' in this.battle.field.pseudoWeather) {
+			if (statName === 'def') {
+				stat = this.storedStats['spd'];
+			} else if (statName === 'spd') {
+				stat = this.storedStats['def'];
+			}
+		}
+
+		// stat boosts
+		let boosts: SparseBoostsTable = {};
+		const boostName = statName as BoostName;
+		boosts[boostName] = boost;
+		boosts = this.battle.runEvent('ModifyBoost', this, null, null, boosts);
+		boost = boosts[boostName]!;
+		const boostTable = [1, 1.5];
+		if (boost > 1) boost = 1;
+		if (boost < -1) boost = -1;
+		if (boost >= 0) {
+			stat = Math.floor(stat * boostTable[boost]);
+		} else {
+			stat = Math.floor(stat / boostTable[-boost]);
+		}
+
+		// stat modifier
+		return this.battle.modify(stat, (modifier || 1));
+	},
 	init: function (){ 
-		calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
-			statName = toID(statName) as StatNameExceptHP;
-			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
-			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
-	
-			// base stat
-			let stat = this.storedStats[statName];
-	
-			// Wonder Room swaps defenses before calculating anything else
-			if ('wonderroom' in this.battle.field.pseudoWeather) {
-				if (statName === 'def') {
-					stat = this.storedStats['spd'];
-				} else if (statName === 'spd') {
-					stat = this.storedStats['def'];
-				}
-			}
-	
-			// stat boosts
-			let boosts: SparseBoostsTable = {};
-			const boostName = statName as BoostName;
-			boosts[boostName] = boost;
-			boosts = this.battle.runEvent('ModifyBoost', this, null, null, boosts);
-			boost = boosts[boostName]!;
-			const boostTable = [1, 1.5];
-			if (boost > 1) boost = 1;
-			if (boost < -1) boost = -1;
-			if (boost >= 0) {
-				stat = Math.floor(stat * boostTable[boost]);
-			} else {
-				stat = Math.floor(stat / boostTable[-boost]);
-			}
-	
-			// stat modifier
-			return this.battle.modify(stat, (modifier || 1));
-		},
+		
 	},
 
 	pokemon: {
