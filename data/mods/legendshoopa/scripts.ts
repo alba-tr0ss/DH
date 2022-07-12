@@ -4,32 +4,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		customTiers: ['ANL OU', 'ANL NFE', 'ANL LC'],
 	},
 
-	pokemon: {
-		/*
-		runSwitch(pokemon) { // modified for Hoard
-			this.runEvent('Swap', pokemon);
-			this.runEvent('SwitchIn', pokemon);
-			if (this.gen <= 2 && !pokemon.side.faintedThisTurn && pokemon.draggedIn !== this.turn) {
-				this.runEvent('AfterSwitchInSelf', pokemon);
-			}
-			if (!pokemon.hp) return false;
-			pokemon.isStarted = true;
-			if (!pokemon.fainted) {
-				this.singleEvent('Start', pokemon.getAbility(), pokemon.abilityData, pokemon);
-				pokemon.abilityOrder = this.abilityOrder++;
-				this.singleEvent('Start', pokemon.getItem(), pokemon.itemData, pokemon);
-			}
-			if (this.gen === 4) {
-				for (const foeActive of pokemon.side.foe.active) {
-					foeActive.removeVolatile('substitutebroken');
-				}
-			}
-			pokemon.addVolatile('legendsboost');
-			pokemon.draggedIn = null;
-			return true;
-		},
-		*/
-
+	init(){ 
 		calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
 			statName = toID(statName) as StatNameExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
@@ -65,6 +40,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			// stat modifier
 			return this.battle.modify(stat, (modifier || 1));
 		},
+	},
+
+	pokemon: {
 
 		/*
 		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
