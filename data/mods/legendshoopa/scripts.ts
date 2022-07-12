@@ -4,7 +4,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		customTiers: ['ANL OU', 'ANL NFE', 'ANL LC'],
 	},
 
-	init(){ 
+	init: function (){ 
 		calculateStat(statName: StatNameExceptHP, boost: number, modifier?: number) {
 			statName = toID(statName) as StatNameExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
