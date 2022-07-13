@@ -61,16 +61,18 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 				//if(effect.id === 'secondaryeffect')
 				this.effectData.time = this.effectData.startTime;
+				this.add("-message", `Start time is ${this.effectData.startTime}`);
 				return;
 			}
 		},
 
 		onResidual(pokemon) {
-			this.damage(pokemon.baseMaxhp / 16);
 			pokemon.statusData.time--;
+			this.add("-message", `Current time is ${this.effectData.time}`);
 			if (pokemon.statusData.time <= 0) {
 				this.add('-clearallboost');
 				pokemon.clearBoosts();
+				this.add("-message", `Boosts cleared`);
 				return;
 			}
 		},
