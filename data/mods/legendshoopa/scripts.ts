@@ -87,6 +87,23 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	},
 
 	pokemon: {
+		boostBy(boosts: SparseBoostsTable) {
+			let delta = 0;
+			let boostName: BoostName;
+			for (boostName in boosts) {
+				delta = boosts[boostName]!;
+				this.boosts[boostName] += delta;
+				if (this.boosts[boostName] > 1) {
+					delta -= this.boosts[boostName] - 1;
+					this.boosts[boostName] = 1;
+				}
+				if (this.boosts[boostName] < -1) {
+					delta -= this.boosts[boostName] - (-1);
+					this.boosts[boostName] = -1;
+				}
+			}
+			return delta;
+		}
 
 		/*
 		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
