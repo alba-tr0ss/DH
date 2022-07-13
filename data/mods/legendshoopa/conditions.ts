@@ -4,12 +4,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		/*
-		need to:
-		- detect how many stats are being changed with boost
-		- set the duration appropriately
-
-		*/
 		onBoost(boost, target, source, effect) {
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
@@ -49,7 +43,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				4 turns for double-stat boosters
 				3 turns for omniboosts or stat boosts gained by an offensive move's effect
 				*/
-				this.effectData.startTime = 6;
+				this.effectData.startTime = 7;
 				if(this.effectData.atkBoosted) {
 					this.effectData.startTime -= 1;
 				}
@@ -67,7 +61,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 
 		onResidual(pokemon) {
-			pokemon.statusData.time -= 1;
+			this.effectData.time -= 1;
 			this.add("-message", `Current time is ${this.effectData.time}`);
 			if (pokemon.statusData.time <= 0) {
 				this.add('-clearallboost');
