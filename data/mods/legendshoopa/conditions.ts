@@ -4,7 +4,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		onAfterBoost(boost, target, source, effect) {
+		onModifyBoost(boost, target, source, effect) {
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
 			let boostName: BoostName;
