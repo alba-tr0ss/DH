@@ -80,7 +80,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 
 		if (statName === 'spe' && stat > 10000) stat = 10000;
 		return stat;
-	}
+	},
 
 	init: function (){ 
 		
