@@ -69,6 +69,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.damage(pokemon.baseMaxhp / 16);
 			pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
+				this.add('-clearallboost');
 				pokemon.clearBoosts();
 				return;
 			}
