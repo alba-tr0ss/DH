@@ -4,29 +4,35 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
-		onModifyBoost(boost, target, source, effect) {
-			if (!boost || effect.id === 'legendsboost') return;
+		onModifyBoost(this, boost, pokemon) {
+			if (!boost || (this.effectData.atkBoosted || this.effectData.defBoosted)) return;
 			let activated = false;
+			this.effectData.atkBoosted = false;
+			this.effectData.defBoosted = false;
 			let boostName: BoostName;
 			const LegendsBoost : SparseBoostsTable = {};
 			if (boost.atk) {
 				LegendsBoost.spa = 1 * boost.atk;
+				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spa) {
 				LegendsBoost.atk = 1 * boost.spa;
+				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spd) {
 				LegendsBoost.def = 1 * boost.spd;
+				this.effectData.defBoosted = true;
 				activated = true;
 			}
 			if (boost.def) {
 				LegendsBoost.spd = 1 * boost.def;
+				this.effectData.defBoosted = true;
 				activated = true;
 			}
 			if (activated === true) {
-				this.boost(LegendsBoost, target, target, null, true);
+				this.boost(LegendsBoost, pokemon, pokemon, null, true);
 				return;
 			}
 		},
