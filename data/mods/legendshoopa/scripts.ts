@@ -103,7 +103,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				}
 			}
 			return delta;
-		}
+		},
 
 		/*
 		getStat(statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean) {
