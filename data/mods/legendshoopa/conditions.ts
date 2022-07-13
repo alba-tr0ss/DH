@@ -4,29 +4,72 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(pokemon) {
 			this.add('-message', 'legendsboost is here !');
 		},
+		/*
+		need to:
+		- detect how many stats are being changed with boost
+		- set the duration appropriately
+
+		*/
 		onBoost(boost, target, source, effect) {
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
 			let boostName: BoostName;
+			this.effectData.atkBoosted = false;
+			this.effectData.defBoosted = false;
+			this.effectData.speBoosted = false;
+
 			const LegendsBoost : SparseBoostsTable = {};
 			if (boost.atk) {
 				LegendsBoost.spa = 1 * boost.atk;
+				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spa) {
 				LegendsBoost.atk = 1 * boost.spa;
+				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spd) {
 				LegendsBoost.def = 1 * boost.spd;
+				this.effectData.defBoosted = true;
 				activated = true;
 			}
 			if (boost.def) {
 				LegendsBoost.spd = 1 * boost.def;
+				this.effectData.defBoosted = true;
 				activated = true;
+			}
+			if(boost.spe) {
+				this.effectData.speBoosted = true;
 			}
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
+				/*
+				5 turns for single-stat boosters
+				4 turns for double-stat boosters
+				3 turns for omniboosts or stat boosts gained by an offensive move's effect
+				*/
+				this.effectData.startTime = 6;
+				if(this.effectData.atkDuration) {
+					this.effectData.startTime -= 1;
+				}
+				if(this.effectData.defDuration) {
+					this.effectData.startTime -= 1;
+				}
+				if(this.effectData.speDuration) {
+					this.effectData.startTime -= 1;
+				}
+				//if(effect.id === 'secondaryeffect')
+				this.effectData.time = this.effectData.startTime;
+				return;
+			}
+		},
+
+		onResidual(pokemon) {
+			this.damage(pokemon.baseMaxhp / 16);
+			pokemon.statusData.time--;
+			if (pokemon.statusData.time <= 0) {
+				pokemon.clearBoosts();
 				return;
 			}
 		},
