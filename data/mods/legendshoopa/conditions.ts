@@ -63,7 +63,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(pokemon) {
 			this.effectData.time -= 1;
 			this.add("-message", `Current time is ${this.effectData.time}`);
-			if (pokemon.statusData.time <= 0) {
+			if (this.effectData.time <= 0) {
 				this.add('-clearallboost');
 				pokemon.clearBoosts();
 				this.add("-message", `Boosts cleared`);
