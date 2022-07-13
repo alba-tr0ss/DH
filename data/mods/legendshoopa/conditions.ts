@@ -50,13 +50,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 				3 turns for omniboosts or stat boosts gained by an offensive move's effect
 				*/
 				this.effectData.startTime = 6;
-				if(this.effectData.atkDuration) {
+				if(this.effectData.atkBoosted) {
 					this.effectData.startTime -= 1;
 				}
-				if(this.effectData.defDuration) {
+				if(this.effectData.defBoosted) {
 					this.effectData.startTime -= 1;
 				}
-				if(this.effectData.speDuration) {
+				if(this.effectData.speBoosted) {
 					this.effectData.startTime -= 1;
 				}
 				//if(effect.id === 'secondaryeffect')
