@@ -50,7 +50,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			name: 'jaggedsplinters',
 			duration: 3,
 			onStart(side) {
-				this.add('-sidestart', side, 'Jagged Splinters');
+				this.add('-start', side, 'move: Stealth Rock');
 			},
 	
 			onResidual(pokemon) {
