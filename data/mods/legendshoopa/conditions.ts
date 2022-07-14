@@ -71,27 +71,26 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 	},
 
-	/*
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side) {
 			this.add('-sidestart', side, 'Jagged Splinters');
 		},
 
+		/*
 		onAfterMove(source, target, move) {
 			this.effectData.jaggedType = move.type;
 		},
+		*/
 
 		onResidual(pokemon) {
-			const jaggedHazard = this.dex.getActiveMove('Stealth Rock');
-			jaggedHazard.type = this.effectData.jaggedType;
-			const typeMod = this.clampIntRange(pokemon.runEffectiveness(jaggedHazard), -6, 6);
-			const damage = this.getDamage(pokemon, pokemon, 25);
-			if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
-			this.damage(damage * typeMod);
-		},
+				this.add('-message', 'residual active');
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
+				const damage = this.getDamage(pokemon, pokemon, 25);
+				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
+				this.damage(damage * typeMod);
+			},
 	},
-	*/
 
 	fixated: {
 		name: 'fixated',

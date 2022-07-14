@@ -45,7 +45,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Physical",
-		volatileStatus: 'jaggedsplinters',
+		secondary: {
+			chance: 100,
+			volatileStatus: 'jaggedsplinters',
+		},
+		/*
 		condition: {
 			name: 'jaggedsplinters',
 			duration: 3,
@@ -61,5 +65,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.damage(damage * typeMod);
 			},
 		}
+		*/
 	},
 };
