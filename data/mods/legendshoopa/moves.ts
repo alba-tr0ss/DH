@@ -39,4 +39,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'fixated',
 		},
 	},
+
+	stealthrock: {
+		inherit: true,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		self: {
+			onHit(source) {
+				source.side.foe.addSideCondition('jaggedsplinters');
+			},
+		},
+		sideCondition: undefined,
+	},
 };

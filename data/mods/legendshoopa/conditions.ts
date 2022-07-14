@@ -1,9 +1,6 @@
 export const Conditions: {[k: string]: ConditionData} = {	
 	legendsboost: {
 		name: 'legendsboost',
-		onStart(pokemon) {
-			this.add('-message', 'legendsboost is here !');
-		},
 		onBoost(boost, target, source, effect) {
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
@@ -55,7 +52,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 				//if(effect.id === 'secondaryeffect')
 				this.effectData.time = this.effectData.startTime;
-				this.add("-message", `Start time is ${this.effectData.startTime}`);
 				return;
 			}
 		},
@@ -64,15 +60,30 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.time -= 1;
 			this.add("-message", `Current time is ${this.effectData.time}`);
 			if (this.effectData.time <= 0) {
-				this.add('-clearallboost');
+				this.add('-clearboost');
 				pokemon.clearBoosts();
-				this.add("-message", `Boosts cleared`);
 				return;
 			}
 		},
 
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'legendsboost', '[silent]');
+		},
+	},
+
+	jaggedsplinters: {
+		name: 'jaggedsplinters',
+		onStart(side) {
+			this.add('-sidestart', side, 'Jagged splinters litter the field!');
+		},
+
+		onAfterHit(source, target, move) {
+			this.effectData.jagType = move.type;
+		},
+
+		onResidual(pokemon) {
+			const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.effectData.jagType), -6, 6);
+			const damage = this.getDamage(pokemon, pokemon, 25);
 		},
 	},
 
