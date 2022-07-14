@@ -74,7 +74,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side) {
-			this.add('-sidestart', side, 'Jagged Splinters');
+			this.add('-start', side, 'Jagged Splinters');
 		},
 
 		/*
@@ -85,7 +85,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidual(pokemon) {
 				this.add('-message', 'residual active');
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
+				if(this.effectData.isSpikes === true) {
+					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Spikes')), -6, 6);
+				}
 				const damage = this.getDamage(pokemon, pokemon, 25);
 				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
 				this.damage(damage * typeMod);

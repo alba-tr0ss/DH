@@ -49,22 +49,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		/*
-		condition: {
-			name: 'jaggedsplinters',
-			duration: 3,
-			onStart(side) {
-				this.add('-start', side, 'move: Stealth Rock');
-			},
-	
-			onResidual(pokemon) {
-				this.add('-message', 'residual active');
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
-				const damage = this.getDamage(pokemon, pokemon, 25);
-				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
-				this.damage(damage * typeMod);
-			},
-		}
-		*/
+		sideCondition: undefined,
+	},
+
+	spikes: {
+		inherit: true,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		secondary: {
+			chance: 100,
+			volatileStatus: 'jaggedsplinters',
+		},
+		onHit(this, target, source, move) {
+			this.effectData.isSpikes = true;
+		},
 	},
 };

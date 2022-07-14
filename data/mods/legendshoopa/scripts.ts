@@ -83,7 +83,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	},
 
 	init: function (){ 
-		
+		this.modData('Learnsets', 'gyarados').learnset.spikes = ['8L1'];
 	},
 
 	pokemon: {
