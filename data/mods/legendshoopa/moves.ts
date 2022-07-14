@@ -45,11 +45,18 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Physical",
-		self: {
-			onHit(source) {
-				source.side.foe.addSideCondition('jaggedsplinters');
+		sideCondition: 'jaggedsplinters',
+		condition: {
+			onStart(side) {
+				this.add('-sidestart', side, 'Jagged Splinters');
 			},
-		},
-		sideCondition: undefined,
+	
+			onResidual(pokemon) {
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')));
+				const damage = this.getDamage(pokemon, pokemon, 25);
+				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
+				this.damage(damage * typeMod);
+			},
+		}
 	},
 };

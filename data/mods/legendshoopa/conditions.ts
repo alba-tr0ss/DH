@@ -71,6 +71,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 	},
 
+	/*
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side) {
@@ -90,6 +91,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.damage(damage * typeMod);
 		},
 	},
+	*/
 
 	fixated: {
 		name: 'fixated',
