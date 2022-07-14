@@ -83,7 +83,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidual(pokemon) {
 			const jaggedHazard = this.dex.getActiveMove('Stealth Rock');
-			jaggedHazard.type = this.effectData.jaggedType.type;
+			jaggedHazard.type = this.effectData.jaggedType;
 			const typeMod = this.clampIntRange(pokemon.runEffectiveness(jaggedHazard), -6, 6);
 			const damage = this.getDamage(pokemon, pokemon, 25);
 			if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
