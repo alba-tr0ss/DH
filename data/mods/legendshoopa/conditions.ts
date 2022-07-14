@@ -78,7 +78,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 
 		onAfterMove(source, target, move) {
-			this.effectData.jaggedType = this.dex.getActiveMove(move);
+			this.effectData.jaggedType = move.type;
 		},
 
 		onResidual(pokemon) {
