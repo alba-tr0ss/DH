@@ -45,8 +45,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Physical",
-		sideCondition: 'jaggedsplinters',
+		volatileStatus: 'jaggedsplinters',
 		condition: {
+			name: 'jaggedsplinters',
+			duration: 3,
 			onStart(side) {
 				this.add('-sidestart', side, 'Jagged Splinters');
 			},
