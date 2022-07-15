@@ -232,7 +232,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	},
 
 
-
+/*
 	init(){ 
 		const addNewMoves = (pokemonid: string, moveids: string[]) => {
 			for (const moveid of moveids) {
@@ -247,4 +247,5 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		'dragonbreath', 'dragonpulse', 'eruption', 'fireblast', 'focusblast', 'lavaplume', 'overheat', 'solarbeam',
 		'block', 'grassyterrain', 'roar', 'rototiller', 'stockpile', 'spitup', 'swallow', 'willowisp',]);
 	},
+	*/
 };
