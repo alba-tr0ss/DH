@@ -88,7 +88,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	gloom: {
 		inherit: true,
 		evos: ["Bellossom", "Bellossom-Hoenn"],
-	}
+	},
 
 	bellossom: {
 		inherit: true,
