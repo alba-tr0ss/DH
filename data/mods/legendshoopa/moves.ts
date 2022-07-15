@@ -1,6 +1,41 @@
 export const Moves: {[k: string]: ModdedMoveData} = {
 
+	tephrablast: {
+		num: -100,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Tephra Blast",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'jaggedsplinters',
+		},
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
 
+	eeriereflection: {
+		num: -101,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		name: "Eerie Reflection",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spa: -1,
+			},
+		},
+		target: "allAdjacentFoes",
+		type: "Dragon",
+	},
 
 	/// canon moves ///
 

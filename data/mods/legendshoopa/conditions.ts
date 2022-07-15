@@ -50,9 +50,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 				if(this.effectData.speBoosted) {
 					this.effectData.startTime -= 1;
 				}
-				//if(effect.id === 'secondaryeffect')
+				if(effect.effectType === 'Move' && !effect.status) {
+					this.effectData.startTime = 4;
+				}
 
-				if(this.dex.getAbility('remaininghope')) {
+				if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 4) {
 					this.effectData.startTime += 1;
 				}
 				this.effectData.time = this.effectData.startTime;

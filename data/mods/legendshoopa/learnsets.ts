@@ -304,7 +304,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			sandstorm: ["7M", "6M", "5M", "4M", "3M"],
 			secretpower: ["6M", "4M", "3M"],
 			selfdestruct: ["3T"],
-			shellsmash: ["7L1", "6L38", "5L38"],
+			//shellsmash: ["7L1", "6L38", "5L38"],
 			sleeptalk: ["7M", "7V", "6M", "5T", "4M", "3T"],
 			smackdown: ["7M", "6M", "5M"],
 			smog: ["7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
@@ -330,7 +330,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		],
 	},
 
-	bellossom: {
+	bellossomhoenn: {
 		learnset: {
 			flamecharge: ["8L1"],
 			fierydance: ["8L1"],
