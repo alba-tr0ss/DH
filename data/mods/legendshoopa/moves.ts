@@ -65,4 +65,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.effectData.isSpikes = true;
 		},
 	},
+
+	pinmissile: {
+		inherit: true,
+		secondary: {
+			chance: 100,
+			volatileStatus: 'jaggedsplinters',
+		},
+		onHit(this, target, source, move) {
+			this.effectData.isPin = true;
+		},
+	},
 };

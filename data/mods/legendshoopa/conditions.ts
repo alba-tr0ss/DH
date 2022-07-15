@@ -88,6 +88,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
 				if(this.effectData.isSpikes === true) {
 					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Spikes')), -6, 6);
+				} else if (this.effectData.isPin === true) {
+					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Pin Missile')), -6, 6);
 				}
 				const damage = this.getDamage(pokemon, pokemon, 25);
 				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
