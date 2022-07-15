@@ -1,10 +1,58 @@
 export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	/*
-	name: {
+	: {
 		tier: "ANL OU",
 		isModded: true,
 	},
+
+
 	*/
+
+	larvitar: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	pupitarhoenn: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	tyranitarhoenn: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	slugma: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	magcargohoenn: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	oddish: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	gloom: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	bellossomhoenn: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	
+
+
+
+	/////////////canon mons////////////
 
 	treecko: {
 		tier: "ANL LC",
