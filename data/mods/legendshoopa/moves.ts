@@ -31,13 +31,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1},
 		secondary: {
-			chance: 100,
+			chance: 50,
 			boosts: {
 				spa: -1,
 			},
 		},
 		target: "allAdjacentFoes",
-		type: "Dragon",
+		type: "Ghost",
 	},
 
 	/// canon moves ///
