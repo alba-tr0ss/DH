@@ -1,17 +1,20 @@
 export const Moves: {[k: string]: ModdedMoveData} = {
 
-	tephrablast: {
+	tephraburst: {
 		num: -100,
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		name: "Tephra Blast",
+		name: "Tephra Burst",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
+		},
+		onHit(this, target, source, move) {
+			this.effectData.isTephra = true;
 		},
 		target: "normal",
 		type: "Fire",

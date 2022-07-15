@@ -243,7 +243,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 
 	magcargohoenn: {
 		learnset: {
-			eerierreflection: ["8L1"],
+			eeriereflection: ["8L1"],
 			flashcannon: ["8L1"],
 			calmmind: ["8L1"],
 
