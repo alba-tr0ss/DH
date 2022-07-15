@@ -51,7 +51,12 @@ export const Conditions: {[k: string]: ConditionData} = {
 					this.effectData.startTime -= 1;
 				}
 				//if(effect.id === 'secondaryeffect')
+
+				if(this.dex.getAbility('remaininghope')) {
+					this.effectData.startTime += 1;
+				}
 				this.effectData.time = this.effectData.startTime;
+				this.add('-message', `time is ${this.effectData.time}`);
 				return;
 			}
 		},

@@ -1,5 +1,16 @@
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 
+	remaininghope: {
+		// implemented in conditions.ts
+
+		name: "Remaining Hope",
+		shortDesc: "This Pokémon's Stat changess last for 4 turns instead of 3",
+	},
+
+
+
+
+
 	//canon abilities
 
 
