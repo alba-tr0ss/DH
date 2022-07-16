@@ -51,12 +51,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 					this.effectData.startTime -= 1;
 				}
 				if(effect.effectType === 'Move' && !effect.status) {
-					this.add('-message', "effect Damageing Move")
 					this.effectData.startTime = 3;
 				}
 
 				if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 3) {
-					this.add('-message', 'remaining hope')
 					this.effectData.startTime += 1;
 				}
 				this.effectData.time = this.effectData.startTime;
