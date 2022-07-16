@@ -40,7 +40,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				4 turns for double-stat boosters
 				3 turns for omniboosts or stat boosts gained by an offensive move's effect
 				*/
-				this.effectData.startTime = 7;
+				this.effectData.startTime = 6;
 				if(this.effectData.atkBoosted) {
 					this.effectData.startTime -= 1;
 				}
@@ -51,7 +51,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 					this.effectData.startTime -= 1;
 				}
 				if(effect.effectType === 'Move' && !effect.status) {
-					this.effectData.startTime = 4;
+					this.effectData.startTime = 5;
 				}
 
 				if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 4) {
@@ -66,7 +66,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.time -= 1;
 			//this.add("-message", `Current time is ${this.effectData.time}`);
 			if (this.effectData.time <= 0) {
-				this.add('-clearboost');
+				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
 				return;
 			}

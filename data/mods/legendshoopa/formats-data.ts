@@ -556,7 +556,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	bellosom: {
+	bellossom: {
 		tier: "ANL OU",
 		isModded: true,
 	},
