@@ -1753,7 +1753,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-beartic: {
+	beartic: {
 		tier: "ANL OU",
 		isModded: true,
 	},
