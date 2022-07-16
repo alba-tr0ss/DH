@@ -90,7 +90,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		*/
 
 		onResidual(pokemon) {
-				this.add('-message', 'residual active');
 				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
 				if(this.effectData.isSpikes === true) {
 					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Spikes')), -6, 6);
@@ -101,7 +100,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 				const damage = this.getDamage(pokemon, pokemon, 25);
 				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
-				this.add('-message', `${typeMod} is typemod`);
 				this.damage(damage * typeMod);
 			},
 	},
@@ -193,12 +191,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -232,12 +228,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
+
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -273,12 +268,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -334,12 +327,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -387,13 +378,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onAnyTryMove(this, source, target, move) {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
-					this.add('-curestatus', target, 'brn', '[Silent');
+					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -433,12 +421,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-message', 'cleared Status');
 					this.add('-curestatus', target, 'brn', '[Silent]');
 					target.setStatus('');
 			}
@@ -467,7 +453,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== 'frz') return;
-					this.add('-message', 'doubling secondary chance');
 					if (secondary.chance) secondary.chance *= 2;
 				}
 			}

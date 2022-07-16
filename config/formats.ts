@@ -655,7 +655,7 @@ export const Formats: FormatList = [
 					'Soul Blade Lvl. 2', 'Soul Blade Lvl. 3', 'Soul Blade Lvl. 4', 'Soul Blade Lvl. 5', 'Ultra Soul Blade'],
 	},
 	{
-		name: "[Gen 8] Legends Hoopa",
+		name: "[Gen 8] Legends: Hoopa",
 		desc: [
 			"<b>A New Legend</b>: A Pet Mod that aims to create a hypothetical new entry in a full Pokemon Legends subseries - Pokemon Legends Hoopa.",
 		],
@@ -663,7 +663,7 @@ export const Formats: FormatList = [
 			`&bullet: <a href="https://www.smogon.com/forums/threads/a-new-legend-hoopa.3703382/">Thread on Smogon.`,
 			`&bullet: <a href="https://docs.google.com/spreadsheets/d/1oBcQpXGar8CwoBpqbIa7Y1gVbx7HwtqtXMy_c017OoY/edit?usp=sharing">Spreadsheet.`,
 		],
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod', 'Legends Boosts Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', /*'Sleep Clause Mod'*/, 'Data Mod', 'Mega Data Mod', 'Legends Boosts Mod'],
 		banlist: [
 			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
 		],
