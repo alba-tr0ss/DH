@@ -48,6 +48,41 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	gastlyhoenn: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	haunterhoenn: {
+		tier: "ANL NFE",
+		isModded: true,
+	},
+
+	spectrosphere: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	smoochum: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	jynxhoenn: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
+	girafarighoenn: {
+		tier: "ANL LC",
+		isModded: true,
+	},
+
+	girafgiraf: {
+		tier: "ANL OU",
+		isModded: true,
+	},
+
 	
 
 

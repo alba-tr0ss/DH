@@ -7,6 +7,47 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokémon's Stat changess last for 4 turns instead of 3",
 	},
 
+	sirenevoice: {
+		onModifyMove(move) {
+			if (!move || !move.flags['sound'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 100,
+				volatileStatus: 'trapped',
+				ability: this.dex.getAbility('sirenevoice'),
+			});
+		},
+
+		name: "Sirene Voice",
+		shortDesc: "This Pokemon's sound-based moves trap the foe",
+	},
+
+	twoheadded: {
+		onPrepareHit(source, target, move) {
+			if (move.category === 'Status' || move.selfdestruct || move.multihit) return;
+			if (['endeavor', 'fling', 'iceball', 'rollout'].includes(move.id)) return;
+			if (!move.flags['charge'] && !move.spreadHit && !move.isZ && !move.isMax) {
+				move.multihit = 2;
+				move.multihitType = 'twoheadded';
+			}
+		},
+		onBasePowerPriority: 7,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'twoheadded' && move.hit > 1) return this.chainModify(0.25);
+		},
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (move.multihitType === 'twoheadded' && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+
+		name: "Two-Headded",
+		shortDesc: "Damaging moves hit twice. The second hit deals 0.25x damage."
+	},
+
 
 
 
@@ -145,5 +186,26 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			// and show messages when activating against it.
 			source.trySetStatus(status, target, {status: status.id, id: 'synchronize'} as Effect);
 		},
+	},
+
+	mummy: {
+		name: "Mummy",
+		onDamagingHit(damage, target, source, move) {
+			const sourceAbility = source.getAbility();
+			if (sourceAbility.isPermanent || sourceAbility.id === 'mummy') {
+				return;
+			}
+			if (move.flags['contact']) {
+				const oldAbility = source.setAbility('mummy', target);
+				if (oldAbility) {
+					this.add('-activate', target, 'ability: Mummy', this.dex.getAbility(oldAbility).name, '[of] ' + source);
+				}
+			}
+		},
+		onBasePower(basePower, pokemon, target, move) {
+			if ((move.multihitType === 'parentalbond' || move.multihitType === 'twoheadded') && move.hit > 1) return this.chainModify(0.25);
+		},
+		rating: 2,
+		num: 152,
 	},
 };

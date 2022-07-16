@@ -11,22 +11,22 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 			const LegendsBoost : SparseBoostsTable = {};
 			if (boost.atk) {
-				LegendsBoost.spa = 1 * boost.atk;
+				LegendsBoost.spa = boost.atk;
 				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spa) {
-				LegendsBoost.atk = 1 * boost.spa;
+				LegendsBoost.atk = boost.spa;
 				this.effectData.atkBoosted = true;
 				activated = true;
 			}
 			if (boost.spd) {
-				LegendsBoost.def = 1 * boost.spd;
+				LegendsBoost.def = boost.spd;
 				this.effectData.defBoosted = true;
 				activated = true;
 			}
 			if (boost.def) {
-				LegendsBoost.spd = 1 * boost.def;
+				LegendsBoost.spd = boost.def;
 				this.effectData.defBoosted = true;
 				activated = true;
 			}
