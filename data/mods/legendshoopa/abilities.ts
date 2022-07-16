@@ -8,16 +8,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 
 	sirenevoice: {
-		onModifyMove(move) {
+		onHit(target, source, move) {
 			if (!move || !move.flags['sound'] || move.target === 'self') return;
-			if (!move.secondaries) {
-				move.secondaries = [];
-			}
-			move.secondaries.push({
-				chance: 100,
-				volatileStatus: 'trapped',
-				ability: this.dex.getAbility('sirenevoice'),
-			});
+			return target.addVolatile('trapped', source, move, 'trapper');
 		},
 
 		name: "Sirene Voice",
@@ -44,7 +37,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 
-		name: "Two-Headded",
+		name: "Two Headded",
 		shortDesc: "Damaging moves hit twice. The second hit deals 0.25x damage."
 	},
 
