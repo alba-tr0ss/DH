@@ -40,6 +40,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Ghost",
 	},
 
+	stormin: {
+		num: -102,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		name: "Storm In",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				volatileStatus: 'fixated',
+			},
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Beautiful",
+	},
+
 	/// canon moves ///
 
 	rest: {
