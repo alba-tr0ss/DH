@@ -158,7 +158,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	smoochum: {
 		inherit: true,
 		evos: ["Jynx", "Jynx-Hoenn"],
-	}
+	},
 
 	jynx: {
 		inherit: true,
