@@ -207,19 +207,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
-
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-curestatus', target, 'brn', '[Silent');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-			}
-		},
 	},
 	par: {
 		name: 'par',
@@ -243,19 +230,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (this.randomChance(1, 4)) {
 				this.add('cant', pokemon, 'par');
 				return false;
-			}
-		},
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-
-					this.add('-curestatus', target, 'brn', '[Silent');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
 			}
 		},
 		onResidualOrder: 9,
@@ -284,18 +258,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 			this.effectData.startTime = 6;
 			this.effectData.time = this.effectData.startTime;
-		},
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-			}
 		},
 		onHit(target, source, move) {
 			if (move.thawsTarget || (move.id === 'flamewheel' || move.id === 'flareblitz') && move.category !== 'Status') {
@@ -344,18 +306,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 			}
 		},
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-curestatus', target, 'slp', '[Silent');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'slp', '[Silent]');
-					target.setStatus('');
-			}
-		},
 
 		onFoeBasePowerPriority: 17,
 		onFoeBasePower(basePower, attacker, defender, move) {
@@ -396,18 +346,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;					
-					this.add('-curestatus', target, 'brn', '[Silent');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-			}
-		},
 	},
 	tox: {
 		name: 'tox',
@@ -439,20 +377,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
-		/*
-		onAnyTryMove(this, source, target, move) {
-			if (move.secondaries && move.id !== 'secretpower') {
-				for (const secondary of move.secondaries) {
-					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-				}
-			}	else if (move.status) {
-					this.add('-curestatus', target, 'brn', '[Silent]');
-					target.setStatus('');
-			}
-		},
-		*/
 	},
 
 	hail: {
