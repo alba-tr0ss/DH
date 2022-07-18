@@ -80,8 +80,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side, target, source) {
-			this.add('-start', source, 'Jagged Splinters');
 			this.add('-message', 'jagged splinters just started');
+			this.add('-start', source, 'Jagged Splinters');
 			this.effectData.jaggedType = target.lastMove;
 			this.add('-message', 'jaggedType was just set');
 		},
