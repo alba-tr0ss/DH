@@ -73,11 +73,11 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
 					if (secondary.status !== ('brn' || 'par' || 'tox' || 'psn' || 'frz')) return;
-					this.add('-curestatus', target, target.status, '[Silent]');
+					//this.add('-curestatus', target, target.status, '[Silent]');
 					target.setStatus('');
 				}
 			}	else if (move.status) {
-					this.add('-curestatus', target, target.status, '[Silent]');
+					//this.add('-curestatus', target, target.status, '[Silent]');
 					target.setStatus('');
 			}
 			hitResults[i] = true;

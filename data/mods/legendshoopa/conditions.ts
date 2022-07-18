@@ -80,10 +80,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side, target, source) {
-			this.add('-message', 'jagged splinters just started');
 			this.add('-start', side, 'Jagged Splinters');
 			this.effectData.jaggedType = target.lastMove;
-			this.add('-message', 'jaggedType was just set');
 		},
 
 		/*
@@ -94,9 +92,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidual(pokemon) {
 				let type = this.dex.getActiveMove(this.effectData.jaggedType);
-				this.add('-message', 'getActiveMove just ran');
 				let typeMod = this.clampIntRange(pokemon.runEffectiveness(type));
-				this.add('-message', 'runEffectiveness just ran');
 				const tr = this.trunc;
 				/*
 				if(this.effectData.isSpikes === true) {
