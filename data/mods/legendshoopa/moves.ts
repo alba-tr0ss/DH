@@ -14,9 +14,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			this.effectData.isTephra = true;
-		},
 		target: "normal",
 		type: "Fire",
 		contestType: "Cool",
@@ -110,10 +107,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			//this.effectData.isSpikes = true;
-			this.effectData.jaggedMove = this.dex.getActiveMove('Stealth Rock');
-		},
 		sideCondition: undefined,
 	},
 
@@ -126,10 +119,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			//this.effectData.isSpikes = true;
-			this.effectData.jaggedMove = this.dex.getActiveMove('Spikes');
-		},
 		sideCondition: undefined,
 	},
 
@@ -138,11 +127,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		secondary: {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
-		},
-		onHit(this, target, source, move) {
-			//this.effectData.isPin = true;
-			//this.effectData.jaggedMove = this.dex.getActiveMove('Pin Missile');
-			let jaggedMove = this.dex.getActiveMove('Pin Missile');
 		},
 	},
 };
