@@ -14,7 +14,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 	inherit: true,
 	onResidual(pokemon) {
 		if(pokemon.status) {
-			this.add('-curestatus', pokemon, pokemon.status, '[Silent]');
+			//this.add('-curestatus', pokemon, pokemon.status, '[Silent]');
 			pokemon.setStatus('');
 		}
 		pokemon.trySetStatus('brn', pokemon);
