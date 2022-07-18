@@ -79,8 +79,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
-		onStart(side) {
+		onStart(side, target, source) {
 			this.add('-start', side, 'Jagged Splinters');
+			this.effectData.jaggedType = target.lastMove;
 		},
 
 		/*

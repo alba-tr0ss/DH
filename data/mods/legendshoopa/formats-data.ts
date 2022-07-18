@@ -1693,7 +1693,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	beedril: {
+	beedrill: {
 		tier: "ANL OU",
 		isModded: true,
 	},

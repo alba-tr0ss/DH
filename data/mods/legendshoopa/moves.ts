@@ -141,7 +141,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		onHit(this, target, source, move) {
 			//this.effectData.isPin = true;
-			this.effectData.jaggedMove = this.dex.getActiveMove('Pin Missile');
+			//this.effectData.jaggedMove = this.dex.getActiveMove('Pin Missile');
+			let jaggedMove = this.dex.getActiveMove('Pin Missile');
 		},
 	},
 };
