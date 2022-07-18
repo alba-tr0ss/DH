@@ -91,8 +91,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 		*/
 
 		onResidual(pokemon) {
-			/*
-				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Stealth Rock')), -6, 6);
+				let type = this.dex.getActiveMove(this.effectData.jaggedType);
+				let typeMod = this.clampIntRange(pokemon.runEffectiveness(type));
+				const tr = this.trunc;
+				/*
 				if(this.effectData.isSpikes === true) {
 					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Spikes')), -6, 6);
 				} else if (this.effectData.isPin === true) {
@@ -101,19 +103,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 					typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('Tephra Burst')), -6, 6);
 				}
 				*/
-				if(!this.effectData.jaggedType) throw new Error("Jagged Splinters is not defined");
-				this.add('-message', `${this.effectData.jaggedType}`);
-				this.effectData.jaggedType.basePower = 25;
-				if(this.effectData.jaggedType.multihit !== [1]) {
-					this.effectData.jaggedType.multihit = [1]
-				}
-				this.useMove(this.effectData.jaggedType, pokemon);
-				/*
-				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.effectData.jaggedMove), -6, 6);
-				const damage = this.getDamage(pokemon, pokemon, 25);
+				let damage = this.getDamage(pokemon, pokemon, 25);
 				if (typeof damage !== 'number') throw new Error("Jagged Splinters damage not dealt");
-				this.damage(damage * typeMod);
-				*/
+				pokemon.getMoveHitData(type).typeMod = typeMod;
+				if (typeMod > 0) {
+					for (let i = 0; i < typeMod; i++) {
+						damage *= 2;
+					}
+				}
+				if (typeMod < 0) {
+					for (let i = 0; i > typeMod; i--) {
+						damage = tr(damage / 2);
+					}
+				}
+				this.damage(damage);
 				this.add('-message', `Jagged Splinters dug into ${pokemon.name}!`);
 			},
 	},
