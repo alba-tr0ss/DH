@@ -80,7 +80,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side, target, source) {
-			this.add('-start', side, 'Jagged Splinters');
+			this.add('-start', source, 'Jagged Splinters');
 			this.effectData.jaggedType = target.lastMove;
 		},
 
@@ -104,6 +104,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				if(!this.effectData.jaggedType) throw new Error("Jagged Splinters is not defined");
 				this.add('-message', `${this.effectData.jaggedType}`);
 				this.effectData.jaggedType.basePower = 25;
+				if(this.effectData.jaggedType.multihit !== [1]) {
+					this.effectData.jaggedType.multihit = [1]
+				}
 				this.useMove(this.effectData.jaggedType, pokemon);
 				/*
 				let typeMod = this.clampIntRange(pokemon.runEffectiveness(this.effectData.jaggedMove), -6, 6);
