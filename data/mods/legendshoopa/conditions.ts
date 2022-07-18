@@ -439,6 +439,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
+		/*
 		onAnyTryMove(this, source, target, move) {
 			if (move.secondaries && move.id !== 'secretpower') {
 				for (const secondary of move.secondaries) {
@@ -451,6 +452,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 					target.setStatus('');
 			}
 		},
+		*/
 	},
 
 	hail: {
