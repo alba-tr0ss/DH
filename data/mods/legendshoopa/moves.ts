@@ -110,6 +110,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
+		onHit(this, target, source, move) {
+			//this.effectData.isSpikes = true;
+			this.effectData.jaggedMove = this.dex.getActiveMove('Stealth Rock');
+		},
 		sideCondition: undefined,
 	},
 
@@ -123,8 +127,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'jaggedsplinters',
 		},
 		onHit(this, target, source, move) {
-			this.effectData.isSpikes = true;
+			//this.effectData.isSpikes = true;
+			this.effectData.jaggedMove = this.dex.getActiveMove('Spikes');
 		},
+		sideCondition: undefined,
 	},
 
 	pinmissile: {
@@ -134,7 +140,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'jaggedsplinters',
 		},
 		onHit(this, target, source, move) {
-			this.effectData.isPin = true;
+			//this.effectData.isPin = true;
+			this.effectData.jaggedMove = this.dex.getActiveMove('Pin Missile');
 		},
 	},
 };
