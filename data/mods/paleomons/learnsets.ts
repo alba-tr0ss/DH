@@ -5620,7 +5620,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			shadowbone: ["8L1"],
 			sludgebomb: ["8L1"],
 			spiritshackle: ["8L1"],
-			toxicspieks: ["8L1"],
+			toxicspikes: ["8L1"],
 			venomdrench: ["8L1"],
 			venoshock: ["8L1"],
 

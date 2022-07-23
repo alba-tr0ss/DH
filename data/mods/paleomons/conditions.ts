@@ -98,4 +98,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 		},
 	},
+
+	foragercrit: {
+		name: 'foragerCrit',
+
+		onModifyCritRatio(critRatio) {
+			this.effectData.usedMove = true;
+			this.add("-message", "foragerCrit activated");
+			return 5;
+		},
+
+		onAfterMove(source, target, move) {
+			if(this.effectData.usedMove) {
+				delete source.volatiles['foragerCrit'];
+			}
+		}
+	}
 };
