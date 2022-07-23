@@ -505,7 +505,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 				if (move.flags['contact']) {
 					this.boost({atk: -1}, source, target, this.dex.getActiveMove("Forager's Poise"));
-					source.addVolatile('foragercrit')
+					source.addVolatile('foragercrit');
 				}
 				return this.NOT_FAIL;
 			},

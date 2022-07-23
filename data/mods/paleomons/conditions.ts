@@ -104,13 +104,12 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onModifyCritRatio(critRatio) {
 			this.effectData.usedMove = true;
-			this.add("-message", "foragerCrit activated");
 			return 5;
 		},
 
 		onAfterMove(source, target, move) {
 			if(this.effectData.usedMove) {
-				delete source.volatiles['foragercrit'];
+				delete target.volatiles['foragercrit'];
 			}
 		}
 	}
