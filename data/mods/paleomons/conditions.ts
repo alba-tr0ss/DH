@@ -109,7 +109,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onAfterMove(source, target, move) {
 			if(this.effectData.usedMove) {
-				delete target.volatiles['foragercrit'];
+				delete source.volatiles['foragercrit'];
 			}
 		}
 	}
