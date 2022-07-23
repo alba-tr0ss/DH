@@ -6053,4 +6053,5 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			wonderroom: ["8M", "7T", "6T", "5T"],
 			zenheadbutt: ["8M", "7T", "6T", "5T", "4T"],
 		},
+	},
 };
