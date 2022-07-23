@@ -463,13 +463,13 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	honedgeancinet: {
+	honedgeancient: {
 		tier: "Paleomons LC",
 		doublesTier: "Paleomons LC",
 		isModded: true,
 	},
 
-	doubladeancinet: {
+	doubladeancient: {
 		tier: "Paleomons NFE",
 		doublesTier: "Paleomons NFE",
 		isModded: true,
