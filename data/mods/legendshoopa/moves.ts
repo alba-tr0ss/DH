@@ -14,9 +14,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			this.effectData.isTephra = true;
-		},
 		target: "normal",
 		type: "Fire",
 		contestType: "Cool",
@@ -124,9 +121,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			this.effectData.isSpikes = true;
-		},
 		shortDesc: "Sets Jagged Splinters.",
 	},
 
@@ -136,9 +130,25 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
-		onHit(this, target, source, move) {
-			this.effectData.isPin = true;
-		},
 		shortDesc: "Sets Jagged Splinters.",
 	},
+
+	focusenergy: {
+		inherit: true,
+		condition: {
+			duration: 5,
+			onStart(target, source, effect) {
+				if (effect?.id === 'zpower') {
+					this.add('-start', target, 'move: Focus Energy', '[zeffect]');
+				} else if (effect && (['imposter', 'psychup', 'transform'].includes(effect.id))) {
+					this.add('-start', target, 'move: Focus Energy', '[silent]');
+				} else {
+					this.add('-start', target, 'move: Focus Energy');
+				}
+			},
+			onModifyCritRatio(critRatio) {
+				return critRatio + 2;
+			},
+		},
+	}
 };

@@ -299,6 +299,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 			return this.chainModify(1.33);
 		},
 
+		
+		onHit(target, source, move) {
+			if ((move.id === 'wildcharge' || move.id === 'spark' || move.id === 'volttackle') && move.category !== 'Status') {
+				target.cureStatus();
+			}
+		},
+
 		onResidualOrder: 9,
 		onResidual(pokemon) {
 			pokemon.statusData.time--;
