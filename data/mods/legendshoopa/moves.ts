@@ -33,10 +33,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1},
 		secondary: {
-			chance: 50,
+			chance: 100,
 			boosts: {
 				spa: -1,
 			},
+			volatileStatus: 'confusion',
 		},
 		target: "allAdjacentFoes",
 		type: "Ghost",
@@ -111,6 +112,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'jaggedsplinters',
 		},
 		sideCondition: undefined,
+		shortDesc: "Sets Jagged Splinters.",
 	},
 
 	spikes: {
@@ -125,6 +127,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(this, target, source, move) {
 			this.effectData.isSpikes = true;
 		},
+		shortDesc: "Sets Jagged Splinters.",
 	},
 
 	pinmissile: {
@@ -136,5 +139,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(this, target, source, move) {
 			this.effectData.isPin = true;
 		},
+		shortDesc: "Sets Jagged Splinters.",
 	},
 };

@@ -77,18 +77,16 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 	},
 
+	confusion: {
+		name: 'confusion',
+	},
+
 	jaggedsplinters: {
 		name: 'jaggedsplinters',
 		onStart(side, target, source) {
 			this.add('-start', side, 'Jagged Splinters');
 			this.effectData.jaggedType = target.lastMove;
 		},
-
-		/*
-		onAfterMove(source, target, move) {
-			this.effectData.jaggedType = move.type;
-		},
-		*/
 
 		onResidual(pokemon) {
 				let type = this.dex.getActiveMove(this.effectData.jaggedType);
