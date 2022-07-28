@@ -155,7 +155,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	dragonclaw: {
 		inherit: true,
 		critRatio: 2,
-	}
+	},
 
 	xscissor: {
 		inherit: true,
@@ -168,5 +168,5 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			this.damage(source.baseMaxhp * 0.8, source, source, this.dex.getEffect('Self-Destruct'));
 		},
-	}
+	},
 };
