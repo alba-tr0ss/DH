@@ -165,7 +165,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	selfdestruct: {
 		inherit: true,
 		selfdesruct: false,
-		onBeforeMove(pokemon, target, move) {
+		onModifyMove(pokemon, target, move) {
 			this.add('-message', "onbefore move");
 			delete move.selfdestruct;
 		},
