@@ -65,6 +65,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		// this isnt a boost really its just so i dont have to make another volatile xx
 		onModifyMove(move) {
             if (move.secondaries) {
+				if(move.id === 'powdersnow' || move.id === 'blizzard' || move.id === 'firepunch' || move.id === 'icepunch' || move.id === 'thunderpunch') return;
                 this.debug('doubling secondary chance');
                 for (const secondary of move.secondaries) {
                     if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
