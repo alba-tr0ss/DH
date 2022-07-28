@@ -165,7 +165,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	selfdestruct: {
 		inherit: true,
 		selfdestruct: '',
-		onHit(target, source, move) {
+		onModifyMove(move, target, source) {
 			this.damage((source.maxhp * 4) / 5);
 		},
 	},
