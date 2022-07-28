@@ -169,4 +169,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.damage((source.maxhp * 4) / 5);
 		},
 	},
+
+	venoshock: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target) {
+			if (target.status) {
+				return this.chainModify(2);
+			}
+		},
+	},
 };

@@ -62,6 +62,21 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 		},
 
+		// this isnt a boost really its just so i dont have to make another volatile xx
+		onModifyMove(move) {
+            if (move.secondaries) {
+                this.debug('doubling secondary chance');
+                for (const secondary of move.secondaries) {
+                    if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
+					this.add('-message', `secondary chance is ${secondary.chance}`);
+                }
+            }
+            if (move.self?.chance && move.self?.chance === 10) {
+				move.self.chance *= 2;
+				this.add('-message', `secondary chance is ${move.self.chance}`);
+			}
+        },
+
 		onResidual(pokemon) {
 			this.effectData.time -= 1;
 			//this.add("-message", `Current time is ${this.effectData.time}`);
