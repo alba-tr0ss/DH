@@ -69,12 +69,10 @@ export const Conditions: {[k: string]: ConditionData} = {
                 this.debug('doubling secondary chance');
                 for (const secondary of move.secondaries) {
                     if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
-					this.add('-message', `secondary chance is ${secondary.chance}`);
                 }
             }
             if (move.self?.chance && move.self?.chance === 10) {
 				move.self.chance *= 2;
-				this.add('-message', `secondary chance is ${move.self.chance}`);
 			}
         },
 
