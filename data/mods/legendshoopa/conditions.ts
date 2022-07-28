@@ -302,7 +302,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		
 		onBeforeMove(target, source, move) {
 			if ((move.id === 'wildcharge' || move.id === 'spark' || move.id === 'volttackle') && move.category !== 'Status') {
-				source.cureStatus();
+				target.cureStatus();
 			}
 		},
 
