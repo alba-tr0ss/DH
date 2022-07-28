@@ -150,5 +150,23 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				return critRatio + 2;
 			},
 		},
+	},
+
+	dragonclaw: {
+		inherit: true,
+		critRatio: 2,
+	}
+
+	xscissor: {
+		inherit: true,
+		critRatio: 2,
+	},
+
+	selfdestruct: {
+		inherit: true,
+		selfdesruct: undefined,
+		onHit(target, source, move) {
+			this.damage(source.baseMaxhp * 0.8, source, source, this.dex.getEffect('Self-Destruct'));
+		},
 	}
 };

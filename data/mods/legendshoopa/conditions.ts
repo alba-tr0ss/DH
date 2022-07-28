@@ -300,9 +300,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 
 		
-		onHit(target, source, move) {
+		onBeforeMove(target, source, move) {
 			if ((move.id === 'wildcharge' || move.id === 'spark' || move.id === 'volttackle') && move.category !== 'Status') {
-				target.cureStatus();
+				source.cureStatus();
 			}
 		},
 
