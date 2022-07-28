@@ -67,7 +67,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		onHit(target, source, move) {
 			if (!target.setStatus('slp', source, move)) return false;
-			this.heal(target.maxhp); // Aesthetic only as the healing happens after you fall asleep in-game
+			this.heal((target.maxhp * 4) / 3); // Aesthetic only as the healing happens after you fall asleep in-game
 		},
 	},
 
@@ -166,7 +166,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		selfdestruct: '',
 		onHit(pokemon, target, move) {
-			this.directDamage((target.maxhp * 5) / 4);
+			this.directDamage((pokemon.maxhp * 5) / 4);
 		},
 	},
 };
