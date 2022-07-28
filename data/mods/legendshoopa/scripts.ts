@@ -207,7 +207,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		}
 		this.runEvent('Heal', target, source, effect, finalDamage);
 		return finalDamage;
-	}
+	},
 
 	pokemon: {
 		boostBy(boosts: SparseBoostsTable) {
