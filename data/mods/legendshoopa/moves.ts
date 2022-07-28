@@ -166,12 +166,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		selfdestruct: '',
 		onModifyMove(pokemon, target, move) {
-			delete move.selfdestruct;
+			//delete move.selfdestruct;
+			this.damage(pokemon.baseMaxhp * 0.8, pokemon, pokemon);
 			this.add('-message', `onModifyMove; ${move.selfdestruct}`)
 		},
+		/*
 		onHit(target, source, move) {
 			this.add('-message', "onhit");
 			this.damage(source.baseMaxhp * 0.8, source, source);
 		},
+		*/
 	},
 };
