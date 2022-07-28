@@ -357,9 +357,4 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			return tr(baseDamage, 16);
 		},
 	},
-
-
-	init(){ 
-		delete this.modData('Learnsets', 'smochum').learnset.perishsong;
-	},
 };
