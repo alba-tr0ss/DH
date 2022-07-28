@@ -14,6 +14,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			chance: 100,
 			volatileStatus: 'jaggedsplinters',
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Eruption", target);
+		},
 		target: "normal",
 		type: "Fire",
 		contestType: "Cool",
@@ -30,11 +34,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1},
 		secondary: {
-			chance: 100,
+			chance: 50,
 			boosts: {
 				spa: -1,
 			},
-			volatileStatus: 'confusion',
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mirror Shot", target);
 		},
 		target: "allAdjacentFoes",
 		type: "Ghost",
@@ -56,6 +63,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				volatileStatus: 'fixated',
 			},
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Hurricane", target);
+		},
 		target: "normal",
 		type: "Water",
 		contestType: "Beautiful",
@@ -73,6 +84,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 	outrage: {
 		inherit: true,
+		basePower: 90,
 			self: {
 				volatileStatus: 'fixated',
 			},
@@ -80,6 +92,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 	petaldance: {
 		inherit: true,
+		basePower: 90,
 		self: {
 			volatileStatus: 'fixated',
 		},

@@ -359,20 +359,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 	},
 
 
-/*
 	init(){ 
-		const addNewMoves = (pokemonid: string, moveids: string[]) => {
-			for (const moveid of moveids) {
-				this.modData('Learnsets', pokemonid).learnset[moveid] = [moveid === 'dracometeor' || moveid === 'steelbeam' ? '8T' : '8M'];
-			}
-		};
-		//addNewMoves('', ['']);
-
-		addNewMoves('pupitarhoenn', ['heatcrash', 'dazzlinggleam', 'flameburst', 'incinerate', 'powergem', 'shelltrap',])
-
-		addNewMoves('tyranitarhoenn', ['aerialace', 'breakingswipe', 'branchpoke', 'brutalswipe', 'bulletseed', 'counter', 'cut', 'dragonclaw', 'firefang', 'focuspunch', 'gigaimpact', 'heavyslam', 'highhorsepower', 'rockblast', 'tephraburst',
-		'dragonbreath', 'dragonpulse', 'eruption', 'fireblast', 'focusblast', 'lavaplume', 'overheat', 'solarbeam',
-		'block', 'grassyterrain', 'roar', 'rototiller', 'stockpile', 'spitup', 'swallow', 'willowisp',]);
+		delete this.modData('Learnsets', 'smochum').learnset.perishsong;
 	},
-	*/
 };
