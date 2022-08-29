@@ -236,7 +236,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				this.boost({atk: 3}, source, source, move);
-				source.addVolatile('primed');
+				target.addVolatile('primed');
 			}
 		},
 	},
@@ -297,6 +297,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				} else {
 					pokemon.trySetStatus('psn', pokemon.side.foe.active[0]);
 				}
+			},
+			onEnd(pokemon) {
+				this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
 			},
 		},
 	},
