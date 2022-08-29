@@ -333,4 +333,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'fixated,'
 		}
 	},
+
+	bellydrum: {
+		inherit: true,
+		onHit(target) {
+			if (target.hp <= target.maxhp / 4 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
+				return false;
+			}
+			this.directDamage(target.maxhp / 4);
+			this.boost({atk: 1}, target);
+			this.addVolatile('primed');
+		},
+	},
 };

@@ -222,6 +222,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'par');
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 		onModifySpe(spe, pokemon) {
@@ -261,6 +264,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				target.formeChange('Shaymin', this.effect, true);
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 		onHit(target, source, move) {
@@ -293,6 +299,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'slp');
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 
@@ -346,6 +355,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'psn');
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 		onResidualOrder: 9,
@@ -371,6 +383,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'tox');
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 		onSwitchIn() {
