@@ -72,7 +72,74 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		contestType: "Beautiful",
 	},
 
+	florasomnia: {
+		num: -103,
+		accuracy: 100,
+		basePower: 65,
+		basePowerCallback(pokemon, target, move) {
+			if (target.status || target.hasAbility('comatose')) return move.basePower * 2;
+			return move.basePower;
+		},
+		category: "Special",
+		name: "Florasomnia",
+		shortDesc: "Deals double damage if target has a status condition. 30% to inflict Drowsy.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 30,
+			status: 'slp',
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Aromatherapy", target);
+		},
+		target: "normal",
+		type: "Psychic",
+	},
+
+	sacredjewel: {
+		num: -104,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		name: "Sacred Jewel",
+		shortDesc: "Lowers target's SpDef by 1 stage",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spd: -1,
+			}
+		},
+		target: "normal",
+		type: "Rock",
+	},
+
+	royalbanquet: {
+		num: -105,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Royal Banquet",
+		shortDesc: "Sets Aqua Ring on the user",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		self: {
+			volatileStatus: 'aquaring',
+		},
+	},
+
+
+
 	/// canon moves ///
+
+
+
+
 
 	rest: {
 		inherit: true,
