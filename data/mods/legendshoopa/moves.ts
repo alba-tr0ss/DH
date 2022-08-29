@@ -342,7 +342,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 			this.directDamage(target.maxhp / 4);
 			this.boost({atk: 1}, target);
-			this.addVolatile('primed');
+		},
+		self: {
+			volatileStatus: 'primed',
 		},
 	},
 };
