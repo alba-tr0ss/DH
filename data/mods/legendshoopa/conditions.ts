@@ -128,9 +128,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 	fixated: {
 		name: 'fixated',
 		onStart(target, source, effect) {
-			this.add('-start', source, 'fixated', '[silent]');
+			this.add('-start', target, 'fixated', '[silent]');
 			this.effectData.move = effect.id;
-			this.add('-message', `${source.name} is fixated on ${this.effectData.move}!`);
+			this.add('-message', `${target.name} is fixated on ${this.effectData.move}!`);
 		},
 
 		onTryMovePriority: -2,
@@ -164,8 +164,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onStart(target, source, effect) {
 			if(effect.effectType === 'Item') this.duration = 4;
 			if(effect.effectType === 'Ability') this.duration = 5;
-			this.add('-start', source, 'primed', '[silent]');
-			this.add('-message', `${source.name} is primed!`);
+			this.add('-start', target, 'primed', '[silent]');
+			this.add('-message', `${target.name} is primed!`);
 		},
 
 		onModifyDamage(damage, source, target, move) {
