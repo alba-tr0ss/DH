@@ -162,12 +162,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 		duration: 5,
 
 		onStart(target, source, effect) {
+			if(effect.effectType === 'Item') this.duration = 4;
+			if(effect.effectType === 'Ability') this.duration = 5;
 			this.add('-start', source, 'primed', '[silent]');
 			this.add('-message', `${source.name} is primed!`);
 		},
 
 		onModifyDamage(damage, source, target, move) {
-			this.add('-message', 'primed boost !');
 			return this.chainModify(1.5);
 		},
 

@@ -229,4 +229,42 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.damage((source.maxhp * 4) / 5);
 		},
 	},
+
+	fellstinger: {
+		inherit: true,
+		basePower: 80,
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (!target || target.fainted || target.hp <= 0) pokemon.addVolatile('primed');
+		},
+	},
+
+	thrash: {
+		inherit: true,
+		basePower: 90,
+		self: {
+			volatileStatus: 'fixated',
+		},
+	},
+
+	furycutter: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated',
+		}
+	},
+
+	sing: {
+		inherit: true,
+		accuracy: 70,
+	},
+
+	iciclespear: {
+		inherit: true,
+		multihit: 1,
+		secondary: {
+			chance: 100,
+			volatileStatus: 'jaggedsplinters',
+		},
+		shortDesc: "Sets Jagged Splinters",
+	},
 };

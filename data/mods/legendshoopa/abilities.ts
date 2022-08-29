@@ -226,4 +226,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: 62,
 	},
+
+	angerpoint: {
+		inherit: true,
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
+				target.setBoost({atk: 1});
+				target.addVolatile('primed');
+			}
+		},
+	},
 };
