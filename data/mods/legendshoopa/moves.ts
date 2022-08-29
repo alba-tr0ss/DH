@@ -233,10 +233,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	fellstinger: {
 		inherit: true,
 		basePower: 80,
-		onAfterMoveSecondarySelf(pokemon, target, move) {
+		onAfterMoveSecondarySelf(source, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				this.boost({atk: 3}, pokemon, pokemon, move);
-				pokemon.addVolatile('primed');
+				source.addVolatile('primed');
 			}
 		},
 	},
@@ -270,4 +270,64 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		shortDesc: "Sets Jagged Splinters",
 	},
+
+	toxicspikes: {
+		inherit: true,
+		condition: {
+			duration: 4
+			// this is a side condition
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers = 1;
+			},
+			onRestart(side) {
+				if (this.effectData.layers >= 2) return false;
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers++;
+			},
+			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasType('Poison')) {
+					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] ' + pokemon);
+					pokemon.side.removeSideCondition('toxicspikes');
+				} else if (pokemon.hasType('Steel') || pokemon.hasItem('heavydutyboots')) {
+					return;
+				} else if (this.effectData.layers >= 2) {
+					pokemon.trySetStatus('tox', pokemon.side.foe.active[0]);
+				} else {
+					pokemon.trySetStatus('psn', pokemon.side.foe.active[0]);
+				}
+			},
+		},
+	},
+
+	stickyweb: {
+		inherit: true,
+		condition: {
+			duration: 4,
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Sticky Web');
+			},
+			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasItem('heavydutyboots')) return;
+				this.add('-activate', pokemon, 'move: Sticky Web');
+				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
+			},
+		},
+	},
+
+	rollout: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated',
+		}
+	},
+
+	iceball: {
+		inherit: true,
+		self: {
+			volatileStatus: 'fixated,'
+		}
+	}
 };

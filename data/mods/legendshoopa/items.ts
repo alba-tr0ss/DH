@@ -23,11 +23,11 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 
 	weaknesspolicy: {
 		inherit: true,
-		onDamagingHit(damage, target, pokemon, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (!move.damage && !move.damageCallback && target.getMoveHitData(move).typeMod > 0) {
-				pokemon.addVolatile('primed');
 				target.useItem();
+				target.addVolatile('primed');
 			}
-		},
+		}
 	},
 };
