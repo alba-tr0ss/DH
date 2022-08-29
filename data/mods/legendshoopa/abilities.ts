@@ -201,4 +201,29 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 152,
 	},
+
+	tangledfeet: {
+		onModifySpePriority: 6,
+		onModifySpe(spe, pokemon) {
+			if (pokemon.volatiles['fixated']) {
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Tangled Feet",
+		rating: 1,
+		num: 77,
+	},
+
+	guts: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.status) {
+				this.add('-message', "Guts boost");
+				return this.chainModify(1.5);
+			}
+		},
+		name: "Guts",
+		rating: 3,
+		num: 62,
+	},
 };

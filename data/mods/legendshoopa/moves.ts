@@ -191,4 +191,42 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
+
+	chatter: {
+		inherit: true,
+		basePower: 80,
+		self: {
+			volatileStatus: 'fixated',
+		},
+	},
+
+	echoedvoice: {
+		inherit: true,
+		basePower: 80,
+		self: {
+			volatileStatus: 'fixated',
+		},
+		basePowerCallback() {
+			return;
+		},
+		onTry() {
+			return;
+		},
+	},
+
+	explosion: {
+		inherit: true,
+		selfdestruct: '',
+		onModifyMove(move, target, source) {
+			this.damage((source.maxhp * 4) / 5);
+		},
+	},
+
+	mistyexplosion: {
+		inherit: true,
+		selfdestruct: '',
+		onModifyMove(move, target, source) {
+			this.damage((source.maxhp * 4) / 5);
+		},
+	},
 };

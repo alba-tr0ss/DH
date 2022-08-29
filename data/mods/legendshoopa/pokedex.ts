@@ -102,7 +102,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseSpecies: "Bellossom",
 		forme: "Hoenn",
 		types: ["Grass", "Fire"],
-		baseStats: {hp: 85, atk: 50, def: 75, spa: 100, spd: 90, spe: 80},
+		baseStats: {hp: 85, atk: 60, def: 75, spa: 100, spd: 90, spe: 80},
 		abilities: {0: "Chlorophyll", H: "Remaining Hope"},
 		weightkg: 5.8,
 		prevo: "Gloom",

@@ -309,7 +309,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	shedninja: {
+	shedinja: {
 		tier: "ANL OU",
 		isModded: true,
 	},
@@ -1119,6 +1119,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
+	/*
 	latias: {
 		tier: "ANL OU",
 		isModded: true,
@@ -1129,7 +1130,6 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	/*
 	kyogre: {
 		tier: "ANL Uber",
 		isModded: true,
@@ -1618,7 +1618,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	tumburr: {
+	timburr: {
 		tier: "ANL LC",
 		isModded: true,
 	},
@@ -1678,7 +1678,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	primape: {
+	primeape: {
 		tier: "ANL OU",
 		isModded: true,
 	},
