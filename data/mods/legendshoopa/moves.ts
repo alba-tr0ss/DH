@@ -233,10 +233,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	fellstinger: {
 		inherit: true,
 		basePower: 80,
-		onAfterMoveSecondarySelf(source, target, move) {
+		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
-				this.boost({atk: 3}, source, source, move);
-				this.addVolatile('primed');
+				this.boost({atk: 3}, pokemon, pokemon, move);
+				pokemon.addVolatile('primed');
 			}
 		},
 	},
