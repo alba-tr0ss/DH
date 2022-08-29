@@ -236,7 +236,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				this.boost({atk: 3}, source, source, move);
-				target.addVolatile('primed');
+				this.addVolatile('primed');
 			}
 		},
 	},
