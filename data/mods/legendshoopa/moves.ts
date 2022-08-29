@@ -300,7 +300,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onResidual(pokemon) {
 				this.effectData.time--;
-				this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
+				if(this.effectData.time == 0) {
+					pokemon.side.removeSideCondition('toxicspikes');
+					//this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
+				}
 			},
 			onEnd(pokemon) {
 				this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
