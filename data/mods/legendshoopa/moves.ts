@@ -274,7 +274,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	toxicspikes: {
 		inherit: true,
 		condition: {
-			duration: 4
+			duration: 4,
 			// this is a side condition
 			onStart(side) {
 				this.add('-sidestart', side, 'move: Toxic Spikes');
