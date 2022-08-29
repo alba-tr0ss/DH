@@ -1,54 +1,13 @@
 Current To-Do List:
-- Legends Boost turn 1 Intimidate bug (not rn)
-
-- Timburr, Primeape, Shedinja, probably some others i've forgotten, are not legal (done)
-
-- Add 10 Atk to Bell (done)
-
 - Ttar sprite (save for last)
 
-- Ban LatiTwins (done)
+- Fell Stinger makes user Primed for 3 turns upon KO, buff it to 80 BP to compensate (done)
 
-- Belly Drum should cut the user's HP by 25%; then max out Offense for 5 turns and make the
-user Primed for 5 turns. (later)
+- Anger Point to maxing user's Offense for 5 turns and make the user Primed for 5 turns. (who gives a shit)
 
-- Tangled Feet increasing user's speed while Fixated (done)
-
-- Guts to be unaffected by Frostbite's Special Attack drop; also to now work with Frostbite and Drowsyness (test this)
-
-- Chatter and Echoed Voice are buffed to 80 BP and make user Fixated (done)
-
-- Explosion and Misty Explosion with same effect as Self-Destruct (done)
-
-- Hidden Power changed to PLA version and made to fail if used by anything besides
-Unown i.e. Dark Void (for the intents of the mod and not wasting time coding it, this means that the
-move no longer exists) (done)
-
-- Fell Stinger makes user Primed for 3 turns upon KO, buff it to 80 BP to compensate 
-
-- Anger Point to maxing user's Offense for 5 turns and make the user Primed for 5 turns.
-
-- Weakness Policy toto maxing user's Offense for 4 turns and make the user Primed for 4 turns.
-
-- Thrash and Fury Cutter added to Fixated moves, former nerfed to 90 BP
-
-- Sing raised to 70% accuracy 
-
-- Stat changes and status inflicted by abilities or items last 3 turns
-
-- Icicle Spear is a one-hit 40 BP move that sets Ice type Jagged Splinters
+- Weakness Policy to maxing user's Offense for 4 turns and make the user Primed for 4 turns.
 
 - Toxic Spikes and Sticky Webs remain hazards, their effects last 4 turns
-
-- Ripen makes Berry effects last 6 turns
-
-- Rollout and Ice Ball should apply Fixation in accordance with PLA
-
-- If possible to code, Stockpile should last for 3 turns when used the first time,
-4 turns the second and 5 the third. Otherwise make it a simple defense booster,
-nothing of value is being lost anyway (prob not gonna happen today lol)
-
-
 
 
 
