@@ -50,7 +50,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				if(this.effectData.speBoosted) {
 					this.effectData.startTime -= 1;
 				}
-				if(effect.effectType === 'Move' && !effect.status) {
+				if((effect.effectType === 'Move' && !effect.status) || effect.effectType === 'Ability' || effect.effectType === 'Item') {
 					this.effectData.startTime = 3;
 				}
 
@@ -195,6 +195,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-status', target, 'brn');
 			}
 			this.effectData.startTime = 6;
+			if(sourceEffect.effectType === 'Ability' || sourceEffect.effectType === 'Item') {
+				this.effectData.startTime = 3;
+			}
 			this.effectData.time = this.effectData.startTime;
 		},
 		// Damage reduction is handled directly in the sim/battle.js damage function
