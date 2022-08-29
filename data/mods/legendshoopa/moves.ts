@@ -234,7 +234,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 80,
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) pokemon.addVolatile('primed');
+			if (!target || target.fainted || target.hp <= 0) {
+				this.boost{atk: 1};
+				this.addVolatile('primed');
+			}
 		},
 	},
 

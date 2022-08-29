@@ -25,7 +25,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (!move.damage && !move.damageCallback && target.getMoveHitData(move).typeMod > 0) {
-				target.addVolatile('primed');
+				source.addVolatile('primed');
 				target.useItem();
 			}
 		},
