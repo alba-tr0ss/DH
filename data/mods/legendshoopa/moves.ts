@@ -329,5 +329,5 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		self: {
 			volatileStatus: 'fixated,'
 		}
-	}
+	},
 };
