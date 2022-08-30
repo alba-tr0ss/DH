@@ -114,6 +114,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				spd: -1,
 			}
 		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Power Gem", target);
+		},
 		target: "normal",
 		type: "Rock",
 	},
@@ -130,6 +134,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {protect: 1},
 		self: {
 			volatileStatus: 'aquaring',
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Liquidation", target);
 		},
 	},
 

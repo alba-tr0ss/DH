@@ -41,6 +41,20 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Damaging moves hit twice. The second hit deals 0.25x damage."
 	},
 
+	
+
+	dreamtherapy: {
+		onModifyMove(move, source, target) {
+			if(target.status === 'slp' && move.category !== 'Status') {
+				move.Draining = [1,2];
+				return;
+			}
+		},
+
+		name: "Dream Therapy",
+		shortDesc: "Moves used against sleeping targets heal 50%",
+	},
+
 
 
 
