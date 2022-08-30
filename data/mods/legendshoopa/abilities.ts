@@ -44,10 +44,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	
 
 	dreamtherapy: {
+		/*
 		onModifyMove(move, source, target) {
 			if(target.status === 'slp' && move.category !== 'Status') {
 				move.drain = [1,2];
 				return;
+			}
+		},
+		*/
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (move.category !== 'Status' && target.status == 'slp' && target) {
+				this.heal(pokemon.lastDamage / 2, pokemon);
 			}
 		},
 
