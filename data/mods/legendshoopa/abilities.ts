@@ -46,7 +46,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	dreamtherapy: {
 		onModifyMove(move, source, target) {
 			if(target.status === 'slp' && move.category !== 'Status') {
-				move.Draining = [1,2];
+				move.drain = [1,2];
 				return;
 			}
 		},
