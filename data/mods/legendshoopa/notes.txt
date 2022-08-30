@@ -1,13 +1,7 @@
 Current To-Do List:
-- Ttar sprite (save for last)
-
-- Fell Stinger makes user Primed for 3 turns upon KO, buff it to 80 BP to compensate (done)
-
-- Anger Point to maxing user's Offense for 5 turns and make the user Primed for 5 turns. (who gives a shit)
-
-- Weakness Policy to maxing user's Offense for 4 turns and make the user Primed for 4 turns.
-
-- Toxic Spikes and Sticky Webs remain hazards, their effects last 4 turns
+- Intimidate bug
+- Ripen makes Berry effects last 6 turns (later, not important rn)
+- Stockpile should last for 3 turns when used the first time, 4 turns the second and 5 the third (who cares lol)
 
 
 

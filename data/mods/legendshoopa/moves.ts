@@ -376,7 +376,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				for (const pokemon of targetSide.active) {
 					this.add('-sideend', targetSide, 'Toxic Spikes');
 				}
-		  },
+		  	},
 		},
 	},
 
@@ -393,6 +393,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-activate', pokemon, 'move: Sticky Web');
 				this.boost({spe: -1}, pokemon, this.effectData.source, this.dex.getActiveMove('stickyweb'));
 			},
+			onEnd(targetSide) {
+				for (const pokemon of targetSide.active) {
+					this.add('-sideend', targetSide, 'Toxic Spikes');
+				}
+		  	},
 		},
 	},
 
