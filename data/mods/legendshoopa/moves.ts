@@ -349,11 +349,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	toxicspikes: {
 		inherit: true,
 		condition: {
+			duration: 4,
 			// this is a side condition
 			onStart(side) {
 				this.add('-sidestart', side, 'move: Toxic Spikes');
-				this.effectData.layers = 1;
-				this.effectData.time = 4;
 			},
 			onRestart(side) {
 				if (this.effectData.layers >= 2) return false;
@@ -373,16 +372,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					pokemon.trySetStatus('psn', pokemon.side.foe.active[0]);
 				}
 			},
-			onResidual(pokemon) {
-				this.effectData.time--;
-				if(this.effectData.time == 0) {
-					pokemon.side.removeSideCondition('toxicspikes');
-					//this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
+			onEnd(targetSide) {
+				for (const pokemon of targetSide.active) {
+					this.add('-sideend', targetSide, 'Toxic Spikes');
 				}
-			},
-			onEnd(pokemon) {
-				this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of' + pokemon);
-			},
+		  },
 		},
 	},
 
