@@ -2,7 +2,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	legendsboost: {
 		name: 'legendsboost',
 		onBoost(boost, target, source, effect) {
-			this.add('-message', `${source.name}: stat has been boosted`);
+			this.add('-message', `stat has been boosted`);
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
 			let boostName: BoostName;
