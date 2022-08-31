@@ -1298,7 +1298,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 60, atk: 80, def: 95, spa: 60, spd: 80, spe: 30},
 		abilities: {0: "Vital Spirit", 1: "Dry Skin", H: "Magic Bounce"},
 		weightkg: 29.5,
-		prevo: "Paras",
+		//prevo: "Paras", (so it won't inherit Paras's movepool)
 	},
 
 	parasinensis: {

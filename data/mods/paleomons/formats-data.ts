@@ -517,7 +517,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isModded: true,
 	},
 
-	mightyeaancient: {
+	mightyenaancient: {
 		tier: "Paleomons NFE",
 		doublesTier: "Paleomons NFE",
 		isModded: true,
