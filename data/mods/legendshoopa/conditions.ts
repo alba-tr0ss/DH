@@ -38,7 +38,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				/*
 				5 turns for single-stat boosters
 				4 turns for double-stat boosters
-				3 turns for omniboosts or stat boosts gained by an offensive move's effect
+				3 turns for omniboosts or stat boosts gained by an offensive move's effect / ability / item
 				*/
 				this.effectData.startTime = 6;
 				if(this.effectData.atkBoosted) {
@@ -78,8 +78,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidual(pokemon) {
 			this.effectData.time -= 1;
+			this.add('-message', `Timer is currently on ${this.effectData.time}`);
 			//this.add("-message", `Current time is ${this.effectData.time}`);
 			if (this.effectData.time <= 0) {
+				this.add('-message', `Boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
 				return;
