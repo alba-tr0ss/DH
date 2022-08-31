@@ -34,6 +34,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 			if(boost.spe) {
 				this.effectData.speBoosted = true;
+				activated = true;
+
 			}
 			this.add('-message', `Activated = ${activated}`);
 			if (activated === true) {
