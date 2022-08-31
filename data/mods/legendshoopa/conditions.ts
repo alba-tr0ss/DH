@@ -2,6 +2,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 	legendsboost: {
 		name: 'legendsboost',
 		onBoost(boost, target, source, effect) {
+			this.add('-message', `${source.name}: stat has been boosted`);
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
 			let boostName: BoostName;
@@ -78,12 +79,12 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidual(pokemon) {
 			this.effectData.time -= 1;
-			this.add('-message', `Timer is currently on ${this.effectData.time}`);
-			//this.add("-message", `Current time is ${this.effectData.time}`);
+			this.add('-message', `${pokemon.name}: Timer is currently on ${this.effectData.time}`);
 			if (this.effectData.time <= 0) {
 				this.add('-message', `Boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
+				this.effectData.time = undefined;
 				return;
 			}
 		},
