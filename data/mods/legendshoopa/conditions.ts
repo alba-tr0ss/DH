@@ -119,29 +119,28 @@ export const Conditions: {[k: string]: ConditionData} = {
 				activated = true;
 			}
 
-			this.add('-message', `Activated = ${activated}`);
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 					
 				if ((effect.effectType === 'Move' && !effect.status) || effect.effectType === 'Ability' || effect.effectType === 'Item') {
-					this.effectData.startTime = 3;
-					this.altTime = this.effectData.startTime;
+					this.effectData.altTime = 3;
+					this.add('-message', `Alt timer had been set to: ${this.effectData.sltTime}`);
 				} else {
 
-					this.effectData.startTime = 6;
+					this.effectData.statusTime = 6;
 					if(this.effectData.atkBoosted) {
-						this.effectData.startTime -= 1;
+						this.effectData.statusTime -= 1;
 					}
 					if(this.effectData.defBoosted) {
-						this.effectData.startTime -= 1;
+						this.effectData.statusTime -= 1;
 					}
 					if(this.effectData.speBoosted) {
-						this.effectData.startTime -= 1;
+						this.effectData.statusTime -= 1;
 					}
-					if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 3) {
-						this.effectData.startTime += 1;
+					if(this.dex.getAbility('remaininghope') && this.effectData.statusTime == 3) {
+						this.effectData.statusTime += 1;
 					}
-					this.effectData.statusTime = this.effectData.startTime;
+					this.add('-message', `Status timer had been set to: ${this.effectData.statusTime}`);
 					return;
 				}
 			}
@@ -157,7 +156,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-message', `Boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
-				//this.effectData.statusTime = undefined;
 				return;
 			}
 		},
