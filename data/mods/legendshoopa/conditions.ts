@@ -123,7 +123,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 					
-				if(effect.effectType == "Move" && effect.status) {
+				if(effect.effectType === 'Move' && effect.status) {
 					this.effectData.startTime = 6;
 					if(this.effectData.atkBoosted) {
 						this.effectData.startTime -= 1;
@@ -146,21 +146,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 		},
 
-		// this isnt a boost really its just so i dont have to make another volatile xx
-		onModifyMove(move) {
-           	if (move.secondaries) {
-				if(move.id === 'powdersnow' || move.id === 'blizzard' || move.id === 'firepunch' || move.id === 'icepunch' || move.id === 'thunderpunch') return;
-           	    this.debug('doubling secondary chance');
-           	    for (const secondary of move.secondaries) {
-           	        if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
-           	    }
-           	}
-           	if (move.self?.chance && move.self?.chance === 10) {
-				move.self.chance *= 2;
-			}
-       	},
-
-		onResidualOrder: 1,
+		onResidualOrder: 30,
 		onResidual(pokemon) {
 			this.effectData.statusTime -= 1;
 			this.effectData.altTime -=1;
@@ -172,6 +158,21 @@ export const Conditions: {[k: string]: ConditionData} = {
 				pokemon.clearBoosts();
 				this.effectData.statusTime = undefined;
 				return;
+			}
+		},
+
+
+		// this isnt a boost really its just so i dont have to make another volatile xx
+		onModifyMove(move) {
+			if (move.secondaries) {
+			 if(move.id === 'powdersnow' || move.id === 'blizzard' || move.id === 'firepunch' || move.id === 'icepunch' || move.id === 'thunderpunch') return;
+				this.debug('doubling secondary chance');
+				for (const secondary of move.secondaries) {
+					if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
+				}
+			}
+			if (move.self?.chance && move.self?.chance === 10) {
+			 move.self.chance *= 2;
 			}
 		},
 
