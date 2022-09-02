@@ -157,7 +157,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				for(var stats in this.effectData.statusBoosts) {
 					this.add('-setboost', pokemon, stats, 0);
 				}
-				this.add('-clearboost', pokemon);
+				//this.add('-clearboost', pokemon);
 				//pokemon.clearBoosts();
 				return;
 			} else if (this.effectData.altTime <= 0) {
@@ -165,7 +165,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				for(var stats in this.effectData.altBoosts) {
 					this.add('-setboost', pokemon, stats, 0);
 				}
-				this.add('-clearboost', pokemon);
+				//this.add('-clearboost', pokemon);
 				//pokemon.clearBoosts();
 				return;
 			}
