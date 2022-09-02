@@ -83,48 +83,47 @@ export const Conditions: {[k: string]: ConditionData} = {
 			- Need to keep track of what boosts each side has caused
 			- Need to reset only the boosts gained via status moves or alt
 			*/
-			onBoost(boost, target, source, effect) {
-				this.effectData.startTime = 0;
-				this.add('-message', `stat has been boosted`);
-				if (!boost || effect.id === 'legendsboost') return;
-				let activated = false;
-				let boostName: BoostName;
-				this.effectData.atkBoosted = false;
-				this.effectData.defBoosted = false;
-				this.effectData.speBoosted = false;
+		onBoost(boost, target, source, effect) {
+			this.effectData.startTime = 0;
+			this.add('-message', `stat has been boosted`);
+			if (!boost || effect.id === 'legendsboost') return;
+			let activated = false;
+			let boostName: BoostName;
+			this.effectData.atkBoosted = false;
+			this.effectData.defBoosted = false;
+			this.effectData.speBoosted = false;
 	
-				const LegendsBoost : SparseBoostsTable = {};
-				if (boost.atk) {
-					LegendsBoost.spa = boost.atk;
-					this.effectData.atkBoosted = true;
-					activated = true;
-				}
-				if (boost.spa) {
-					LegendsBoost.atk = boost.spa;
-					this.effectData.atkBoosted = true;
-					activated = true;
-				}
-				if (boost.spd) {
-					LegendsBoost.def = boost.spd;
-					this.effectData.defBoosted = true;
-					activated = true;
-				}
-				if (boost.def) {
-					LegendsBoost.spd = boost.def;
-					this.effectData.defBoosted = true;
-					activated = true;
-				}
-				if(boost.spe) {
-					this.effectData.speBoosted = true;
-					activated = true;
-	
-				}
-				this.add('-message', `Activated = ${activated}`);
-				if (activated === true) {
-					this.boost(LegendsBoost, target, target, null, true);
+			const LegendsBoost : SparseBoostsTable = {};
+			if (boost.atk) {
+				LegendsBoost.spa = boost.atk;
+				this.effectData.atkBoosted = true;
+				activated = true;
+			}
+			if (boost.spa) {
+				LegendsBoost.atk = boost.spa;
+				this.effectData.atkBoosted = true;
+				activated = true;
+			}
+			if (boost.spd) {
+				LegendsBoost.def = boost.spd;
+				this.effectData.defBoosted = true;
+				activated = true;
+			}
+			if (boost.def) {
+				LegendsBoost.spd = boost.def;
+				this.effectData.defBoosted = true;
+				activated = true;
+			}
+			if(boost.spe) {
+				this.effectData.speBoosted = true;
+				activated = true;
+			}
 
+			this.add('-message', `Activated = ${activated}`);
+			if (activated === true) {
+				this.boost(LegendsBoost, target, target, null, true);
 					
-				if(effect.effectType == "Move" && effect.Status) {
+				if(effect.effectType == "Move" && effect.status) {
 					this.effectData.startTime = 6;
 					if(this.effectData.atkBoosted) {
 						this.effectData.startTime -= 1;
@@ -135,7 +134,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 					if(this.effectData.speBoosted) {
 						this.effectData.startTime -= 1;
 					}
-	
 					if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 3) {
 						this.effectData.startTime += 1;
 					}
@@ -150,17 +148,17 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		// this isnt a boost really its just so i dont have to make another volatile xx
 		onModifyMove(move) {
-            if (move.secondaries) {
+           	if (move.secondaries) {
 				if(move.id === 'powdersnow' || move.id === 'blizzard' || move.id === 'firepunch' || move.id === 'icepunch' || move.id === 'thunderpunch') return;
-                this.debug('doubling secondary chance');
-                for (const secondary of move.secondaries) {
-                    if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
-                }
-            }
-            if (move.self?.chance && move.self?.chance === 10) {
+           	    this.debug('doubling secondary chance');
+           	    for (const secondary of move.secondaries) {
+           	        if (secondary.chance && secondary.chance === 10) secondary.chance *= 2;
+           	    }
+           	}
+           	if (move.self?.chance && move.self?.chance === 10) {
 				move.self.chance *= 2;
 			}
-        },
+       	},
 
 		onResidualOrder: 1,
 		onResidual(pokemon) {
