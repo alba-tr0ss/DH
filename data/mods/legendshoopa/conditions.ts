@@ -122,10 +122,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 					
-				if ((effect.effectType === 'Move' && !effect.status) || effect.effectType === 'Ability' || effect.effectType === 'Item') {
+				if ((effect.effectType === 'Move' && effect.category !== "Status") || effect.effectType === 'Ability' || effect.effectType === 'Item') {
 					this.effectData.altTime = 3;
-					this.add('-message', `Alt timer had been set to: ${this.effectData.sltTime}`);
-				} else {
+					this.add('-message', `Alt timer had been set to: ${this.effectData.altTime}`);
+				}
+				else {
 
 					this.effectData.statusTime = 6;
 					if(this.effectData.atkBoosted) {
