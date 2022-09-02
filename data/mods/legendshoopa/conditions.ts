@@ -123,7 +123,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 					
-				if(effect.effectType === 'Move' && effect.status) {
+				if ((effect.effectType === 'Move' && !effect.status) || effect.effectType === 'Ability' || effect.effectType === 'Item') {
+					this.effectData.startTime = 3;
+					this.altTime = this.effectData.startTime;
+				} else {
+
 					this.effectData.startTime = 6;
 					if(this.effectData.atkBoosted) {
 						this.effectData.startTime -= 1;
@@ -139,9 +143,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 					}
 					this.effectData.statusTime = this.effectData.startTime;
 					return;
-				} else {
-					this.effectData.startTime = 3;
-					this.altTime = this.effectData.startTime;
 				}
 			}
 		},
@@ -156,7 +157,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-message', `Boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
-				this.effectData.statusTime = undefined;
+				//this.effectData.statusTime = undefined;
 				return;
 			}
 		},
