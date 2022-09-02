@@ -1,6 +1,7 @@
 export const Conditions: {[k: string]: ConditionData} = {	
 	legendsboost: {
 		name: 'legendsboost',
+		/*
 		onBoost(boost, target, source, effect) {
 			this.effectData.startTime = 0;
 			this.add('-message', `stat has been boosted`);
@@ -44,7 +45,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				5 turns for single-stat boosters
 				4 turns for double-stat boosters
 				3 turns for omniboosts or stat boosts gained by an offensive move's effect / ability / item
-				*/
+				
 				this.effectData.startTime = 6;
 				if(this.effectData.atkBoosted) {
 					this.effectData.startTime -= 1;
@@ -64,6 +65,78 @@ export const Conditions: {[k: string]: ConditionData} = {
 				}
 				this.effectData.time = this.effectData.startTime;
 				return;
+			}
+		},
+		*/
+
+		
+			/*
+			- check if the boost was applied via status move or alt
+			- If status move:
+				- Boost alternate stat accordingly
+				- Calculate what the timer should be based on the amount of stats raised
+			
+			- If alt:
+				- Set timer to 3
+				- Thats it, woah
+
+			- Need to keep track of what boosts each side has caused
+			- Need to reset only the boosts gained via status moves or alt
+			*/
+		onBoost(boost, target, source, effect) {
+			this.effectData.startTime = 0;
+			this.add('-message', `stat has been boosted`);
+			if (!boost || effect.id === 'legendsboost') return;
+			let activated = false;
+			let boostName: BoostName;
+
+
+			const LegendsBoost : SparseBoostsTable = {};
+			// if the boost is caused by a status move
+			if(effect.effectType == "Move" && effect.status) {
+				if (boost.atk || boost. spa) {
+					LegendsBoost.spa, LegendsBoost.atk = (boost.atk >= 0 || boost.spa >= 0) ? 1 : -1 ;
+					this.effectData.atkBoosted = true;
+					activated = true;
+				}
+				/*
+				if (boost.spa) {
+					LegendsBoost.atk = boost.spa;
+					this.effectData.atkBoosted = true;
+					activated = true;
+				}
+				*/
+				if (boost.spd) {
+					LegendsBoost.def = boost.spd;
+					this.effectData.defBoosted = true;
+					activated = true;
+				}
+				if (boost.def) {
+					LegendsBoost.spd = boost.def;
+					this.effectData.defBoosted = true;
+					activated = true;
+				}
+				if(boost.spe) {
+					this.effectData.speBoosted = true;
+					activated = true;
+				}
+			}
+
+			if(activated == true) {
+				this.boost(LegendsBoost, target, target, null, true);
+
+				this.effectData.startTime = 6;
+				if(this.effectData.atkBoosted) {
+					this.effectData.startTime -= 1;
+				}
+				if(this.effectData.defBoosted) {
+					this.effectData.startTime -= 1;
+				}
+				if(this.effectData.speBoosted) {
+					this.effectData.startTime -= 1;
+				}
+
+				this.effectData.time = this.effectData.startTime;
 			}
 		},
 
