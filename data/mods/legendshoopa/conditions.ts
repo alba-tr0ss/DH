@@ -155,15 +155,18 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (this.effectData.statusTime <= 0) {
 				this.add('-message', `Status boosts are being cleared`);
 				for(var stats in this.effectData.statusBoosts) {
-					this.add('-setboost', pokemon, stats, 0, '[silent]');
+					this.add('-setboost', pokemon, stats, 0);
 				}
 				this.add('-clearboost', pokemon);
-				pokemon.clearBoosts();
+				//pokemon.clearBoosts();
 				return;
 			} else if (this.effectData.altTime <= 0) {
 				this.add('-message', `Alt boosts are being cleared`);
+				for(var stats in this.effectData.altBoosts) {
+					this.add('-setboost', pokemon, stats, 0);
+				}
 				this.add('-clearboost', pokemon);
-				pokemon.clearBoosts();
+				//pokemon.clearBoosts();
 				return;
 			}
 		},
