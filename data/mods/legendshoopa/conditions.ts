@@ -93,8 +93,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.speBoosted = false;
 	
 			const LegendsBoost : SparseBoostsTable = {};
-			const statusBoost : SparseBoostsTable = {};
-			const altBoost : SparseBoostsTable = {};
 			if (boost.atk) {
 				LegendsBoost.spa = boost.atk;
 				this.effectData.atkBoosted = true;
@@ -123,12 +121,12 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
 				if ((effect.effectType === 'Move' && effect.category !== "Status") || effect.effectType === 'Ability' || effect.effectType === 'Item') {
-					altBoost.stat = LegendsBoost; //???
+					this.effectData.altBoosts = LegendsBoost;
 					this.effectData.altTime = 3;
-					this.add('-message', `Alt boosted: ${altBoost}`);
+					this.add('-message', `Alt boosted: ${this.effectData.altBoosts}`);
 				}
 				else {
-					altBoost.stat = LegendsBoost;
+					this.effectData.statusBoosts = LegendsBoost;
 					this.effectData.statusTime = 6;
 					if(this.effectData.atkBoosted) {
 						this.effectData.statusTime -= 1;
@@ -142,7 +140,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 					if(this.dex.getAbility('remaininghope') && this.effectData.statusTime == 3) {
 						this.effectData.statusTime += 1;
 					}
-					this.add('-message', `Status boosted: ${statusBoost}`);
+					this.add('-message', `Status boosted: ${this.effectData.statusBoost}`);
 					return;
 				}
 			}
@@ -155,7 +153,15 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', `${pokemon.name}: Status timer is currently on ${this.effectData.statusTime}`);
 			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
 			if (this.effectData.statusTime <= 0) {
-				this.add('-message', `Boosts are being cleared`);
+				this.add('-message', `Status boosts are being cleared`);
+				for(var stats in this.effectData.statusBoosts) {
+					this.add('-setboost', pokemon, stats, 0, '[silent]');
+				}
+				this.add('-clearboost', pokemon);
+				pokemon.clearBoosts();
+				return;
+			} else if (this.effectData.altTime <= 0) {
+				this.add('-message', `Alt boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
 				return;
