@@ -71,7 +71,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		
 			/*
-			- check if the boost was applied via status move or alt
+			- check if the boost was applied via status move or alt (done)
 			- If status move:
 				- Boost alternate stat accordingly
 				- Calculate what the timer should be based on the amount of stats raised
@@ -88,12 +88,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', `stat has been boosted`);
 			if (!boost || effect.id === 'legendsboost') return;
 			let activated = false;
-			let boostName: BoostName;
 			this.effectData.atkBoosted = false;
 			this.effectData.defBoosted = false;
 			this.effectData.speBoosted = false;
 	
 			const LegendsBoost : SparseBoostsTable = {};
+			const statusBoost : SparseBoostsTable = {};
+			const altBoost : SparseBoostsTable = {};
 			if (boost.atk) {
 				LegendsBoost.spa = boost.atk;
 				this.effectData.atkBoosted = true;
@@ -121,13 +122,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 			if (activated === true) {
 				this.boost(LegendsBoost, target, target, null, true);
-					
 				if ((effect.effectType === 'Move' && effect.category !== "Status") || effect.effectType === 'Ability' || effect.effectType === 'Item') {
+					altBoost.stat = LegendsBoost; //???
 					this.effectData.altTime = 3;
-					this.add('-message', `Alt timer had been set to: ${this.effectData.altTime}`);
+					this.add('-message', `Alt boosted: ${altBoost}`);
 				}
 				else {
-
+					altBoost.stat = LegendsBoost;
 					this.effectData.statusTime = 6;
 					if(this.effectData.atkBoosted) {
 						this.effectData.statusTime -= 1;
@@ -141,7 +142,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 					if(this.dex.getAbility('remaininghope') && this.effectData.statusTime == 3) {
 						this.effectData.statusTime += 1;
 					}
-					this.add('-message', `Status timer had been set to: ${this.effectData.statusTime}`);
+					this.add('-message', `Status boosted: ${statusBoost}`);
 					return;
 				}
 			}
