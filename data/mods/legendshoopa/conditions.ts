@@ -83,29 +83,27 @@ export const Conditions: {[k: string]: ConditionData} = {
 			- Need to keep track of what boosts each side has caused
 			- Need to reset only the boosts gained via status moves or alt
 			*/
-		onBoost(boost, target, source, effect) {
-			this.effectData.startTime = 0;
-			this.add('-message', `stat has been boosted`);
-			if (!boost || effect.id === 'legendsboost') return;
-			let activated = false;
-			let boostName: BoostName;
-
-
-			const LegendsBoost : SparseBoostsTable = {};
-			// if the boost is caused by a status move
-			if(effect.effectType == "Move" && effect.status) {
-				if (boost.atk || boost. spa) {
-					LegendsBoost.spa, LegendsBoost.atk = (boost.atk >= 0 || boost.spa >= 0) ? 1 : -1 ;
+			onBoost(boost, target, source, effect) {
+				this.effectData.startTime = 0;
+				this.add('-message', `stat has been boosted`);
+				if (!boost || effect.id === 'legendsboost') return;
+				let activated = false;
+				let boostName: BoostName;
+				this.effectData.atkBoosted = false;
+				this.effectData.defBoosted = false;
+				this.effectData.speBoosted = false;
+	
+				const LegendsBoost : SparseBoostsTable = {};
+				if (boost.atk) {
+					LegendsBoost.spa = boost.atk;
 					this.effectData.atkBoosted = true;
 					activated = true;
 				}
-				/*
 				if (boost.spa) {
 					LegendsBoost.atk = boost.spa;
 					this.effectData.atkBoosted = true;
 					activated = true;
 				}
-				*/
 				if (boost.spd) {
 					LegendsBoost.def = boost.spd;
 					this.effectData.defBoosted = true;
@@ -119,24 +117,34 @@ export const Conditions: {[k: string]: ConditionData} = {
 				if(boost.spe) {
 					this.effectData.speBoosted = true;
 					activated = true;
+	
 				}
-			}
+				this.add('-message', `Activated = ${activated}`);
+				if (activated === true) {
+					this.boost(LegendsBoost, target, target, null, true);
 
-			if(activated == true) {
-				this.boost(LegendsBoost, target, target, null, true);
-
-				this.effectData.startTime = 6;
-				if(this.effectData.atkBoosted) {
-					this.effectData.startTime -= 1;
+					
+				if(effect.effectType == "Move" && effect.Status) {
+					this.effectData.startTime = 6;
+					if(this.effectData.atkBoosted) {
+						this.effectData.startTime -= 1;
+					}
+					if(this.effectData.defBoosted) {
+						this.effectData.startTime -= 1;
+					}
+					if(this.effectData.speBoosted) {
+						this.effectData.startTime -= 1;
+					}
+	
+					if(this.dex.getAbility('remaininghope') && this.effectData.startTime == 3) {
+						this.effectData.startTime += 1;
+					}
+					this.effectData.statusTime = this.effectData.startTime;
+					return;
+				} else {
+					this.effectData.startTime = 3;
+					this.altTime = this.effectData.startTime;
 				}
-				if(this.effectData.defBoosted) {
-					this.effectData.startTime -= 1;
-				}
-				if(this.effectData.speBoosted) {
-					this.effectData.startTime -= 1;
-				}
-
-				this.effectData.time = this.effectData.startTime;
 			}
 		},
 
@@ -156,13 +164,15 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 		onResidualOrder: 1,
 		onResidual(pokemon) {
-			this.effectData.time -= 1;
-			this.add('-message', `${pokemon.name}: Timer is currently on ${this.effectData.time}`);
-			if (this.effectData.time <= 0) {
+			this.effectData.statusTime -= 1;
+			this.effectData.altTime -=1;
+			this.add('-message', `${pokemon.name}: Status timer is currently on ${this.effectData.statusTime}`);
+			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
+			if (this.effectData.statusTime <= 0) {
 				this.add('-message', `Boosts are being cleared`);
 				this.add('-clearboost', pokemon);
 				pokemon.clearBoosts();
-				this.effectData.time = undefined;
+				this.effectData.statusTime = undefined;
 				return;
 			}
 		},
