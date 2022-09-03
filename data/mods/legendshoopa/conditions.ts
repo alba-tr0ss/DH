@@ -147,9 +147,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.effectData.altTime -=1;
 			this.add('-message', `${pokemon.name}: Status timer is currently on ${this.effectData.statusTime}`);
 			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
-			if (this.effectData.statusTime <= 0) {
+			if (this.effectData.statusTime <= 0 && this.effectData.statusBoosts) {
 				this.add('-message', `Status boosts are being cleared`);
-				for(stats in this.effectData.statusBoosts) {
+				/*
+				this.effectData.statusBoost.forEach(function(stats)) {
 					this.add('-message', `Current Status stats to be cleared:${stats}`);
 					if(stats === "atk" || stats === "spa") {
 						pokemon.setBoost({atk: 0, spa: 0});
@@ -167,6 +168,19 @@ export const Conditions: {[k: string]: ConditionData} = {
 						this.add('message', "Cleared Spe/Acc/Evasion");
 					}
 				}
+				*/
+
+				this.effectData.statusBoost.forEach(function(stats) {
+					if(stats === "atk" || stats === "spa") {
+						pokemon.setBoost({atk: 0, spa: 0});
+						
+					} else if(stats === "def" || stats === "spd") {
+						pokemon.setBoost({def: 0, spd: 0});
+					} else if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
+						pokemon.setBoost({spe: 0, accuracy: 0, evasion: 0});
+					}
+				})
+
 				this.effectData.statusBoosts = undefined;
 				return;
 			} else if (this.effectData.altTime <= 0) {
@@ -208,6 +222,10 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'legendsboost', '[silent]');
 		},
+	},
+
+	altboost: {
+		name: 'altboost',
 	},
 
 	confusion: {
