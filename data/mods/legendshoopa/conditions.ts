@@ -155,13 +155,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-message', `Status boosts are being cleared`);
 				for(var stats in this.effectData.statusBoosts) {
 					if(stats === "atk" || stats === "spa") {
-						this.add('-setboost', pokemon, "atk", 0);
-						this.add('-setboost', pokemon, "spa", 0);
+						this.add('-setboost', pokemon, "atk", 0, '[silent]');
+						this.add('-setboost', pokemon, "spa", 0, '[silent]');
 					} else if(stats === "def" || stats === "spd") {
-						this.add('-setboost', pokemon, "def", 0);
-						this.add('-setboost', pokemon, "spdef", 0);
-					} else { //covers speed, accuracy, and evasion
-						this.add('-setboost', pokemon, stats, 0);
+						this.add('-setboost', pokemon, "def", 0, '[silent]');
+						this.add('-setboost', pokemon, "spd", 0, '[silent]');
+					} else if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
+						this.add('-setboost', pokemon, stats, 0, '[silent]');
 					}
 				}
 				return;
@@ -169,13 +169,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 				this.add('-message', `Alt boosts are being cleared`);
 				for(var stats in this.effectData.altBoosts) {
 					if(stats === "atk" || stats === "spa") {
-						this.add('-setboost', pokemon, "atk", 0);
-						this.add('-setboost', pokemon, "spa", 0);
+						this.add('-setboost', pokemon, "atk", 0, '[silent]');
+						this.add('-setboost', pokemon, "spa", 0, '[silent]');
 					} else if(stats === "def" || stats === "spd") {
-						this.add('-setboost', pokemon, "def", 0);
-						this.add('-setboost', pokemon, "spdef", 0);
-					} else {
-						this.add('-setboost', pokemon, stats, 0);
+						this.add('-setboost', pokemon, "def", 0, '[silent]');
+						this.add('-setboost', pokemon, "spd", 0, '[silent]');
+					} else if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
+						this.add('-setboost', pokemon, stats, 0, '[silent]');
 					}
 				}
 				return;
