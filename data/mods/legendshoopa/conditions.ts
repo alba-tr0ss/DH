@@ -140,7 +140,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 					if(this.dex.getAbility('remaininghope') && this.effectData.statusTime == 3) {
 						this.effectData.statusTime += 1;
 					}
-					this.add('-message', `Status boosted: ${this.effectData.statusBoost}`);
 					return;
 				}
 			}
@@ -155,18 +154,30 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (this.effectData.statusTime <= 0) {
 				this.add('-message', `Status boosts are being cleared`);
 				for(var stats in this.effectData.statusBoosts) {
-					this.add('-setboost', pokemon, stats, 0);
+					if(stats === "atk" || stats === "spa") {
+						this.add('-setboost', pokemon, "atk", 0);
+						this.add('-setboost', pokemon, "spa", 0);
+					} else if(stats === "def" || stats === "spd") {
+						this.add('-setboost', pokemon, "def", 0);
+						this.add('-setboost', pokemon, "spdef", 0);
+					} else { //covers speed, accuracy, and evasion
+						this.add('-setboost', pokemon, stats, 0);
+					}
 				}
-				//this.add('-clearboost', pokemon);
-				//pokemon.clearBoosts();
 				return;
 			} else if (this.effectData.altTime <= 0) {
 				this.add('-message', `Alt boosts are being cleared`);
 				for(var stats in this.effectData.altBoosts) {
-					this.add('-setboost', pokemon, stats, 0);
+					if(stats === "atk" || stats === "spa") {
+						this.add('-setboost', pokemon, "atk", 0);
+						this.add('-setboost', pokemon, "spa", 0);
+					} else if(stats === "def" || stats === "spd") {
+						this.add('-setboost', pokemon, "def", 0);
+						this.add('-setboost', pokemon, "spdef", 0);
+					} else {
+						this.add('-setboost', pokemon, stats, 0);
+					}
 				}
-				//this.add('-clearboost', pokemon);
-				//pokemon.clearBoosts();
 				return;
 			}
 		},
