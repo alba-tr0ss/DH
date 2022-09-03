@@ -97,23 +97,19 @@ export const Conditions: {[k: string]: ConditionData} = {
 				LegendsBoost.spa = boost.atk;
 				this.effectData.atkBoosted = true;
 				activated = true;
-			}
-			if (boost.spa) {
+			} else if (boost.spa) {
 				LegendsBoost.atk = boost.spa;
 				this.effectData.atkBoosted = true;
 				activated = true;
-			}
-			if (boost.spd) {
+			} else if (boost.spd) {
 				LegendsBoost.def = boost.spd;
 				this.effectData.defBoosted = true;
 				activated = true;
-			}
-			if (boost.def) {
+			} else if (boost.def) {
 				LegendsBoost.spd = boost.def;
 				this.effectData.defBoosted = true;
 				activated = true;
-			}
-			if(boost.spe) {
+			} else if(boost.spe) {
 				this.effectData.speBoosted = true;
 				activated = true;
 			}
@@ -153,19 +149,24 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
 			if (this.effectData.statusTime <= 0) {
 				this.add('-message', `Status boosts are being cleared`);
-				for(var stats in this.effectData.statusBoosts) {
+				for(stats in this.effectData.statusBoosts) {
 					if(stats === "atk" || stats === "spa") {
 						pokemon.setBoost({atk: 0, spa: 0});
 						this.add('-setboost', pokemon, "atk", 0, '[silent]');
 						this.add('-setboost', pokemon, "spa", 0, '[silent]');
+						this.add('message', "Cleared Atk/Spa");
 					} else if(stats === "def" || stats === "spd") {
 						pokemon.setBoost({def: 0, spd: 0});
 						this.add('-setboost', pokemon, "def", 0, '[silent]');
 						this.add('-setboost', pokemon, "spd", 0, '[silent]');
+						this.add('message', "Cleared Def/SpD");
 					} else if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
 						pokemon.setBoost({spe: 0, accuracy: 0, evasion: 0});
 						this.add('-setboost', pokemon, stats, 0, '[silent]');
+						this.add('message', "Cleared Spe/Acc/Evasion");
 					}
+					this.add('-message', `Current Status stats to be cleared:${stats}`);
+					this.add("-message", `Curent Status Boosts: ${this.effectData.statusBoosts}`);
 				}
 				return;
 			} else if (this.effectData.altTime <= 0) {
