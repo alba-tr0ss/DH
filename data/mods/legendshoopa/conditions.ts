@@ -150,6 +150,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (this.effectData.statusTime <= 0) {
 				this.add('-message', `Status boosts are being cleared`);
 				for(stats in this.effectData.statusBoosts) {
+					this.add('-message', `Current Status stats to be cleared:${stats}`);
 					if(stats === "atk" || stats === "spa") {
 						pokemon.setBoost({atk: 0, spa: 0});
 						this.add('-setboost', pokemon, "atk", 0, '[silent]');
@@ -165,9 +166,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 						this.add('-setboost', pokemon, stats, 0, '[silent]');
 						this.add('message', "Cleared Spe/Acc/Evasion");
 					}
-					this.add('-message', `Current Status stats to be cleared:${stats}`);
-					this.add("-message", `Curent Status Boosts: ${this.effectData.statusBoosts}`);
 				}
+				this.effectData.statusBoosts = undefined;
 				return;
 			} else if (this.effectData.altTime <= 0) {
 				this.add('-message', `Alt boosts are being cleared`);
@@ -185,6 +185,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 						this.add('-setboost', pokemon, stats, 0, '[silent]');
 					}
 				}
+				this.effectData.altBoosts = undefined;
 				return;
 			}
 		},
