@@ -148,8 +148,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-message', `${pokemon.name}: Status timer is currently on ${this.effectData.statusTime}`);
 			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
 
-			if (this.effectData.statusTime <= 0 && this.effectData.statusBoosts) {
-				let i: BoostName;
+			if (this.effectData.statusTime <= 0) {
+				this.add('-message', "Status boosts are being cleared");
 				for(var stats in this.effectData.altBoosts) {
 					if(stats === "atk" || stats === "spa") {
 						pokemon.setBoost({atk: 0, spa: 0});
