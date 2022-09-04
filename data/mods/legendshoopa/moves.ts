@@ -284,8 +284,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			volatileStatus: 'fixated',
 		},
 		basePowerCallback() {
-			return;
+			return 80;
 		},
+		onTry() {}
 		condition: {
 			duration: null,
 		},
