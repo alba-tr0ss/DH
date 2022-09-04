@@ -82,6 +82,16 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 		},
 
+		onResidual(pokemon) {
+			this.effectData.time -= 1;
+			//this.add("-message", `Current time is ${this.effectData.time}`);
+			if (this.effectData.time <= 0) {
+				this.add('-clearboost', pokemon);
+				pokemon.clearBoosts();
+				return;
+			}
+		},
+
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'legendsboost', '[silent]');
 		},
