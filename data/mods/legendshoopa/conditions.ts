@@ -1,7 +1,6 @@
 export const Conditions: {[k: string]: ConditionData} = {	
 	legendsboost: {
 		name: 'legendsboost',
-		/*
 		onBoost(boost, target, source, effect) {
 			this.effectData.startTime = 0;
 			this.add('-message', `stat has been boosted`);
@@ -45,6 +44,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				5 turns for single-stat boosters
 				4 turns for double-stat boosters
 				3 turns for omniboosts or stat boosts gained by an offensive move's effect / ability / item
+				*/
 				
 				this.effectData.startTime = 6;
 				if(this.effectData.atkBoosted) {
@@ -67,130 +67,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return;
 			}
 		},
-		*/
-
-		
-			/*
-			- check if the boost was applied via status move or alt (done)
-			- If status move:
-				- Boost alternate stat accordingly
-				- Calculate what the timer should be based on the amount of stats raised
-			
-			- If alt:
-				- Set timer to 3
-				- Thats it, woah
-
-			- Need to keep track of what boosts each side has caused
-			- Need to reset only the boosts gained via status moves or alt
-			*/
-		onBoost(boost, target, source, effect) {
-			this.effectData.startTime = 0;
-			this.add('-message', `stat has been boosted`);
-			if (!boost || effect.id === 'legendsboost') return;
-			let activated = false;
-			this.effectData.atkBoosted = false;
-			this.effectData.defBoosted = false;
-			this.effectData.speBoosted = false;
-	
-			const LegendsBoost : SparseBoostsTable = {};
-			if (boost.atk) {
-				LegendsBoost.spa = boost.atk;
-				this.effectData.atkBoosted = true;
-				activated = true;
-			} if (boost.spa) {
-				LegendsBoost.atk = boost.spa;
-				this.effectData.atkBoosted = true;
-				activated = true;
-			} if (boost.spd) {
-				LegendsBoost.def = boost.spd;
-				this.effectData.defBoosted = true;
-				activated = true;
-			} if (boost.def) {
-				LegendsBoost.spd = boost.def;
-				this.effectData.defBoosted = true;
-				activated = true;
-			} if(boost.spe) {
-				this.effectData.speBoosted = true;
-				activated = true;
-			}
-
-			if (activated === true) {
-				this.boost(LegendsBoost, target, target, null, true);
-				if ((effect.effectType === 'Move' && effect.category !== "Status") || effect.effectType === 'Ability' || effect.effectType === 'Item') {
-					this.effectData.altBoosts = LegendsBoost;
-					this.effectData.altTime = 3;
-					this.add('-message', `Alt boosted: ${this.effectData.altBoosts}`);
-				}
-				else {
-					this.effectData.statusBoosts = LegendsBoost;
-					this.effectData.statusTime = 6;
-					if(this.effectData.atkBoosted) {
-						this.effectData.statusTime -= 1;
-					}
-					if(this.effectData.defBoosted) {
-						this.effectData.statusTime -= 1;
-					}
-					if(this.effectData.speBoosted) {
-						this.effectData.statusTime -= 1;
-					}
-					if(this.dex.getAbility('remaininghope') && this.effectData.statusTime == 3) {
-						this.effectData.statusTime += 1;
-					}
-					return;
-				}
-			}
-		},
-
-		onResidualOrder: 30,
-		onResidual(pokemon) {
-			this.effectData.statusTime -= 1;
-			this.effectData.altTime -=1;
-			this.add('-message', `${pokemon.name}: Status timer is currently on ${this.effectData.statusTime}`);
-			this.add('-message', `${pokemon.name}: Alt timer is currently on ${this.effectData.altTime}`);
-
-			if (this.effectData.statusTime <= 0) {
-				this.add('-message', "Status boosts are being cleared");
-				for(var stats in this.effectData.statusBoosts) {
-					if(stats === "atk" || stats === "spa") {
-						this.add('-message', "Atk being cleared");
-						pokemon.setBoost({atk: 0, spa: 0});
-						this.add('-setboost', pokemon, "atk", 0, '[silent]');
-						this.add('-setboost', pokemon, "spa", 0, '[silent]');
-					} if(stats === "def" || stats === "spd") {
-						this.add('-message', "Def being cleared");
-						pokemon.setBoost({def: 0, spd: 0});
-						this.add('-setboost', pokemon, "def", 0, '[silent]');
-						this.add('-setboost', pokemon, "spd", 0, '[silent]');
-					} if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
-						this.add('-message', "Speed being cleared");
-						pokemon.setBoost({spe: 0, accuracy: 0, evasion: 0});
-						this.add('-setboost', pokemon, stats, 0, '[silent]');
-					}
-				}
-				this.effectData.statusBoosts = undefined;
-				return;
-			} 
-			if (this.effectData.altTime <= 0) {
-				this.add('-message', `Alt boosts are being cleared`);
-				for(var stats in this.effectData.altBoosts) {
-					if(stats === "atk" || stats === "spa") {
-						pokemon.setBoost({atk: 0, spa: 0});
-						this.add('-setboost', pokemon, "atk", 0, '[silent]');
-						this.add('-setboost', pokemon, "spa", 0, '[silent]');
-					} if(stats === "def" || stats === "spd") {
-						pokemon.setBoost({def: 0, spd: 0});
-						this.add('-setboost', pokemon, "def", 0, '[silent]');
-						this.add('-setboost', pokemon, "spd", 0, '[silent]');
-					} if (stats === "spe" || stats === "accuracy" || stats == "evasion") { 
-						pokemon.setBoost({spe: 0, accuracy: 0, evasion: 0});
-						this.add('-setboost', pokemon, stats, 0, '[silent]');
-					}
-				}
-				this.effectData.altBoosts = undefined;
-				return;
-			}
-		},
-
 
 		// this isnt a boost really its just so i dont have to make another volatile xx
 		onModifyMove(move) {
