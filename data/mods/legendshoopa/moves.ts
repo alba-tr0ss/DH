@@ -286,8 +286,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePowerCallback() {
 			return;
 		},
-		onTry() {
-			return;
+		condition: {
+			duration: null,
 		},
 	},
 
