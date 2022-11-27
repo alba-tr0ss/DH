@@ -1469,9 +1469,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	clodsire: {
 		tier: "BoE OU",
 		isModded: true,
-	}
+	},
 	annihilape: {
 		tier: "BoE OU",
 		isModded: true,
-	}
+	},
 };
