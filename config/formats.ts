@@ -951,6 +951,51 @@ export const Formats: FormatList = [
 		],
 	},
 	{
+		name: "[Gen 9] Book of Enigmas",
+		desc: [
+			"<b>Book of Enigmas</b>: A Pet Mod that aims to create new Paradox Pokemon based on Ho-oh and Lugia - the sky and the sea, respectively.",
+		],
+		threads: [
+			`&bullet: <a href="https://www.smogon.com/forums/threads/book-of-enigmas-slate-0-the-beginning-custom-abilities-names.3711490/">Thread on Smogon.`,
+		],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Data Mod',],
+		banlist: [
+			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
+			'Sceptilite', 'Blazikenite', 'Swampertite', 'Gardevoirite', 'Galladite', 'Alakazite', 'Gyaradosite',
+			'Sablenite', 'Mawilite', 'Aggronite', 'Medichamite', 'Manectite', 'Sharpedonite', 'Cameruptite', 
+			'Altarianite', 'Absolite', 'Glalitite', 'Salamencite', 'Metagrossite', 'Latiasite', 'Latiosite', 
+			'Garchompite', 'Steelixite', 'Beedrillite', 'Pidgeotite', 
+			'Blue Orb', 'Red Orb', //this is just copied from ANL's lol
+		],
+		mod: 'legendshoopa',
+		onValidateTeam(team, format) {
+			/**@type {{[k: string]: true}} */
+			let speciesTable = {};
+			let allowedTiers = ['BoE OU', "BoE NFE", "BoE LC"];
+			for (const set of team) {
+				let template = this.dex.getSpecies(set.species);
+				if (!allowedTiers.includes(template.tier)) {
+					return [set.species + ' is not legal in Book of Enigmas OU.'];
+				}
+			}
+		},
+		validateSet(set, teamHas) { // stolen from SV Specualative
+			const species = this.dex.getSpecies(set.species);
+			const ability = this.dex.getAbility(set.ability);
+			if (!set.hpType === 'Fairy' && !set.hpType === 'Normal') {
+				return this.validateSet(set, teamHas);
+			} else {
+				const terastal = set.hpType;
+				set.hpType = 'Fire';
+				const fakeValidation = this.validateSet(set, teamHas);
+				if (fakeValidation?.length) return fakeValidation;
+				set.hpType = terastal;
+				return null;
+			}
+		},
+		mod: 'bookofenigmas',
+	},
+	{
 		name: "[Gen 8] Branched Potential",
 		desc: [
 			"<b>Branched Potential</b>: A mod that designs new branched evolutions (i.e., Slowpoke being able to evolve into either Slowbro or Slowking) for Pokemon that don't already have them.",
@@ -3371,36 +3416,6 @@ export const Formats: FormatList = [
 		mod: "inksdynamaxadventure",
 		searchShow: false,
 		challengeShow: false,
-	},
-	{
-		name: "[Gen 8] SV Speculative",
-		desc: [
-			"Currently just a custom game format with Terastal implemented instead of Mega Evolution; will make a more specific speculative format for SV when we have a bit more to work with!",
-		],
-
-		searchShow: false,
-		
-		ruleset: ['Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Dynamax Clause', 'Sleep Clause Mod'],
-		onValidateSet(set) {
-			const item = this.dex.getItem(set.item);
-			if (item.megaStone) return [`${set.name || set.species} is not allowed to Mega Evolve. (We have Terastal instead!)`];
-			if (item.zMove) return [`${set.name || set.species} is not allowed to hold a Z-Crystal. (We have Terastal instead!)`];
-		},
-		validateSet(set, teamHas) {
-			const species = this.dex.getSpecies(set.species);
-			const ability = this.dex.getAbility(set.ability);
-			if (!set.hpType === 'Fairy' && !set.hpType === 'Normal') {
-				return this.validateSet(set, teamHas);
-			} else {
-				const terastal = set.hpType;
-				set.hpType = 'Fire';
-				const fakeValidation = this.validateSet(set, teamHas);
-				if (fakeValidation?.length) return fakeValidation;
-				set.hpType = terastal;
-				return null;
-			}
-		},
-		mod: 'svspeculative',
 	},
 	{
 		name: "[Gen 8] Spookymons 2022",
