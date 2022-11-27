@@ -469,7 +469,7 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sneaselhisui: {
 		learnset: {
 			acidspray: ["9M"],
-			aerialace: ["9M"],
+			aerialace: ["8M"],
 			agility: ["9M", "9L48"],
 			brickbreak: ["9M", "9L30"],
 			bulkup: ["9M"],
