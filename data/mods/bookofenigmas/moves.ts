@@ -454,27 +454,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		type: "Psychic",
 	},
 	ragefist: {
-		num: -1030,
+		num: 889,
 		accuracy: 100,
 		basePower: 50,
+		basePowerCallback(pokemon) {
+			return Math.min(350, 50 + 50 * pokemon.timesAttacked);
+		},
 		category: "Physical",
 		name: "Rage Fist",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'ragefist',
-		},
-		condition: {
-			onStart(pokemon) {
-
-			},
-			onHit(target, source, move) {
-				if (target !== source && move.category !== 'Status') {
-					return Math.min(350, 50 + 50 * pokemon.timesAttacked);
-				}
-			},
-		},
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 		secondary: null,
 		target: "normal",
 		type: "Ghost",
