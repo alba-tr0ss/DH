@@ -58,8 +58,8 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		addNewMoves('qwilfish',['chillingwater']);
 		addNewMoves('slowbro',['chillingwater']);
 		addNewMoves('slowking',['chillingwater']);
-		addNewMoves('slowbro-galar',['chillingwater']);
-		addNewMoves('slowking-galar',['chillingwater']);
+		addNewMoves('slowbrogalar',['chillingwater']);
+		addNewMoves('slowkinggalar',['chillingwater']);
 		addNewMoves('vaporeon',['chillingwater']);
 		addNewMoves('wigglytuff',['chillingwater']);
 	},
