@@ -11,7 +11,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				const learnset = this.modData('Learnsets', this.toID(id)).learnset;
 				this.modData('Learnsets', this.toID(id)).learnset.terablast = ["8M"];
 			}
-		},
+		};
 		addNewMoves('azumarill',['icespinner']);
 		addNewMoves('cloyster',['icespinner']);
 		addNewMoves('delibird',['icespinner']);
