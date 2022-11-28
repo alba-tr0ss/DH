@@ -35,6 +35,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 298,
 	},
+	// broke atm
+	/*
 	cudchew: {
 		onEatItem(item, pokemon) {
 			if (!item.isBerry) return;
@@ -61,4 +63,5 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: 291,
 	},
+	*/
 };

@@ -732,9 +732,6 @@ export const Scripts: BattleScriptsData = {
 		for (const [i, target] of targetsCopy.entries()) {
 			if (target && pokemon !== target) {
 				target.gotAttacked(move, damage[i] as number | false | undefined, pokemon);
-				if (move.category !== 'Status') {
-					target.timesAttacked += hit - 1;
-				}
 			}
 		}
 
