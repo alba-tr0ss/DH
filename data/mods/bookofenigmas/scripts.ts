@@ -1,4 +1,30 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
+	
+	hitStepBreakProtect(targets, pokemon, move) {
+		if (move.breaksProtect) {
+			for (const target of targets) {
+				let broke = false;
+				for (const effectid of ['banefulbunker', 'kingsshield', 'obstruct', 'protect', 'spikyshield']) {
+					if (target.removeVolatile(effectid)) broke = true;
+				}
+				if (this.gen >= 6 || target.side !== pokemon.side) {
+					for (const effectid of ['craftyshield', 'matblock', 'quickguard', 'wideguard']) {
+						if (target.side.removeSideCondition(effectid)) broke = true;
+					}
+				}
+				if (broke) {
+					if (['feint', 'gmaxoneblow', 'gmaxrapidflow', 'hyperdrill'].includes(move.id)) {
+						this.add('-activate', target, 'move: ' + move.name);
+					} else {
+						this.add('-activate', target, 'move: ' + move.name, '[broken]');
+					}
+					if (this.gen >= 6) delete target.volatiles['stall'];
+				}
+			}
+		}
+		return undefined;
+	},
+
 	// Terastal
 	// taken from SV Speculative
 
