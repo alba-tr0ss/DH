@@ -43,6 +43,25 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		addNewMoves('ursaring',['trailblaze']);
 		addNewMoves('weavile',['trailblaze']);
 		addNewMoves('wigglytuff',['trailblaze']);
+
+		addNewMoves('azumarill',['chillingwater']);
+		addNewMoves('blissey',['chillingwater']);
+		addNewMoves('cloyster',['chillingwater']);
+		addNewMoves('delibird',['chillingwater']);
+		addNewMoves('dragonite',['chillingwater']);
+		addNewMoves('glaceon',['chillingwater']);
+		addNewMoves('gyarados',['chillingwater']);
+		addNewMoves('pelipper',['chillingwater']);
+		addNewMoves('perrserker',['chillingwater']);
+		addNewMoves('persian',['chillingwater']);
+		addNewMoves('quagsire',['chillingwater']);
+		addNewMoves('qwilfish',['chillingwater']);
+		addNewMoves('slowbro',['chillingwater']);
+		addNewMoves('slowking',['chillingwater']);
+		addNewMoves('slowbro-galar',['chillingwater']);
+		addNewMoves('slowking-galar',['chillingwater']);
+		addNewMoves('vaporeon',['chillingwater']);
+		addNewMoves('wigglytuff',['chillingwater']);
 	},
 
 	hitStepBreakProtect(targets, pokemon, move) {
