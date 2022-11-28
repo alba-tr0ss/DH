@@ -418,10 +418,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1},
 		secondary: {
 			chance: 100,
-			self: {
-				boosts: {
-					atk: -1,
-				},
+			boosts: {
+				atk: -1,
 			},
 		},
 		target: "normal",

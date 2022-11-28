@@ -1474,4 +1474,40 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "BoE OU",
 		isModded: true,
 	},
+	farigiraf: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	wiglett: {
+		tier: "BoE LC",
+		isModded: true,
+	},
+	wugtrio: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	toedscool: {
+		tier: "BoE LC",
+		isModded: true,
+	},
+	toedscruel: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	dudunspare: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	wyrdeer: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	kleavor: {
+		tier: "BoE OU",
+		isModded: true,
+	},
+	ursaluna: {
+		tier: "BoE OU",
+		isModded: true,
+	},
 };

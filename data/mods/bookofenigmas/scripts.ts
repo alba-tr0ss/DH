@@ -1,5 +1,50 @@
 export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
-	
+	init() {
+		//stolen from optimons x
+		const addNewMoves = (pokemonid: string, moveids: string[]) => {
+			for (const moveid of moveids) {
+				this.modData('Learnsets', pokemonid).learnset[moveid] = [moveid === 'dracometeor' || moveid === 'steelbeam' ? '8T' : '8M'];
+			}
+		};
+		addNewMoves('azumarill',['icespinner']);
+		addNewMoves('cloyster',['icespinner']);
+		addNewMoves('delibird',['icespinner']);
+		addNewMoves('donphan',['icespinner']);
+		addNewMoves('dragonite',['icespinner']);
+		addNewMoves('forretress',['icespinner']);
+		addNewMoves('weavile',['icespinner']);
+		addNewMoves('wigglytuff',['icespinner']);
+		addNewMoves('articuno',['icespinner']);
+		addNewMoves('mew',['icespinner']);
+		addNewMoves('dunsparce',['icespinner']);
+		addNewMoves('jigglypuff',['icespinner']);
+		addNewMoves('marill',['icespinner']);
+		addNewMoves('shellder',['icespinner']);
+
+		addNewMoves('altaria',['trailblaze']);
+		addNewMoves('ampharos',['trailblaze']);
+		addNewMoves('azumarill',['trailblaze']);
+		addNewMoves('blissey',['trailblaze']);
+		addNewMoves('clodsire',['trailblaze']);
+		addNewMoves('delibird',['trailblaze']);
+		addNewMoves('donphan',['trailblaze']);
+		addNewMoves('eevee',['trailblaze']);
+		addNewMoves('golduck',['trailblaze']);
+		addNewMoves('heracross',['trailblaze']);
+		addNewMoves('hypno',['trailblaze']);
+		addNewMoves('jumpluff',['trailblaze']);
+		addNewMoves('perrserker',['trailblaze']);
+		addNewMoves('persian',['trailblaze']);
+		addNewMoves('quagsire',['trailblaze']);
+		addNewMoves('raichu',['trailblaze']);
+		addNewMoves('stantler',['trailblaze']);
+		addNewMoves('sudowoodo',['trailblaze']);
+		addNewMoves('sunflora',['trailblaze']);
+		addNewMoves('ursaring',['trailblaze']);
+		addNewMoves('weavile',['trailblaze']);
+		addNewMoves('wigglytuff',['trailblaze']);
+	},
+
 	hitStepBreakProtect(targets, pokemon, move) {
 		if (move.breaksProtect) {
 			for (const target of targets) {
