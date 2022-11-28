@@ -6,6 +6,11 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 				this.modData('Learnsets', pokemonid).learnset[moveid] = [moveid === 'dracometeor' || moveid === 'steelbeam' ? '8T' : '8M'];
 			}
 		};
+		for (const id in this.dataCache.Pokedex) {
+			if (this.dataCache.Learnsets[id] && this.dataCache.Learnsets[id].learnset) {
+				const learnset = this.modData('Learnsets', this.toID(id)).learnset;
+				this.modData('Learnsets', this.toID(id)).learnset.terablast = ["8M"];
+			}
 		addNewMoves('azumarill',['icespinner']);
 		addNewMoves('cloyster',['icespinner']);
 		addNewMoves('delibird',['icespinner']);
