@@ -469,8 +469,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 		condition: {
 			onStart(pokemon) {
-				
-			}
+
+			},
 			onHit(target, source, move) {
 				if (target !== source && move.category !== 'Status') {
 					return Math.min(350, 50 + 50 * pokemon.timesAttacked);
