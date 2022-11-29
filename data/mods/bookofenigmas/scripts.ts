@@ -75,7 +75,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		addNewMoves('golduck', ['nastyplot', "powergem"]);
 		addNewMoves('primeape', ['stealthrock']);
 		addNewMoves('muk', ['drainpunch', 'toxicspikes']);
-		addNewMoves('mukaloa', ['drainpunch']);
+		addNewMoves('mukalola', ['drainpunch']);
 		addNewMoves('gengar', ['toxicspikes']);
 		addNewMoves('scyther', ['closecombat']);
 		addNewMoves('vaporeon', ['calmmind']);
