@@ -1499,4 +1499,79 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "BoE OU",
 		isModded: true,
 	},
+	poochyena:{
+		tier: "BoE LC",
+	},
+	mightyena:{
+		tier: "BoE OU",
+	},
+	wingull:{
+		tier: "BoE LC",
+	},
+	pelipper:{
+		tier: "BoE OU",
+	},
+	ralts:{
+		tier: "BoE LC",
+	},
+	kirlia:{
+		tier: "BoE NFE",
+	},
+	gardevoir:{
+		tier: "BoE OU",
+	},
+	gallade:{
+		tier: "BoE OU",
+	},
+	sableye:{
+		tier: "BoE OU",
+	},
+	mawile:{
+		tier: "BoE OU",
+	},
+	gulpin:{
+		tier: "BoE LC",
+	},
+	swalot:{
+		tier: "BoE OU",
+	},
+	swablu:{
+		tier: "BoE LC",
+	},
+	altaria:{
+		tier: "BoE OU",
+	},
+	barboach:{
+		tier: "BoE LC",
+	},
+	whiscash:{
+		tier: "BoE OU",
+	},
+	baltoy:{
+		tier: "BoE LC",
+	},
+	claydol:{
+		tier: "BoE OU",
+	},
+	clamperl:{
+		tier: "BoE LC",
+	},
+	relicanth:{
+		tier: "BoE OU",
+	},
+	luvdisc:{
+		tier: "BoE OU",
+	},
+	kricketot:{
+		tier: "BoE LC",
+	},
+	kricketune:{
+		tier: "BoE OU",
+	},
+	buneary:{
+		tier: "BoE LC",
+	},
+	lopunny:{
+		tier: "BoE OU",
+	},
 };
